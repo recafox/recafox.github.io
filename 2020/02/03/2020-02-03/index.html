@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>JS - BMI計算機 - Rita Ho</title>
+
+
+    <meta name="description" content="DEMO 目標用JavaScript做一個BMI計算機，而且可以顯示過往的測驗結果。這次一邊整理筆記一邊改寫，將當初很多段重複又累贅的地方重寫，心中很感慨，原來我也是有進步的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS - BMI計算機">
+<meta property="og:url" content="http://yoursite.com/2020/02/03/2020-02-03/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="DEMO 目標用JavaScript做一個BMI計算機，而且可以顯示過往的測驗結果。這次一邊整理筆記一邊改寫，將當初很多段重複又累贅的地方重寫，心中很感慨，原來我也是有進步的。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-02-03-thumb.png">
+<meta property="article:published_time" content="2020-02-03T13:52:21.000Z">
+<meta property="article:modified_time" content="2020-02-03T15:40:23.834Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-02-03-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="JS - BMI計算機" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-02-03-thumb.png" alt="JS - BMI計算機">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-03T13:52:21.000Z">2020-02-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    31 分鐘 閱讀文 (大約 4607 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                JS - BMI計算機
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://recafox.github.io/bmi-calculator/">DEMO</a></p>
+<h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>用JavaScript做一個BMI計算機，而且可以顯示過往的測驗結果。<br>這次一邊整理筆記一邊改寫，將當初很多段重複又累贅的地方重寫，心中很感慨，原來我也是有進步的。</p>
+<a id="more"></a>
+
+<h3 id="預覽"><a href="#預覽" class="headerlink" title="預覽"></a>預覽</h3><p><img src="/images/2020-02-03-01.png" alt="首圖"></p>
+<p><img src="/images/2020-02-03-02.png" alt="結果頁"></p>
+<h3 id="難點："><a href="#難點：" class="headerlink" title="難點："></a>難點：</h3><p>1.顯示結果的圓圈會根據結果數字的狀態變色<br>2.列表的顏色也要跟著變</p>
+<h3 id="思考流程："><a href="#思考流程：" class="headerlink" title="思考流程："></a>思考流程：</h3><p>1.先製作一個介面，使用者可以在相應的欄位輸入身高體重，然後按下結果按鈕</p>
+<p>2.使用js計算使用者輸入的資料，並且將這些資料以物件的形式，儲存成一個陣列來管理。</p>
+<p>3.這個陣列的資料同時也會儲存進local storage中，不過會是以字串的形式</p>
+<p>4.處理完的BMI結果會呈現在欄位右方的圓圈，還有BMI狀態。</p>
+<p>5.底下會生成一個相應的列表，記載BMI指數, BMI狀態、身高、體重、檢測日期。<br>圓圈以及列表都會根據BMI狀態改變顏色</p>
+<p>6.頁尾</p>
+<p>7.結果圓圈的右下方有一個重新施測的紐，我想讓它活潑一點，所以想加一個旋轉的小動畫</p>
+<p>8.我想要限制列表的數量，讓它不要過長。超過十五筆的話，就從最早的那一條開始刪掉。</p>
+<p>9.我想讓列表從最新一筆紀錄開始呈現，而不是最後一筆</p>
+<p>10.我想讓中間的列表在使用者第一次打開網頁時隱藏起來，當有紀錄時才開啟</p>
+<h3 id="開始動手作"><a href="#開始動手作" class="headerlink" title="開始動手作"></a>開始動手作</h3><h4 id="1-先製作一個介面，使用者可以在相應的欄位輸入身高體重，然後按下結果按鈕"><a href="#1-先製作一個介面，使用者可以在相應的欄位輸入身高體重，然後按下結果按鈕" class="headerlink" title="1.先製作一個介面，使用者可以在相應的欄位輸入身高體重，然後按下結果按鈕"></a>1.先製作一個介面，使用者可以在相應的欄位輸入身高體重，然後按下結果按鈕</h4><p>我將網頁分成三個部分，第一個是欄位區，叫header，中間要放檢測紀錄，就叫history，最後是頁尾，就叫footer。</p>
+<p>先分好之後，就開始製作欄位。考慮到這個區塊的各個元素要相互對齊，我新增一個div區塊叫做cal，將這個區塊的display設定成flex，然後使用以下語法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">align-items: center;</span><br><span class="line">justify-content: space-evenly;</span><br></pre></td></tr></table></figure>
+
+<p>我之前常常搞不清楚Items和content的區別，為了以防忘記．在這裡寫起來<br><strong>items</strong><br>align - items和justify-items只能作用於單行</p>
+<p><strong>content</strong><br>若有多行元素時，就應使用align-content / justify-content</p>
+<p>然後，要記得，flex這個屬性必須掛在外容器上!<br><a href="https://codepen.io/enxaneta/full/adLPwv/">flexbox參考網頁</a></p>
+<p>接下來，因為需要用到js抓取輸入的資料，各個輸入欄位我都下了不同的class，之後按鈕也要做變化，所以也先下了一個class。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> height = <span class="built_in">document</span>.querySelector(<span class="string">".height"</span>);　<span class="comment">//使用者身高</span></span><br><span class="line"><span class="keyword">var</span> weight = <span class="built_in">document</span>.querySelector(<span class="string">".weight"</span>);  <span class="comment">//使用者體重</span></span><br><span class="line"><span class="keyword">var</span> resultBtn = <span class="built_in">document</span>.querySelector(<span class="string">".result-btn"</span>); <span class="comment">//結果按鈕</span></span><br><span class="line"><span class="keyword">var</span> list = <span class="built_in">document</span>.querySelector(<span class="string">".list"</span>); <span class="comment">//歷史列表</span></span><br><span class="line"><span class="keyword">var</span> his = <span class="built_in">document</span>.querySelector(<span class="string">".history"</span>); <span class="comment">//要呈現列表的區塊</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有了class，就可以抓取DOM元素，進行接下來JS的操作。</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="2-使用js計算使用者輸入的資料，並且將這些資料以物件的形式，儲存成一個陣列來管理。"><a href="#2-使用js計算使用者輸入的資料，並且將這些資料以物件的形式，儲存成一個陣列來管理。" class="headerlink" title="2.使用js計算使用者輸入的資料，並且將這些資料以物件的形式，儲存成一個陣列來管理。"></a>2.使用js計算使用者輸入的資料，並且將這些資料以物件的形式，儲存成一個陣列來管理。</h4><p>為了要儲存並且更好管理將來的資料，我先宣告一個陣列：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若是資料庫中有資料，就轉成物件存進Data, 若沒有就創造一個空陣列</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="built_in">JSON</span>.parse(localStorage.getItem(<span class="string">"BMIlist"</span>)) || [];</span><br></pre></td></tr></table></figure>
+
+<p>這個陣列會從資料庫獲得資料，然後把資料轉化成物件儲存在自己裡面。<br>為什麼不能直接宣告空陣列呢？因為我希望使用者在第二次第三次打開這個網頁時，都能看到自己以前的紀錄，所以要讀取資料庫的資料。<br>這個陣列中的物件，我計劃要有以下的屬性：</p>
+<p>BMIstatus（BMI狀態）, BMIindex(BMI指數), height, weight, time, color</p>
+<p>接下來是計算使用者資料。我寫了一個function。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//data陣列中的各個屬性處理</span></span><br><span class="line">    <span class="comment">//1. 身高, 體重, BMI結果</span></span><br><span class="line">    <span class="keyword">var</span> h = <span class="built_in">parseInt</span>(height.value)/<span class="number">100</span>;</span><br><span class="line">    <span class="keyword">var</span> w = <span class="built_in">parseInt</span>(weight.value);</span><br><span class="line">    <span class="keyword">var</span> result = w/(h*h);</span><br><span class="line">    result = result.toFixed(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(result);  </span><br><span class="line">    <span class="keyword">var</span> status = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> color = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">case</span> result &lt;= <span class="number">18.5</span>:</span><br><span class="line">            status = <span class="string">"過輕"</span>;</span><br><span class="line">            color = <span class="string">"#31baf9"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">18.5</span> &lt; result &amp;&amp; result &lt;=<span class="number">25</span>:</span><br><span class="line">            status = <span class="string">"理想"</span></span><br><span class="line">            color = <span class="string">"#86d73f"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">25</span> &lt; result &amp;&amp; result &lt;=<span class="number">30</span>:</span><br><span class="line">            status = <span class="string">"過重"</span>;</span><br><span class="line">            color = <span class="string">"#ff982d"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">30</span> &lt; result &amp;&amp; result &lt;=<span class="number">35</span>:</span><br><span class="line">            status = <span class="string">"輕度肥胖"</span>;</span><br><span class="line">            color = <span class="string">"#ff6c03"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">35</span> &lt; result &amp;&amp; result &lt;=<span class="number">40</span>:</span><br><span class="line">            status = <span class="string">"中度肥胖"</span>;</span><br><span class="line">            color = <span class="string">'#ff6c03'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span>  <span class="number">40</span> &lt; result:</span><br><span class="line">            status = <span class="string">"重度肥胖"</span></span><br><span class="line">            color = <span class="string">"#ff1200"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            alert(<span class="string">'資料有誤'</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//獲得當前日期</span></span><br><span class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">var</span> day = date.getDate();</span><br><span class="line">    <span class="keyword">var</span> month = date.getMonth()+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> year = date.getFullYear();</span><br><span class="line">    </span><br><span class="line">             <span class="comment">//將計算出的資料存入一個物件中</span></span><br><span class="line">    <span class="keyword">var</span> BMIdata = &#123;</span><br><span class="line">        height:h,</span><br><span class="line">        weight:w,</span><br><span class="line">        BMI:result,</span><br><span class="line">        BMIstatus: status,</span><br><span class="line">        time: month + <span class="string">"-"</span> + day + <span class="string">"-"</span> + year,</span><br><span class="line">        color: color,&#125;;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//將最新的資料插入陣列中第一個，讓列表能從最新一筆開始</span></span><br><span class="line">    data.splice(<span class="number">0</span>, <span class="number">0</span>, BMIdata); <span class="comment">//將新的BMIdata(物件)存進data</span></span><br><span class="line">    updateList(data);</span><br><span class="line">    localStorage.setItem(<span class="string">"BMIlist"</span>, <span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">    <span class="keyword">if</span>(data.length &gt; <span class="number">15</span>)&#123;</span><br><span class="line">        clear();&#125;;</span><br><span class="line">           </span><br><span class="line">    switchBTN();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一點小提醒：<br>1.我發現如果不寫parseInt的話，height.value傳進來的會是字串而不是數字（我想是因為，.value本來就是抓取文字欄位元素的關係），為了保險起見，兩個需要傳入的變數我都加上parseInt。順帶一提，parseInt是將字串轉換為數字的一個function。</p>
+<p>2.為了讓數字容易運算，結果看起來乾淨漂亮，我在result的數字做了toFixed(2)的處理－讓落落長的數字取到剩下小數點後兩位。</p>
+<p>3.switch case的使用：原本我以為只能在有特定值時才可以使用，但其實換個角度想</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(result &lt;= <span class="number">18.5</span>)&#123;</span><br><span class="line">        status = <span class="string">"過輕"</span>;</span><br><span class="line">        color = <span class="string">"#31baf9"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>這個意思不就代表 當<code>result &lt;=18.5這個表達式 === true</code>嗎？<br>所以可以改寫為</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">case</span> result &lt;= <span class="number">18.5</span>:</span><br><span class="line">    <span class="comment">//some action</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>如此一來，物件中的BMIstatus, BMIindex, height, weight都有了，差一個time</p>
+<p>在js中要取得當前時間，必須這樣寫：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//獲得當前日期</span></span><br><span class="line">   <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">   <span class="keyword">var</span> day = date.getDate(); <span class="comment">//取得日期</span></span><br><span class="line">   <span class="keyword">var</span> month = date.getMonth()+<span class="number">1</span>; <span class="comment">//取得月份</span></span><br><span class="line">   <span class="keyword">var</span> year = date.getFullYear(); <span class="comment">//取得年分</span></span><br></pre></td></tr></table></figure>
+<p>要先呼叫一個新的Date物件，然後就可以使用下面幾個函示來取得你想要的內容。對了，getMonth()中，月份的計算是從<strong>0</strong>開始，一月（0)到十二月(11)，所以要是你想要正確的數字的話，你應該要記得<strong>加一</strong>。（那為什麼日期不也從0開始……？）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BMIdata = &#123;</span><br><span class="line">               height:h,</span><br><span class="line">               weight:w,</span><br><span class="line">               BMI:result,</span><br><span class="line">               BMIstatus: status,</span><br><span class="line">               time: month + <span class="string">"-"</span> + day + <span class="string">"-"</span> + year,</span><br><span class="line">               color: color,</span><br><span class="line">           &#125;;</span><br></pre></td></tr></table></figure>
+<p>把物件中的各屬性配上之前寫的變數。</p>
+<p>順帶一提，為了避免使用者沒有填入數字或是只寫零，我又加了一個function。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">resultBtn.addEventListener(<span class="string">"click"</span>, check); </span><br><span class="line"><span class="comment">//按下按鈕後，先檢查是否有輸入數字，或是是否有輸入0，無前述狀況再執行計算</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(height.value == <span class="string">""</span> || weight.value ==<span class="string">""</span>||height.value ==<span class="number">0</span> || weight.vaue == <span class="number">0</span>)&#123;</span><br><span class="line">        alert(<span class="string">"數字不正確"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        calculate(height.value, weight.value);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//使用者送出的資料會先跑進這個Function裡檢查有沒有零或是根本沒有填入，若是如此就會跳出一個提醒，若是都有填數字就會開始計算</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-這個陣列的資料同時也會儲存進local-storage中，不過會是以字串的形式"><a href="#3-這個陣列的資料同時也會儲存進local-storage中，不過會是以字串的形式" class="headerlink" title="3.這個陣列的資料同時也會儲存進local storage中，不過會是以字串的形式"></a>3.這個陣列的資料同時也會儲存進local storage中，不過會是以字串的形式</h4><p>處理好陣列後，我們要來把它新增進資料庫中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">calStorage.setItem(<span class="string">"BMIlist"</span>, <span class="built_in">JSON</span>.stringify(data));</span><br></pre></td></tr></table></figure>
+<p>在資料庫中新增一個叫做BMIlist的欄位，把data陣列中的物件字串化後傳進去。<br>這樣一來，當function calculate把資料都計算完，並且把資料儲存進陣列時，資料庫也會一起被更新。</p>
+<h4 id="4-底下會生成一個相應的列表，記載BMI指數-BMI狀態、身高、體重、檢測日期。"><a href="#4-底下會生成一個相應的列表，記載BMI指數-BMI狀態、身高、體重、檢測日期。" class="headerlink" title="4.底下會生成一個相應的列表，記載BMI指數, BMI狀態、身高、體重、檢測日期。"></a>4.底下會生成一個相應的列表，記載BMI指數, BMI狀態、身高、體重、檢測日期。</h4><p>圓圈以及列表都會根據BMI狀態改變顏色</p>
+<p>我在做的時候，因為感覺旁邊的結果圓圈比較難，所以先從列表開始做。<br>我寫了一個Function來處理這件事，這個function叫做updateList(data)，括號中間的data實際上跟上面提到的data陣列是不同的東西，之後我們還要再呼叫一次這個Function並且在括號中傳入data陣列。我只是想提醒我自己接下來要傳進去的是什麼東西。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateList</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//先抓取資料庫中資料</span></span><br><span class="line">    </span><br><span class="line">    str = <span class="string">""</span>;</span><br><span class="line">    <span class="comment">//跑迴圈, 對每一個data中的元素都做處理</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; data.length; i++)&#123;</span><br><span class="line">        his.style.display = <span class="string">"block"</span>;</span><br><span class="line">        <span class="keyword">let</span> text = <span class="string">''</span>;</span><br><span class="line">        <span class="comment">//使用一個template function來統一處理html</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">template</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span>  text =<span class="string">`&lt;li data-num  =<span class="subst">$&#123;i&#125;</span> class = listItem style = 'border-left: 7px <span class="subst">$&#123;data[i].color&#125;</span> solid'&gt;&lt;div class = 'BMIstatus'&gt;&lt;span style = 'font-size: 20px'&gt; <span class="subst">$&#123;data[i].BMIstatus&#125;</span>&lt;/span&gt;&lt;/div&gt;&lt;div class = 'result'&gt;BMI &lt;span style = 'font-size :20px; margin-left: 10px'&gt;<span class="subst">$&#123;data[i].BMI&#125;</span>&lt;/span&gt;&lt;/div&gt;&lt;div class = 'weight-kg'&gt;weight&lt;span style = 'font-size :20px;margin-left: 10px'&gt;<span class="subst">$&#123;data[i].weight&#125;</span>kg&lt;/span&gt;&lt;/div&gt;&lt;div class = 'height-cm'&gt;height&lt;span style = 'font-size :20px; margin-left: 10px'&gt;<span class="subst">$&#123;data[i].height*<span class="number">100</span>&#125;</span>cm&lt;/span&gt;&lt;/div&gt;&lt;div class = 'test-date'&gt;<span class="subst">$&#123;data[i].time&#125;</span>&lt;/div&gt;&lt;/li&gt;`</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//抓取陣列資料，根據抓到資料的bmistatus分類並列表</span></span><br><span class="line">        <span class="keyword">switch</span> (data[i].BMIstatus)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"過輕"</span>:</span><br><span class="line">            template(data[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">case</span> <span class="string">"理想"</span>:</span><br><span class="line">            template(data[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="string">"過重"</span>:</span><br><span class="line">            template(data[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">case</span> <span class="string">"輕度肥胖"</span>:</span><br><span class="line">            template(data[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="string">"中度肥胖"</span>:</span><br><span class="line">            template(data[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="string">"重度肥胖"</span>:</span><br><span class="line">            template(data[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">            alert(<span class="string">'something is wrong!'</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        str += text;    </span><br><span class="line">         </span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    list.innerHTML = str;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在這邊最重要的做法就是，使用innerHTML來把新增的列表元素加進ul列表中。所以我先設定一個空字串（str）的變數，在跑接下來的迴圈時，會依序加進相應的內容，最後再將這個字串變成html元素塞進ul列表中。</p>
+<p>這樣一來，列表就完成了！這個function被放在程式碼最上面（因為我希望使用者一打開網頁時就能出現列表），還有Calculate函式中（這樣有新的資料傳進資料庫時，列表就能馬上更新）。</p>
+<h4 id="5-我想要限制列表的數量，讓它不要過長。超過十五筆的話，就從最早的那一條開始刪掉。"><a href="#5-我想要限制列表的數量，讓它不要過長。超過十五筆的話，就從最早的那一條開始刪掉。" class="headerlink" title="5. 我想要限制列表的數量，讓它不要過長。超過十五筆的話，就從最早的那一條開始刪掉。"></a>5. 我想要限制列表的數量，讓它不要過長。超過十五筆的話，就從最早的那一條開始刪掉。</h4><p>列表完成之後，在測試時發現，要是一直增加資料而沒有一個限制的話，列表就會變的落落長。要避免這件事，我決定限制陣列的長度，寫了一個function</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span>(data.length &gt; <span class="number">15</span>)&#123;</span><br><span class="line">                clear();</span><br><span class="line">            &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clear</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; data.length; i++)&#123;</span><br><span class="line">        data.splice(i, <span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    localStorage.setItem(<span class="string">"BMIlist"</span>, <span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>clear的功能是，把陣列的元素都跑一遍後，從最後那一筆刪掉一筆，然後用修剪過的陣列再更新一次資料庫。<br>之後當陣列大於15時，就呼叫這個函式，把陣列修剪掉。<br>看到這裡你可能覺得很奇怪，把最後那一筆刪掉的話，不就等於把最新的那筆資料刪掉嗎？<br>這一步驟跟下一步驟環環相扣，請看：</p>
+<h4 id="6-我想讓列表從最新一筆紀錄開始呈現，而不是最後一筆"><a href="#6-我想讓列表從最新一筆紀錄開始呈現，而不是最後一筆" class="headerlink" title="6.我想讓列表從最新一筆紀錄開始呈現，而不是最後一筆"></a>6.我想讓列表從最新一筆紀錄開始呈現，而不是最後一筆</h4><p>網頁在這一步已經完成了有七成了吧。看著列表都能一一出現我已經很滿意，但是因為列表是由陣列的0~14開始跑，我想一想覺得不太對勁：最新的資料卻要滑到最下面才能看到，不是很不方便嗎？</p>
+<p>為了解決這個問題，我一開始的解法是使用<br><code>data.reverse()</code><br>反轉陣列。讓最後一筆能夠成為陣列第一筆。<br>結果我發現，因為有許多function都在執行這個陣列，一邊反轉的話，另一邊就會出錯。</p>
+<p>最後，我發現事情可以不用這麼複雜。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.splice(<span class="number">0</span>, <span class="number">0</span>, BMIdata); </span><br><span class="line">splice( x, y, item)</span><br></pre></td></tr></table></figure>
+<p>x是你想插入的位置，y是你想從那位置之後刪掉的資料數目，item是你想插進去的資料。<br>使用splice，讓新的資料從第零筆插入，成為第零筆就好，最後一筆成為第一筆，原本的倒數第二成為第二筆，如此往後推進。<br>也因此在上一步驟中的迴圈，我把最後一筆刪掉，其實也等於是把最早的刪掉。</p>
+<p><em>其實我在這裡犯過不少愚蠢的錯……</em></p>
+<h4 id="7-處理完的BMI結果會呈現在欄位右方的圓圈，還有BMI狀態。"><a href="#7-處理完的BMI結果會呈現在欄位右方的圓圈，還有BMI狀態。" class="headerlink" title="7.處理完的BMI結果會呈現在欄位右方的圓圈，還有BMI狀態。"></a>7.處理完的BMI結果會呈現在欄位右方的圓圈，還有BMI狀態。</h4><p>不知道為什麼，我一直很害怕這個部分，所以我拖到很後面才做。<br>這一步中，我們要把原本的結果按鈕刪掉，然後新增一個會變色的圓圈圈，圈圈中間有BMI指數，還有一個重新開始的小按鈕，圓圈旁邊跟著一段顯示結果的文字。</p>
+<p><img src="/images/2020-02-03-03.png" alt="圓圈"></p>
+<p>先寫一個function，叫做switchBTN(){}</p>
+<p>接著來刪掉原本的按鈕。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getParent = resultBtn.parentNode;</span><br><span class="line">getParent.removeChild(resultBtn);</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">div.setAttribute(<span class="string">"class"</span>, <span class="string">"show"</span>);</span><br></pre></td></tr></table></figure>
+<p>我先取得按鈕的父元素（ParentNode），然後移除按鈕（remoceChild），接著新增一個div元素，給他一個Class名稱（我已經預先在css中設定好外觀了）。</p>
+<p>接下來，因為這個圓圈有一些必須隨著資料變動的要素，所以就再跑一次迴圈，抓取各元素中的特定值（我要找的是bmi指數以及狀態）</p>
+<p>接下來主要分兩部分，先寫個函式把接下來會重複的動作統一處理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//這個函式其實一直在做一樣的事, 就是根據傳進來的資料, 還有這筆資料的各種屬性來渲染不同的html</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">btnHandle</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">                str = <span class="string">"&lt;p &gt;"</span>+item.BMI+<span class="string">"&lt;/p&gt;&lt;p style = 'font-size: 14px;'&gt;BMI&lt;/p&gt;&lt;a href = 'index.html'&gt;&lt;/a&gt;"</span>;</span><br><span class="line">                div.innerHTML = str;</span><br><span class="line">                div.style.color = item.color;</span><br><span class="line">                div.style.border = <span class="string">`5px solid <span class="subst">$&#123;item.color&#125;</span>`</span>;</span><br><span class="line">                div.style.position = <span class="string">"relative"</span>;</span><br><span class="line">                <span class="keyword">var</span> a = div.querySelector(<span class="string">"a"</span>);</span><br><span class="line">                a.style.backgroundColor = item.color;</span><br><span class="line">                getParent.appendChild(div);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//將str的字串新增到div元素中，設定css樣式</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">                p.setAttribute(<span class="string">"class"</span>, <span class="string">"statusText"</span>)</span><br><span class="line">                <span class="keyword">var</span> pStr = <span class="string">`&lt;p&gt; <span class="subst">$&#123;item.BMIstatus&#125;</span>&lt;/p&gt;`</span></span><br><span class="line">                p.innerHTML = pStr;</span><br><span class="line">                p.style.color = item.color;</span><br><span class="line">                div.appendChild(p);</span><br><span class="line">             &#125;</span><br></pre></td></tr></table></figure>
+<p>然後是條件判斷</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (data[<span class="number">0</span>].BMIstatus)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"過輕"</span>:</span><br><span class="line">            btnHandle(data[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"理想"</span>:</span><br><span class="line">           btnHandle(data[<span class="number">0</span>]);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">case</span> <span class="string">"過重"</span>:</span><br><span class="line">           btnHandle(data[<span class="number">0</span>]);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">case</span> <span class="string">"輕度肥胖"</span>:</span><br><span class="line">           btnHandle(data[<span class="number">0</span>]);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">case</span> <span class="string">"中度肥胖"</span>:</span><br><span class="line">           btnHandle(data[<span class="number">0</span>]);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">           </span><br><span class="line">           <span class="keyword">case</span> <span class="string">"重度肥胖"</span>:</span><br><span class="line">           btnHandle(data[<span class="number">0</span>]);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">           </span><br><span class="line">           <span class="keyword">default</span>:</span><br><span class="line">           alert(<span class="string">'something is wrong!'</span>);</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>這個功能基本上就完成了。<br>在這裡的做法跟做列表有點像，都使用到一個把字串塞進空字串中，然後創造html元素的做法。不過在這裡我沒有跑for迴圈，而是用switch來判斷當下的狀態，因為前面我把最新的資料都變成第零筆，所以我只要判斷第零筆的BMI狀態就好。</p>
+<p>舉上面的例子，假如第零筆（也就是最新這一筆）的BMI狀態是過輕的話，我就在str中放進兩個p段落（一個是指數，一個是小小的bmi字樣）和一個a連結（重新開始的按鈕），這幾個元素的外觀我都在css中設定好了。</p>
+<p>把str的HTML元素用innerHTML的方法設定好之後，接下來是根據該狀態來變更顏色。想要用js變更css樣式的話，就先把要變更的元素抓取過來，然後加上.style.color/ .border/….等等css語法。<br>a連結也設定好之後，使用appendChild把這些新增好的元素加進剛剛的Parent node之下，就可以了。</p>
+<p>別忘了，還有旁邊的狀態要寫！</p>
+<h4 id="8-頁尾"><a href="#8-頁尾" class="headerlink" title="8.頁尾"></a>8.頁尾</h4><p>頁尾只有一個Logo要放，但是原本給的logo是透明的，不是這個顏色。<br>我使用了css中的filter來調整，可以上codepen找css filter。</p>
+<h4 id="9-結果圓圈的右下方有一個重新施測的紐，我想讓它活潑一點，所以想加一個旋轉的小動畫"><a href="#9-結果圓圈的右下方有一個重新施測的紐，我想讓它活潑一點，所以想加一個旋轉的小動畫" class="headerlink" title="9.結果圓圈的右下方有一個重新施測的紐，我想讓它活潑一點，所以想加一個旋轉的小動畫"></a>9.結果圓圈的右下方有一個重新施測的紐，我想讓它活潑一點，所以想加一個旋轉的小動畫</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.show</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>: spin <span class="number">1.5s</span> infinite;</span><br><span class="line">    <span class="attribute">transition</span>: ease;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 讓按鈕活潑 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> spin&#123;</span><br><span class="line">    0%&#123;　　　動畫的第０格時   </span><br><span class="line">        <span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(0);</span><br><span class="line">    &#125;</span><br><span class="line">    50%&#123;   動畫的中間</span><br><span class="line">        <span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    100%&#123;    動畫的結尾</span><br><span class="line">        <span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我想做的是：圖案旋轉一圈後，停止一下，再開始新的loop。<br>除了要把iteration設定成infinite(無限)之外，因為要有間隔，所以50%和100%時做的是一樣的事，讓它停在原地。</p>
+<h4 id="10-我想讓中間的列表在使用者第一次打開網頁時隱藏起來，當有紀錄時才開啟"><a href="#10-我想讓中間的列表在使用者第一次打開網頁時隱藏起來，當有紀錄時才開啟" class="headerlink" title="10.我想讓中間的列表在使用者第一次打開網頁時隱藏起來，當有紀錄時才開啟"></a>10.我想讓中間的列表在使用者第一次打開網頁時隱藏起來，當有紀錄時才開啟</h4><p>到這裡網頁都完成了，但是當使用者第一次打開這個網頁時，中間的history區域因為沒有內容，會一片空白，我覺得這樣很奇怪，所以想要先把它隱藏起來，等到有資料進入時再出現。</p>
+<p><strong>沒想到我在這裡也花了很久！</strong></p>
+<p>我一開始的做法是：把history區塊整個刪掉，先做條件判斷（當Data的長度&gt;=1時)，然後再一一新增回來。但是因為data有兩筆時也會大於一，有三筆時也會大於一，也就是說，只要有新的資料傳進來，這個條件判斷就會永遠成立，那就等於沒有用了！</p>
+<p>最後才靈光一閃</p>
+<p><code>his.style.display = &quot;none&quot;;</code></p>
+<p>我在程式馬最上面加了這一行，代表：「在網頁打開時，history列表是關起來的」，然後在updateList函式中，我才把它打開，這樣在生成列表的時候，history區塊也會跟著出現了。</p>
+<h4 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h4><p>其實距我做完這份作業已經過去幾個月了，那時候剛碰js，做得小心翼翼又戰戰兢兢的，還老是很悲觀地覺得我一定不行。能夠完成真的很開心！而且老實說，我那時的程式碼超冗長，哈哈，這次一邊整理筆記一邊改寫，將當初很多段重複又累贅的地方重寫，心中很感慨，原來我也是有進步的。算是在最近有些停滯又迷惘的日子提供一點新的動力。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javascript/" rel="tag">javascript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/02/2020-02-02/">
+                <span class="level-item">npm指令無法運作</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho / 何怡蓁">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho / 何怡蓁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            1
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            5
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            連結
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://recafox.github.io/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">recafox.github.io</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分類
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">
+            <span class="level-start">
+                <span class="level-item">六角鼠年全馬挑戰賽</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/troubleshoot/" style="font-size: 10px;">troubleshoot</a> <a href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" style="font-size: 10px;">六角鼠年全馬挑戰賽</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/03/2020-02-03/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020-02-03-thumb.png" alt="JS - BMI計算機">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T13:52:21.000Z">2020-02-03</time></div>
+                    <a href="/2020/02/03/2020-02-03/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JS - BMI計算機</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/02/2020-02-02/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020-02-02-thum.png" alt="npm指令無法運作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-02T14:40:19.000Z">2020-02-02</time></div>
+                    <a href="/2020/02/02/2020-02-02/" class="title has-link-black-ter is-size-6 has-text-weight-normal">npm指令無法運作</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            彙整
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/troubleshoot/">
+                        <span class="tag">troubleshoot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">
+                        <span class="tag">六角鼠年全馬挑戰賽</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/03/2020-02-03/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020-02-03-thumb.png" alt="JS - BMI計算機">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T13:52:21.000Z">2020-02-03</time></div>
+                    <a href="/2020/02/03/2020-02-03/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JS - BMI計算機</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/02/2020-02-02/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2020-02-02-thum.png" alt="npm指令無法運作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-02T14:40:19.000Z">2020-02-02</time></div>
+                    <a href="/2020/02/02/2020-02-02/" class="title has-link-black-ter is-size-6 has-text-weight-normal">npm指令無法運作</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            彙整
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/troubleshoot/">
+                        <span class="tag">troubleshoot</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">
+                        <span class="tag">六角鼠年全馬挑戰賽</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="JS - BMI計算機" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
