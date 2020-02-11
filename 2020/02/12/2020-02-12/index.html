@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Vue - Vee Validate 3 操作方法 - Rita Ho</title>
+
+
+    <meta name="description" content="目標因為六角的作業需要使用到Vee validate這個套件，可是課程內使用的第二版和目前第三版已經有所差距了，爬文也找不到相關資料，所以按照官網教學自己做了一次。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue - Vee Validate 3 操作方法">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/2020-02-12/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="目標因為六角的作業需要使用到Vee validate這個套件，可是課程內使用的第二版和目前第三版已經有所差距了，爬文也找不到相關資料，所以按照官網教學自己做了一次。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-02-12-thumb.png">
+<meta property="article:published_time" content="2020-02-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-11T16:32:34.876Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="VeeValidate3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-02-12-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Vue - Vee Validate 3 操作方法" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-02-12-thumb.png" alt="Vue - Vee Validate 3 操作方法">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-11T16:00:00.000Z">2020-02-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分鐘 閱讀文 (大約 1028 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vue - Vee Validate 3 操作方法
+            
+        </h1>
+        <div class="content">
+            <h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>因為六角的作業需要使用到Vee validate這個套件，可是課程內使用的第二版和目前第三版已經有所差距了，爬文也找不到相關資料，所以按照官網教學自己做了一次。</p>
+<a id="more"></a>
+
+
+<h3 id="使用步驟"><a href="#使用步驟" class="headerlink" title="使用步驟"></a>使用步驟</h3><h4 id="1-安裝"><a href="#1-安裝" class="headerlink" title="1. 安裝"></a>1. 安裝</h4><p>安裝 <code>npm install  --save vee-validate</code></p>
+<h4 id="2-import進檔案中"><a href="#2-import進檔案中" class="headerlink" title="2. import進檔案中"></a>2. import進檔案中</h4><p>import有兩種方法，一種是在main.js中全局import，如此一來所有元件都能使用，還有一種是在要使用的元件中局部import</p>
+<h5 id="2-1-全局import"><a href="#2-1-全局import" class="headerlink" title="2.1 全局import"></a>2.1 全局import</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//位置:main.js (你的vue專案中的進入點)</span></span><br><span class="line"><span class="comment">//引入</span></span><br><span class="line"><span class="keyword">import</span> &#123; ValidationProvider &#125; <span class="keyword">from</span> <span class="string">'vee-validate'</span>;</span><br><span class="line"><span class="comment">//啟用</span></span><br><span class="line">Vue.component(<span class="string">'ValidationProvider'</span>, ValidationProvider);</span><br></pre></td></tr></table></figure>
+<p>全局引用後不用在元件中再次引用就可以直接使用了</p>
+<h5 id="2-2-局部引用"><a href="#2-2-局部引用" class="headerlink" title="2.2 局部引用"></a>2.2 局部引用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//位置：你在使用的元件名稱.vue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; ValidationProvider &#125; <span class="keyword">from</span> <span class="string">'vee-validate'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"><span class="comment">//區域元件註冊</span></span><br><span class="line">  components: &#123;</span><br><span class="line">    ValidationProvider</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-使用vee-validate的標籤validationprovider"><a href="#3-使用vee-validate的標籤validationprovider" class="headerlink" title="3.使用vee validate的標籤validationprovider"></a>3.使用vee validate的標籤validationprovider</h4><p>就如同vue註冊後的元件一樣，元件的名稱就會是html標籤，validation provider就是我們要使用的標籤</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">validation-provider</span> <span class="attr">rules</span>=<span class="string">'email'</span> <span class="attr">v-slot</span>=<span class="string">'&#123;errors&#125;'</span>&gt;</span></span><br><span class="line">        包住</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">'form.user.email'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;errors[0]&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span> //若輸入有誤時這裡將會跳出錯誤提示</span><br><span class="line">        包住</span><br><span class="line"><span class="tag">&lt;/<span class="name">validation-provider</span>&gt;</span> HTML無法偵測大小寫, 所以使用kebab寫法</span><br></pre></td></tr></table></figure>
+
+<p>使用validation-provider包住要驗證的input，按照需求綁定<code>V-model</code>，官方建議要有<code>v-model</code>讓套件能抓到要驗證的資料，但是你不想使用的話，也能使用prop方式 <code>:value = value</code></p>
+<p>到這時架構就完成了，不過我們還要綁定一些驗證規則(rule)，讓使用者輸入正確的資料。</p>
+<h4 id="4-增加驗證規則-rule"><a href="#4-增加驗證規則-rule" class="headerlink" title="4.增加驗證規則(rule)"></a>4.增加驗證規則(rule)</h4><p>驗證規則就是你要規定這些input中必須輸入什麼樣的訊息，例如要填email的欄位就不能讓使用者填電話號碼。Vee validate其實已經內建好許多規則，但我們可以先來看看怎麼自訂規則。</p>
+<p><em>（以下為全局註冊的做法，若你是在元件內註冊，你可以將這些操作換到該元件中）</em></p>
+<h5 id="4-1-引入extend"><a href="#4-1-引入extend" class="headerlink" title="4.1 引入extend"></a>4.1 引入extend</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//位置:main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; extend &#125; <span class="keyword">from</span> <span class="string">'vee-validate'</span>;</span><br></pre></td></tr></table></figure>
+
+
+<p>#####　4.2 新增規則<br>我們新增一個規則來驗證使用者是否輸入正數 (positive)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//位置:main.js</span></span><br><span class="line">         <span class="comment">//規則名稱  //使用者輸入的值</span></span><br><span class="line">extend(<span class="string">'positive'</span>, value =&gt; &#123;</span><br><span class="line">  <span class="comment">//驗證條件: 符合的話為true，不作為</span></span><br><span class="line">    <span class="keyword">if</span>(value &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="comment">//若是使用者輸入零或是負數導致驗證條件為false, 跳出下列訊息</span></span><br><span class="line"><span class="comment">//錯誤訊息: </span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'必須大於零'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="4-3-綁定規則"><a href="#4-3-綁定規則" class="headerlink" title="4.3 綁定規則"></a>4.3 綁定規則</h5><p>在剛剛的html標籤上加上rules</p>
+<figure class="highlight html"><figcaption><span> </span><a href="//規則名稱">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">validation-provider</span> <span class="attr">rules</span>=<span class="string">'positive'</span> <span class="attr">v-slot</span>=<span class="string">'&#123;errors&#125;'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">'form.user.email'</span>&gt;</span></span><br><span class="line">    錯誤訊息</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;errors[0]&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">validation-provider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2020-02-12-01.png" alt="成果"></p>
+<p>註：想要套用多種規則時<br>在這裡我們新增一個規則，規定使用者只能輸入偶數</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">extend(<span class="string">'positive'</span>, value =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span>(value &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'必須大於零'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">extend(<span class="string">'even'</span>, value =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span>(value %<span class="number">2</span> ===<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'必須是偶數'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<p>html綁定方法<br>只要在剛剛的positive規則旁邊，用一條直線再加上新的規則名稱就好</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">validation-provider</span> <span class="attr">rules</span>=<span class="string">'positive|even'</span> <span class="attr">v-slot</span>=<span class="string">'&#123;errors&#125;'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">'form.user.email'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;errors[0]&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">validation-provider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020-02-12-02.png" alt="成果"></p>
+<p>此時套用的兩個規則都會生效。</p>
+<h4 id="5-引用vee-validate中內建的規則－以email為例"><a href="#5-引用vee-validate中內建的規則－以email為例" class="headerlink" title="5. 引用vee validate中內建的規則－以email為例"></a>5. 引用vee validate中內建的規則－以email為例</h4><p>veevalidate中內建有許多規則，你可以到node_modules (套件安裝的地方) =&gt; vee validate =&gt; dist =&gt; rules中找到<br>這裡我們以email為例</p>
+<p><em>（以下仍以全域註冊的方式進行）</em></p>
+<h5 id="5-1-在main-js中引入內建的規則"><a href="#5-1-在main-js中引入內建的規則" class="headerlink" title="5.1 在main.js中引入內建的規則"></a>5.1 在main.js中引入內建的規則</h5><p>因為這裡只需要email，所以引入這個就好</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//位置:main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; email &#125; <span class="keyword">from</span> <span class="string">'vee-validate/dist/rules'</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-2-建立規則"><a href="#5-2-建立規則" class="headerlink" title="5.2 建立規則"></a>5.2 建立規則</h5><p>有兩種做法，分為預設訊息與自訂訊息</p>
+<p>5.2.1 若你不需要自訂訊息的話，此時會使用預設的訊息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//  註冊的名稱  該規則</span></span><br><span class="line">extend(<span class="string">'email'</span>, email);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020-02-12-03.png" alt="成果"></p>
+<p>5.2.1 若你想要跳出自訂的錯誤提示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//註冊的名稱</span></span><br><span class="line">extend(<span class="string">'email'</span>, &#123;</span><br><span class="line">  ...email,　</span><br><span class="line">  message: <span class="string">'郵件地址不正確'</span>　<span class="comment">//自訂的訊息</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020-02-12-04.png" alt="成果"></p>
+<p>完成了！</p>
+<p>這篇文章使用了官方的教學文件，想要知道更深入的內容請到<a href="https://logaretm.github.io/vee-validate/">這邊</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/VeeValidate3/" rel="tag">VeeValidate3</a>, <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/03/2020-02-03/">
+                <span class="level-item">JS - BMI計算機</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            1
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#目標">
+        <span class="has-mr-6">1</span>
+        <span>目標</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用步驟">
+        <span class="has-mr-6">2</span>
+        <span>使用步驟</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-安裝">
+        <span class="has-mr-6">2.1</span>
+        <span>1. 安裝</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-import進檔案中">
+        <span class="has-mr-6">2.2</span>
+        <span>2. import進檔案中</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2-1-全局import">
+        <span class="has-mr-6">2.2.1</span>
+        <span>2.1 全局import</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-2-局部引用">
+        <span class="has-mr-6">2.2.2</span>
+        <span>2.2 局部引用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-使用vee-validate的標籤validationprovider">
+        <span class="has-mr-6">2.3</span>
+        <span>3.使用vee validate的標籤validationprovider</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-增加驗證規則-rule">
+        <span class="has-mr-6">2.4</span>
+        <span>4.增加驗證規則(rule)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#4-1-引入extend">
+        <span class="has-mr-6">2.4.1</span>
+        <span>4.1 引入extend</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-3-綁定規則">
+        <span class="has-mr-6">2.4.2</span>
+        <span>4.3 綁定規則</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#5-引用vee-validate中內建的規則－以email為例">
+        <span class="has-mr-6">2.5</span>
+        <span>5. 引用vee validate中內建的規則－以email為例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#5-1-在main-js中引入內建的規則">
+        <span class="has-mr-6">2.5.1</span>
+        <span>5.1 在main.js中引入內建的規則</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-2-建立規則">
+        <span class="has-mr-6">2.5.2</span>
+        <span>5.2 建立規則</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Vue - Vee Validate 3 操作方法" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
