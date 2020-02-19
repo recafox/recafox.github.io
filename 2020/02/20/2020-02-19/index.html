@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>口罩地圖開發心得 - Rita Ho</title>
+
+
+    <meta name="description" content="前言口罩地圖 &#x2F; Rita Ho原始碼 因應這次的疫情，政府在推行實名制口罩購買後有公開藥局口罩庫存的api，在六角的社團看到後就很有興趣，也馬上打開VSCODE來練習，沒想到中間撞牆多次，耗費許多時間，是看了卡斯柏老師的直播才找到方向。 這篇文章就總結一下開發過程中印象深刻或新學習的部分。 使用技術：ajax, vue, leaflet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="口罩地圖開發心得">
+<meta property="og:url" content="http://yoursite.com/2020/02/20/2020-02-19/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="前言口罩地圖 &#x2F; Rita Ho原始碼 因應這次的疫情，政府在推行實名制口罩購買後有公開藥局口罩庫存的api，在六角的社團看到後就很有興趣，也馬上打開VSCODE來練習，沒想到中間撞牆多次，耗費許多時間，是看了卡斯柏老師的直播才找到方向。 這篇文章就總結一下開發過程中印象深刻或新學習的部分。 使用技術：ajax, vue, leaflet">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-02-19-thumb.png">
+<meta property="article:published_time" content="2020-02-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-19T09:24:53.834Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Leaflet">
+<meta property="article:tag" content="口罩api">
+<meta property="article:tag" content="bootstrap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-02-19-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="口罩地圖開發心得" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-02-19-thumb.png" alt="口罩地圖開發心得">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-19T16:00:00.000Z">2020-02-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分鐘 閱讀文 (大約 1632 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                口罩地圖開發心得
+            
+        </h1>
+        <div class="content">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://recafox.github.io/mask-map/">口罩地圖 / Rita Ho</a><br><a href="https://github.com/recafox/mask-map">原始碼</a></p>
+<p>因應這次的疫情，政府在推行實名制口罩購買後有公開藥局口罩庫存的api，在六角的社團看到後就很有興趣，也馬上打開VSCODE來練習，沒想到中間撞牆多次，耗費許多時間，是看了卡斯柏老師的直播才找到方向。</p>
+<p>這篇文章就總結一下開發過程中印象深刻或新學習的部分。</p>
+<p>使用技術：ajax, vue, leaflet</p>
+<a id="more"></a>
+
+<h3 id="多資料串接"><a href="#多資料串接" class="headerlink" title="多資料串接"></a>多資料串接</h3><p>如上文所說，這次的口罩api是由政府公開的，若你也有興趣的話，可以到這裡<a href="https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json">這裡</a>，格式是json。</p>
+<p>接資料的過程並不難，所以不多說過程，感到困難的部分是，當基本功能都開發完後，我決定使用’geolocation’ in navigators來偵測使用者位置並取得使用者附近的藥局。</p>
+<p>使用geolocation時，我忽略了接取這個資料的過程也需要時間，我原本使用另一個函式來做資料接到後的處理，並放在vue的mounted hook，結果就是處理資料的函式先被執行，但要被處理的資料根本<strong>還沒來</strong>。</p>
+<p>注意到這個時間差後，最後我採用的是promise這個方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取得使用者位置</span></span><br><span class="line"><span class="keyword">let</span> getUser = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// return promise</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"geolocation"</span> <span class="keyword">in</span> navigator) &#123;</span><br><span class="line">          navigator.geolocation.getCurrentPosition(<span class="function"><span class="params">pos</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> lng = pos.coords.longitude;</span><br><span class="line">            <span class="keyword">let</span> lat = pos.coords.latitude;</span><br><span class="line">            resolve([lng, lat]);</span><br><span class="line">            <span class="keyword">this</span>.user.userStat = <span class="literal">true</span>;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.user.userStat = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  <span class="comment">//api資料</span></span><br><span class="line">   <span class="keyword">this</span>.$http.get(<span class="string">'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json'</span>).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.data = res.data.features</span><br><span class="line">    &#125;).then(getUser).then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//取得使用者位置後再做下列行為</span></span><br><span class="line">      <span class="keyword">this</span>.user.coords = data;</span><br><span class="line">      <span class="keyword">this</span>.flyToUser();</span><br><span class="line">      <span class="keyword">this</span>.getNearby();</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>在ajax部分，我同時使用到口罩的api和geolocation，這兩者在取得資訊速度也不相同，由於我會需要計算與使用者距離的函式，就勢必要確定兩者都取到資料後再做動作，不然會出現錯誤，但也考慮到也許使用者會<strong>不想打開位置偵測</strong>，考量之後我就用上述的順序來連接資料串接的過程，如此一來就算沒有使用者位置網站也能運行。</p>
+<p>關於promise的部分其實我是這次遇到困難才開始研究，也只是先用求有再求好的心態，因此還不算熟悉（當時也搞到凌晨兩點了……），我想上面的程式碼可能也有我沒注意到的錯誤吧。</p>
+<h3 id="Leaflet-套件"><a href="#Leaflet-套件" class="headerlink" title="Leaflet 套件"></a>Leaflet 套件</h3><p>leaflet是一個js的地圖套件，<a href="https://leafletjs.com/">官網</a>，我採用的地圖是<a href="https://www.openstreetmap.org/#map=18/25.03964/121.28758">openstreetmap</a><br>也有人開發出與vue適配性更高的<a href="https://github.com/vue-leaflet/Vue2Leaflet">Vue2Leaflet</a>。</p>
+<p>其實只使用leaflet原始的套件也是可以的，我也不太清楚兩者會有什麼差。</p>
+<p>這次是我第一次自己研究套件和官方文檔，但是礙於我的知識有限，有時候根本是有看沒懂，甚至我一開始自己設定地圖的時候，根本不知道程式碼要放在vue的哪個位置。慘。</p>
+<p>這次的網站只運用了leaflet最基本的一些功能，但成果我已經很滿意了，以呈現地圖和使用者交互的方面來說，真的不輸google map，另外，openstreetmap的地圖也滿精確的。真的很感謝這些開源又推廣技術的偉大團隊們。</p>
+<h3 id="程式碼規劃"><a href="#程式碼規劃" class="headerlink" title="程式碼規劃"></a>程式碼規劃</h3><p>以前寫程式碼的時候，總是想說先寫再說，有就好，結果回過頭來看寫了很多重複累贅的功能或模板，這些其實都能整合起來。不知道在哪看到的話：<strong>「如果發現自己在寫第二遍一樣的東西時，就代表程式碼需要重構(refractor)了」</strong>，這次開發時謹記在心，一旦發現現在寫的東西之前好像有類似的，就會研究怎麼重構他，因此這次的成品跟之前相比真的精簡很多，每個功能我自認也都有其存在的理由。也算是有所成長了吧。</p>
+<p>不過，<strong>永遠都不能愛上自己寫的code!!</strong> <em>(出處不明)</em></p>
+<p>在資料結構的規劃上，這次也學習到很多，經過各方觀摩後，這次也嘗試多使用物件的形式來整理資料，也能讓程式碼精簡一些，好像能比較靈活的規劃資料了。</p>
+<h3 id="UI規劃"><a href="#UI規劃" class="headerlink" title="UI規劃"></a>UI規劃</h3><p>這次的版型是自己刻的，也有兼顧響應式，我個人很滿意在PC端的表現，雙欄式讓資料很清楚易懂，但是以現在的社會來說，以手機瀏覽的比重較重，因此在考慮手機版時，我決定讓地圖先呈現，下滑後才是結果列表。一開始的考量是結果列表比較長，文字的地址和圖像的呈現相較起來，後者似乎比較切身易懂。</p>
+<p>不過實際使用後，總覺得一開始使用者面對一堆標示可能會搞不清楚狀況。我看到有些人是設定列表隱藏，全螢幕地圖，但問題感覺沒有解決。</p>
+<p>另外，由於這次口罩實名制購買的規定挺繁瑣，還有關於圖示的說明，文字量有些多，因此我也不打算放在頁面上，而是需要點擊問號方塊另外打開，不知道這樣的設計夠不夠清楚呢？</p>
+<p><img src="/images/2020-02-19-02.PNG" alt="手機版"></p>
+<p><img src="/images/2020-02-19-01.PNG" alt="電腦版"></p>
+<h3 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h3><p>以我自己來說，給自己這次的表現90分了，一開始瘋狂撞牆的時候真的很痛苦，質疑自己很多次，但我都沒有放棄，四處找資料找資源，本來我以為自己可能真的不適合，但是只要我不放棄就代表我還是喜歡這件事的，我很高興這次相信了自己。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Leaflet/" rel="tag">Leaflet</a>, <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>, <a class="has-link-grey -link" href="/tags/bootstrap/" rel="tag">bootstrap</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>, <a class="has-link-grey -link" href="/tags/%E5%8F%A3%E7%BD%A9api/" rel="tag">口罩api</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/12/2020-02-12/">
+                <span class="level-item">Vue - Vee Validate 3 操作方法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            1
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#多資料串接">
+        <span class="has-mr-6">2</span>
+        <span>多資料串接</span>
+        </a></li><li>
+        <a class="is-flex" href="#Leaflet-套件">
+        <span class="has-mr-6">3</span>
+        <span>Leaflet 套件</span>
+        </a></li><li>
+        <a class="is-flex" href="#程式碼規劃">
+        <span class="has-mr-6">4</span>
+        <span>程式碼規劃</span>
+        </a></li><li>
+        <a class="is-flex" href="#UI規劃">
+        <span class="has-mr-6">5</span>
+        <span>UI規劃</span>
+        </a></li><li>
+        <a class="is-flex" href="#總結">
+        <span class="has-mr-6">6</span>
+        <span>總結</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="口罩地圖開發心得" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
