@@ -7,25 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Hex post 開發心得 - Rita Ho</title>
+<title>正規表達式 - 符號&amp;常用方法 - Rita Ho</title>
 
 
-    <meta name="description" content="Demo - Hex post原始碼 - github 六角舉辦的鼠年全馬挑戰賽在今年的2&#x2F;3號開始了，活動內容是要每周寫一篇技術文章，為期一年，活動開始後六角釋出了官方的文章連結api，可以查看所有參加者的文章連結，這次使用了這個api做一個文章彙總網站，取名叫hex post。">
+    <meta name="description" content="最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考MDN來學習一下，放在這裡讓自己以後都可以查。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hex post 開發心得">
-<meta property="og:url" content="http://yoursite.com/2020/03/10/hex-post/index.html">
+<meta property="og:title" content="正規表達式 - 符號&amp;常用方法">
+<meta property="og:url" content="http://yoursite.com/2020/03/19/regular-expression/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="Demo - Hex post原始碼 - github 六角舉辦的鼠年全馬挑戰賽在今年的2&#x2F;3號開始了，活動內容是要每周寫一篇技術文章，為期一年，活動開始後六角釋出了官方的文章連結api，可以查看所有參加者的文章連結，這次使用了這個api做一個文章彙總網站，取名叫hex post。">
+<meta property="og:description" content="最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考MDN來學習一下，放在這裡讓自己以後都可以查。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-03-10-thumb.png">
-<meta property="article:published_time" content="2020-03-10T04:57:17.000Z">
-<meta property="article:modified_time" content="2020-03-10T06:24:42.721Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-03-19-thumb.png">
+<meta property="article:published_time" content="2020-03-19T06:51:28.000Z">
+<meta property="article:modified_time" content="2020-03-19T07:09:37.432Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="Vue">
-<meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="作品心得">
+<meta property="article:tag" content="正規表達式">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-03-10-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-03-19-thumb.png">
 
 
 
@@ -83,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Hex post 開發心得" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="正規表達式 - 符號&amp;常用方法" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -133,7 +131,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-03-10-thumb.png" alt="Hex post 開發心得">
+            <img class="thumbnail" src="/images/2020-03-19-thumb.png" alt="正規表達式 - 符號&amp;常用方法">
         </span>
     </div>
     
@@ -141,7 +139,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-10T04:57:17.000Z">2020-03-10</time>
+                <time class="level-item has-text-grey" datetime="2020-03-19T06:51:28.000Z">2020-03-19</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -151,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分鐘 閱讀文 (大約 1849 個字)
+                    6 分鐘 閱讀文 (大約 829 個字)
                 </span>
                 
                 
@@ -160,44 +158,130 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Hex post 開發心得
+                正規表達式 - 符號&amp;常用方法
             
         </h1>
         <div class="content">
-            <p><a href="https://recafox.github.io/w3hexschool-list/#/">Demo - Hex post</a><br><a href="https://github.com/recafox/w3hexschool-list">原始碼 - github</a></p>
-<p>六角舉辦的鼠年全馬挑戰賽在今年的2/3號開始了，活動內容是要每周寫一篇技術文章，為期一年，活動開始後六角釋出了官方的文章連結api，可以查看所有參加者的文章連結，這次使用了這個api做一個文章彙總網站，取名叫hex post。</p>
+            <p>最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Regular_Expressions">MDN</a>來學習一下，放在這裡讓自己以後都可以查。</p>
 <a id="more"></a>
 
-<h3 id="構想"><a href="#構想" class="headerlink" title="構想"></a>構想</h3><p>在我打算做這份作品之前，其實已經有些人使用這份API完成過類似作品了，綜觀這些作品，大多是用列表呈現，比較著重在文章和更新順序，於是我就思考我可以做什麼跟這些作品區別開來。我開始想像如果我要做這件事，是想要什麼效果？突然我想到當我在瀏覽別人的技術部落格時，常常會是零留言、零拍手，每個人一定都很希望自己的作品有人看到、有人欣賞，因此我決定要做一份類似報章雜誌類的網站，並且希望這個網站能夠為大家提供更好的曝光。</p>
-<p>既然決定了網站的方向，心裡也有了大概的輪廓，我參考了一些新聞網站、還有Medium的布局，畫了一些示意圖。</p>
-<p>預期的功能有：</p>
-<ul>
-<li>首頁有廣告最新文章的欄位</li>
-<li>首頁有廣告最新更新作者的欄位</li>
-<li>首頁也可以查看之前收藏的文章</li>
-<li>可以收藏文章/作者</li>
-<li>可以搜尋文章/作者</li>
-<li>能查看收藏作者的最新文章</li>
-<li>可以瀏覽歷史紀錄</li>
-</ul>
-<p>功能規劃上以「讀」為本位，一切考量都是在思考讀者可以怎麼樣接觸更多文章，所以規劃上以讓讀者好親近好使用為主。</p>
-<p><img src="/images/2020-03-10-01.png" alt="layout"></p>
-<p><em>其實我也知道只要功能性做出來，這就是一份不錯的專案了，但我還是無法捨棄追求好看的版面</em></p>
-<p>這份示意圖大概是第三份吧，原本我還打算要做的色彩繽紛一點，但是怎麼配色都覺得好俗好醜好浮誇好累喔，最後有點自暴自棄的用小畫家拉，懶得上色所以先用黑灰色示意，沒想到覺得滿好看的，顏色就這樣定下了。</p>
-<p>可以看的出來本來我想要做的更複雜的，可以收藏文章、查看瀏覽紀錄、不管哪個頁面都有可以廣告文章的版面，想要讓文章隨時都能出現在使用者面前。</p>
-<h3 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h3><p>本次使用Vue，因為想做的更複雜，也使用了Vue Route來做多頁面，跟原生的JS相比，Vue真的讓資料結構與變化更好操作。<br><em>（如果是原生JS我真的完全不知道怎麼做….要反省)</em></p>
-<p>我認為這次最難的部分大概是資料間的交互以及同步吧，因為我有使用到local storage來儲存收藏清單，另外，資料的加載是每個頁面打開時才動作，因此每次打開都要重新跟local storage同步一次，而每個頁面的資料結構可能不太一樣（例如：文章頁面和首頁的收藏功能取得的資料可能不太一樣），我承認我在一開始沒有好好規劃這部分，也讓作業在一些不該變得複雜的地方複雜了起來，花很多時間在統一格式以及檢查。</p>
-<p><img src="/images/2020-03-10-03.PNG" alt="文章頁"></p>
-<p><em>說一個有點好笑的事情：其實整個作品裡我最喜歡的是文章頁的那兩個頁籤，那個圓弧、那個顏色填滿的感覺、搭配有點圓圓的文字、怎麼那麼可愛……</em></p>
-<p>另外，也調整很多初步layout上的東西，在文章頁面和作者頁面少了廣告欄位，因為實際使用上覺得會太過拖沓。重新思考很多版面的編排，還有怎麼增加使用上的便利性。像是搜索這個功能，一開始只想說簡單用個string.includes就好，後來覺得應該再加上排除大小寫，有很多這樣子的時刻：好不容易刻出來一個功能，但怎麼看都不滿意，這邊應該要如何如何，那邊應該要這樣這樣……</p>
-<h3 id="可改進的地方"><a href="#可改進的地方" class="headerlink" title="可改進的地方"></a>可改進的地方</h3><p>網站上線之後有貼到六角的社群，得到一些寶貴的意見，大部分是版面的安排和css的小動畫，可以得到別人的回饋真的是很棒的事，而且大家還仔細的看了我的原始碼給出建議，真的很感謝。</p>
-<p><img src="/images/2020-03-10-02.png" alt="改進建議"></p>
-<p>這次也是我第一次使用scss，不過我課程才上到一半，很多觀念都還不會，因此寫得亂七八糟（笑）。</p>
-<p>也有請六角的助教替我code review，沒有被發現什麼可怕的錯誤，只是一些排版上的小建議，我本來超擔心的哈哈哈哈哈哈哈哈。<em>但我其實還沒有修……</em></p>
-<p>還有一點比較遺憾，是沒有做出收藏作者的功能，我本來滿期待做這個的，但是製作這個專案的時間超乎我預期，覺得自己應該再往前進了，就先擱下不做，也許在鐵人賽進行的這一年我會把它完成。</p>
-<p>另外，在ios上瀏覽的體驗有些不如我預期，因為我沒有清除掉ios上的樣式，導致按鈕和選單出現錯位，但我嘗試了查到的一些方法都沒有效果，六角的助教也說沒有發現這問題，謎。</p>
-<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>這樣寫下來，好像沒有寫到什麼很技術的東西（笑），即使經過這次專案，好像也不能說對vue更熟了些（？），有很多很多需要再改進的地方，也有很多想嘗試的功能最後沒用到（像是謎之slot），不過也學到很多小技巧，更有收穫的是在製作過程中的思考，不是只把這個網站當作一個作業，而是一個產品，它有符合我的想像嗎？有符合我的初衷嗎？另外，想像使用者會怎麼使用它，也許會遇到什麼問題，也許會欣賞其中的那些細節，就會讓人想花更多時間打磨，這是一個很有趣的過程，剛好在要準備Vue最終作業之前，給自己打氣一下。</p>
-<p>期望每個人在創作時都有人欣賞，閱讀時都有所收穫！</p>
+<h3 id="寫法"><a href="#寫法" class="headerlink" title="寫法"></a>寫法</h3><p><code>const regExp = / regExp /</code><br>用兩個斜線包住</p>
+<p>或是使用正規表達式的建構函式</p>
+<p><code>const regExp = new RegExp(&quot;regexp&quot;)</code></p>
+<h3 id="簡易模式"><a href="#簡易模式" class="headerlink" title="簡易模式"></a>簡易模式</h3><p>找到的直接匹配所構成的，也就是結果會完全匹配要搜尋的字串</p>
+<p>例：尋找abc<br>“Let’s sing abc song!” 　“grab crab”</p>
+<p>要尋找”abc”時，第一個句子會匹配成功，因為在這個句子中有abc，沒有斷開也沒有順序不同，第二句就不會匹配成功，　因為在這裡雖然也包含abc三個字母, 但a和b被一個空白字元分開了 (ab c)</p>
+<h3 id="符號"><a href="#符號" class="headerlink" title="符號"></a>符號</h3><p>若是我們需要更複雜的搜索條件，例如：我們想要確認使用者輸入的email是否符合格式，或是搜尋一個字串中所有包含b的單字，就必須使用一些特殊符號</p>
+<table>
+<thead>
+<tr>
+<th align="left">符號</th>
+<th align="left">解釋</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\</td>
+<td align="left">反斜線會搭配一些字母用在正規表達式的一些符號中, 但是當你想要搜尋的字剛好屬於正規表達式的特殊符號時, 可以將反斜線放在特殊符號前面, 讓它不會被視作特殊符號</td>
+<td align="left">a* 表示一個字串中包含0至多個a, 但a*僅代表字面意義上的a* (米字號因為反斜線而被以字面意義解釋了)</td>
+</tr>
+<tr>
+<td align="left">a*</td>
+<td align="left">表示一個字串中包含0至多個a，即使沒有a這個字元也會匹配</td>
+<td align="left">(/a*/).test(‘bbbb’) =&gt; true</td>
+</tr>
+<tr>
+<td align="left">a+</td>
+<td align="left">表示一個字串中包含1至多個a</td>
+<td align="left">(/a+/).test(‘bbbb’) =&gt;false</td>
+</tr>
+<tr>
+<td align="left">^a</td>
+<td align="left">匹配開頭符合a的字串</td>
+<td align="left">(/^a/).test(“ant”)　=&gt; true</td>
+</tr>
+<tr>
+<td align="left">a$</td>
+<td align="left">匹配結尾符合a的字串</td>
+<td align="left">(/a$/).test(‘tesla’)  =&gt;true</td>
+</tr>
+<tr>
+<td align="left">a{num}</td>
+<td align="left">尋找連續出現num次的a, num為正整數, 要注意若是a出現次數大於num, 還是會算做true</td>
+<td align="left">(/a{2}/).test(“area”) =&gt; false  (/a{2}/).test(“aah”) =&gt;true (/a{2}/).test(“aaaaah”) =&gt;true</td>
+</tr>
+<tr>
+<td align="left">a{min, max}</td>
+<td align="left">尋找連續出現至少min次, 至多max次的a, 跟上一條一樣的是, 要注意若是a出現次數大於max, 還是會算做true</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">[a-z]</td>
+<td align="left">尋找界在a~z之間的所有字母</td>
+<td align="left">(/[a-z]/).test(‘abc’) =&gt;true  (/[a-z]/).test(‘ABC’)=&gt; false</td>
+</tr>
+<tr>
+<td align="left">\ba</td>
+<td align="left">若斜線與b搭在一起時, 放在a前面時, 表示a前面沒有別的字元, 也就是說以a開頭, 若是放在a的後面, 表示a的後面沒有別的字元, 也就是以a結尾</td>
+<td align="left">(/\ba/).test(‘bag’) =&gt; false   (/\ba/).test(‘apple’) =&gt; true  (/a\b/).test(‘apple’) =&gt; false</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">數字, 等同[0-9]</td>
+<td align="left">(/\d/).test(‘123’) =&gt;true</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">非數字</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">數字字母和底線</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">非數字字母和底線, 例如: %, *這些符號</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="Flags-模式"><a href="#Flags-模式" class="headerlink" title="Flags 模式"></a>Flags 模式</h3><table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th align="left">解釋</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">/reg/g</td>
+<td align="left">g代表global search, 表示搜索指定字串中的全部字元</td>
+</tr>
+<tr>
+<td align="left">/reg/i</td>
+<td align="left">insensitive search 忽略大小寫 (/abc/i).test(‘ABC’) =&gt;true</td>
+</tr>
+</tbody></table>
+<h3 id="常見用法"><a href="#常見用法" class="headerlink" title="常見用法"></a>常見用法</h3><table>
+<thead>
+<tr>
+<th align="left">說明</th>
+<th align="left">表達式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">只能輸入文字或數字</td>
+<td align="left">/^[a-zA-Z0-9]*$/</td>
+</tr>
+<tr>
+<td align="left">只能輸入文字</td>
+<td align="left">/^[a-zA-Z]*$/</td>
+</tr>
+<tr>
+<td align="left">只能有數字</td>
+<td align="left">/^[0-9]*$/</td>
+</tr>
+</tbody></table>
 
         </div>
         
@@ -205,7 +289,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>, <a class="has-link-grey -link" href="/tags/%E4%BD%9C%E5%93%81%E5%BF%83%E5%BE%97/" rel="tag">作品心得</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E9%81%94%E5%BC%8F/" rel="tag">正規表達式</a>
                 </div>
             </div>
         </div>
@@ -222,17 +306,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/19/regular-expression/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">正規表達式 - 符號&amp;常用方法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/07/timer-and-happy-path/">
-                <span class="level-item">JS - 計時器與happy path</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/10/hex-post/">
+                <span class="level-item">Hex post 開發心得</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -342,21 +419,25 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#構想">
+        <a class="is-flex" href="#寫法">
         <span class="has-mr-6">1</span>
-        <span>構想</span>
+        <span>寫法</span>
         </a></li><li>
-        <a class="is-flex" href="#實作">
+        <a class="is-flex" href="#簡易模式">
         <span class="has-mr-6">2</span>
-        <span>實作</span>
+        <span>簡易模式</span>
         </a></li><li>
-        <a class="is-flex" href="#可改進的地方">
+        <a class="is-flex" href="#符號">
         <span class="has-mr-6">3</span>
-        <span>可改進的地方</span>
+        <span>符號</span>
         </a></li><li>
-        <a class="is-flex" href="#感想">
+        <a class="is-flex" href="#Flags-模式">
         <span class="has-mr-6">4</span>
-        <span>感想</span>
+        <span>Flags 模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#常見用法">
+        <span class="has-mr-6">5</span>
+        <span>常見用法</span>
         </a></li></ul>
             </div>
         </div>
@@ -380,7 +461,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Hex post 開發心得" height="28">
+                    <img src="/images/logo.png" alt="正規表達式 - 符號&amp;常用方法" height="28">
                 
                 </a>
                 <p class="is-size-7">
