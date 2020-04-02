@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>陣列常用方法 - Rita Ho</title>
+
+
+    <meta name="description" content="這是我的陣列方法筆記。不一定詳盡，就給自己做個紀錄。（詞窮）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="陣列常用方法">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/js-array/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="這是我的陣列方法筆記。不一定詳盡，就給自己做個紀錄。（詞窮）">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-04-02.png">
+<meta property="article:published_time" content="2020-04-02T13:44:09.000Z">
+<meta property="article:modified_time" content="2020-04-02T13:56:11.806Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-04-02.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="陣列常用方法" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-04-02.png" alt="陣列常用方法">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-02T13:44:09.000Z">2020-04-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 766 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                陣列常用方法
+            
+        </h1>
+        <div class="content">
+            <p>這是我的陣列方法筆記。不一定詳盡，就給自己做個紀錄。<br>（詞窮）</p>
+<a id="more"></a>
+
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> people = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'小明'</span>,</span><br><span class="line">    money: <span class="number">500</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'漂亮阿姨'</span>,</span><br><span class="line">    money: <span class="number">3000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'杰倫'</span>,</span><br><span class="line">    money: <span class="number">60000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'老媽'</span>,</span><br><span class="line">    money: <span class="literal">Infinity</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// forEach 與 map</span></span><br><span class="line"><span class="comment">// 將所有物件增加 icash 有多少金額的欄位</span></span><br><span class="line"><span class="comment">// for(let i=0; i&lt; people.length; i++)&#123;</span></span><br><span class="line"><span class="comment">//   console.log(people[i]);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">//通常不會用到</span></span><br><span class="line">people.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item, index, array);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>跟forEach很像,但會回傳值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要有一個變數來儲存MAP回傳的值</span></span><br><span class="line"><span class="keyword">let</span> peopleCash = people.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//回傳一個物件　</span></span><br><span class="line">  <span class="comment">//物件中包含該陣列的每一個元素, 在每個元素上再新增一屬性為icash</span></span><br><span class="line">  <span class="keyword">return</span>&#123;</span><br><span class="line">    ...item,</span><br><span class="line">    iCash: item.money +<span class="number">500</span></span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(peopleCash);</span><br></pre></td></tr></table></figure>
+
+<p>若是沒有使用return, 還是會回傳一個跟原本長度相同的陣列, 但內容會是undefined<br>用map做篩選：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//若是使用map做篩選</span></span><br><span class="line"><span class="keyword">const</span> peopleCash = people.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//篩出金額大於2000的元素</span></span><br><span class="line">  <span class="keyword">if</span>(item.money &gt;<span class="number">2000</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">  &#125;  </span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(peopleCash);</span><br><span class="line"><span class="comment">//outcome</span></span><br><span class="line"> <span class="number">0</span>: <span class="literal">undefined</span></span><br><span class="line"><span class="number">1</span>: &#123;<span class="attr">name</span>: <span class="string">"漂亮阿姨"</span>, <span class="attr">money</span>: <span class="number">3000</span>&#125;</span><br><span class="line"><span class="number">2</span>: &#123;<span class="attr">name</span>: <span class="string">"杰倫"</span>, <span class="attr">money</span>: <span class="number">60000</span>&#125;</span><br><span class="line"><span class="number">3</span>: &#123;<span class="attr">name</span>: <span class="string">"老媽"</span>, <span class="attr">money</span>: <span class="literal">Infinity</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>沒有通過篩選條件的還是會回傳,　值會是undefined, 所以不適合</p>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>會將通過條件的才回傳<br>filter和map都要傳入一個函式, 參數為item(各元素), index(索引值), array(要傳入的陣列)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> filteredPeople = people.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//會回傳值為true的元素, 是一個陣列</span></span><br><span class="line">  <span class="comment">// return true;</span></span><br><span class="line">  <span class="keyword">if</span>(item.money &gt;<span class="number">2000</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(filteredPeople);</span><br></pre></td></tr></table></figure>
+
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>找到的資料只會回傳第一個符合條件的, 會按照原本的格式回傳</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// find</span></span><br><span class="line"><span class="comment">// 1. 找到金額 = 500 的物件</span></span><br><span class="line"><span class="comment">// 2. 找到 &gt; 5000 的物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> findPeople = people.find(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//找到的資料只會回傳第一個符合條件的, 會按照原本的格式回傳</span></span><br><span class="line">  <span class="keyword">if</span>(item.money &gt;<span class="number">2000</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(findPeople); <span class="comment">//&#123;name: "漂亮阿姨", money: 3000&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="every"><a href="#every" class="headerlink" title="every"></a>every</h3><p>設定一個檢查條件<br>若是全部元素都通過, 就回傳true, 反之就false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ans = people.every(<span class="function"><span class="keyword">function</span>(<span class="params">item, i</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//設定一個檢查條件</span></span><br><span class="line">  <span class="comment">//若是全部元素都通過, 就回傳true, 反之就false</span></span><br><span class="line">  <span class="keyword">return</span> item.money &gt; <span class="number">50</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(ans); <span class="comment">//每個元素都有超過50, true (布林)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="some"><a href="#some" class="headerlink" title="some"></a>some</h3><p>設定一個檢查條件<br>若是有其中一個元素都通過, 就回傳true, 反之就false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// some</span></span><br><span class="line"><span class="comment">// 1. 是否有物件超過 10000 元</span></span><br><span class="line"><span class="comment">// 2. 是否有物件持有金額少於 300元</span></span><br><span class="line"><span class="keyword">const</span> some = people.some(<span class="function"><span class="keyword">function</span>(<span class="params">item, i</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//設定一個檢查條件</span></span><br><span class="line">  <span class="comment">//若是有其中一個元素都通過, 就回傳true, 反之就false</span></span><br><span class="line">  <span class="keyword">return</span> item.money &gt; <span class="number">50000</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(some); <span class="comment">//有其中幾個超過50000, true (布林)</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p>設定一個檢查條件<br>若是有其中一個元素都通過, 就回傳true, 反之就false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// reduce</span></span><br><span class="line"><span class="comment">// 去除掉老媽，請問剩下的人有多少錢？</span></span><br><span class="line"><span class="comment">// 會回傳,適合用於數字運算            //前一個(沒有前一個就逗號後補零)</span></span><br><span class="line"><span class="comment">// const newNum = people.reduce(function(prev, item, index )&#123;</span></span><br><span class="line"><span class="comment">//     console.log(prev); //0</span></span><br><span class="line"><span class="comment">//     return prev +500;  //500 1000 1500</span></span><br><span class="line"><span class="comment">// &#125;, 0)</span></span><br><span class="line"> <span class="comment">//0會被帶入prev</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// const newNum = people.reduce(function(prev, item, index )&#123;</span></span><br><span class="line"><span class="comment">//     console.log(prev); //0</span></span><br><span class="line"><span class="comment">//     return prev +500;  //600 1100 1600</span></span><br><span class="line"><span class="comment">// &#125;, 100)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//加總</span></span><br><span class="line"><span class="keyword">const</span> newNum = people.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, item, index</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prev); <span class="comment">//0</span></span><br><span class="line">    <span class="keyword">return</span> prev + item.money;  <span class="comment">//0 500 3500 63500 (最後一個數字為加總)</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'newNum'</span> + newNum); <span class="comment">//63500</span></span><br></pre></td></tr></table></figure>
+
+
+<p>沒了</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/26/js-parentheses/">
+                <span class="level-item">JavaScript中的括號問題</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#forEach">
+        <span class="has-mr-6">1</span>
+        <span>forEach</span>
+        </a></li><li>
+        <a class="is-flex" href="#map">
+        <span class="has-mr-6">2</span>
+        <span>map</span>
+        </a></li><li>
+        <a class="is-flex" href="#filter">
+        <span class="has-mr-6">3</span>
+        <span>filter</span>
+        </a></li><li>
+        <a class="is-flex" href="#find">
+        <span class="has-mr-6">4</span>
+        <span>find</span>
+        </a></li><li>
+        <a class="is-flex" href="#every">
+        <span class="has-mr-6">5</span>
+        <span>every</span>
+        </a></li><li>
+        <a class="is-flex" href="#some">
+        <span class="has-mr-6">6</span>
+        <span>some</span>
+        </a></li><li>
+        <a class="is-flex" href="#reduce">
+        <span class="has-mr-6">7</span>
+        <span>reduce</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="陣列常用方法" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
