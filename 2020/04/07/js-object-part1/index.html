@@ -7,25 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Hex post 開發心得 - Rita Ho</title>
+<title>javascript核心篇 - 物件 partI - Rita Ho</title>
 
 
-    <meta name="description" content="Demo - Hex post原始碼 - github 六角舉辦的鼠年全馬挑戰賽在今年的2&#x2F;3號開始了，活動內容是要每周寫一篇技術文章，為期一年，活動開始後六角釋出了官方的文章連結api，可以查看所有參加者的文章連結，這次使用了這個api做一個文章彙總網站，取名叫hex post。">
+    <meta name="description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hex post 開發心得">
-<meta property="og:url" content="http://yoursite.com/2020/03/10/hex-post/index.html">
+<meta property="og:title" content="javascript核心篇 - 物件 partI">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/js-object-part1/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="Demo - Hex post原始碼 - github 六角舉辦的鼠年全馬挑戰賽在今年的2&#x2F;3號開始了，活動內容是要每周寫一篇技術文章，為期一年，活動開始後六角釋出了官方的文章連結api，可以查看所有參加者的文章連結，這次使用了這個api做一個文章彙總網站，取名叫hex post。">
+<meta property="og:description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-03-10-thumb.png">
-<meta property="article:published_time" content="2020-03-10T04:57:17.000Z">
-<meta property="article:modified_time" content="2020-03-10T06:24:42.721Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-04-07-thumb.png">
+<meta property="article:published_time" content="2020-04-07T05:24:48.000Z">
+<meta property="article:modified_time" content="2020-04-07T05:30:13.342Z">
 <meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="Vue">
-<meta property="article:tag" content="作品心得">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-03-10-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-04-07-thumb.png">
 
 
 
@@ -83,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Hex post 開發心得" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="javascript核心篇 - 物件 partI" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -133,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-03-10-thumb.png" alt="Hex post 開發心得">
+            <img class="thumbnail" src="/images/2020-04-07-thumb.png" alt="javascript核心篇 - 物件 partI">
         </span>
     </div>
     
@@ -141,7 +140,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-10T04:57:17.000Z">2020-03-10</time>
+                <time class="level-item has-text-grey" datetime="2020-04-07T05:24:48.000Z">2020-04-07</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -151,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分鐘 閱讀文 (大約 1849 個字)
+                    2 分鐘 閱讀文 (大約 348 個字)
                 </span>
                 
                 
@@ -160,52 +159,43 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Hex post 開發心得
+                javascript核心篇 - 物件 partI
             
         </h1>
         <div class="content">
-            <p><a href="https://recafox.github.io/w3hexschool-list/#/">Demo - Hex post</a><br><a href="https://github.com/recafox/w3hexschool-list">原始碼 - github</a></p>
-<p>六角舉辦的鼠年全馬挑戰賽在今年的2/3號開始了，活動內容是要每周寫一篇技術文章，為期一年，活動開始後六角釋出了官方的文章連結api，可以查看所有參加者的文章連結，這次使用了這個api做一個文章彙總網站，取名叫hex post。</p>
+            <p>最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。</p>
 <a id="more"></a>
 
-<h3 id="構想"><a href="#構想" class="headerlink" title="構想"></a>構想</h3><p>在我打算做這份作品之前，其實已經有些人使用這份API完成過類似作品了，綜觀這些作品，大多是用列表呈現，比較著重在文章和更新順序，於是我就思考我可以做什麼跟這些作品區別開來。我開始想像如果我要做這件事，是想要什麼效果？突然我想到當我在瀏覽別人的技術部落格時，常常會是零留言、零拍手，每個人一定都很希望自己的作品有人看到、有人欣賞，因此我決定要做一份類似報章雜誌類的網站，並且希望這個網站能夠為大家提供更好的曝光。</p>
-<p>既然決定了網站的方向，心裡也有了大概的輪廓，我參考了一些新聞網站、還有Medium的布局，畫了一些示意圖。</p>
-<p>預期的功能有：</p>
-<ul>
-<li>首頁有廣告最新文章的欄位</li>
-<li>首頁有廣告最新更新作者的欄位</li>
-<li>首頁也可以查看之前收藏的文章</li>
-<li>可以收藏文章/作者</li>
-<li>可以搜尋文章/作者</li>
-<li>能查看收藏作者的最新文章</li>
-<li>可以瀏覽歷史紀錄</li>
-</ul>
-<p>功能規劃上以「讀」為本位，一切考量都是在思考讀者可以怎麼樣接觸更多文章，所以規劃上以讓讀者好親近好使用為主。</p>
-<p><img src="/images/2020-03-10-01.png" alt="layout"></p>
-<p><em>其實我也知道只要功能性做出來，這就是一份不錯的專案了，但我還是無法捨棄追求好看的版面</em></p>
-<p>這份示意圖大概是第三份吧，原本我還打算要做的色彩繽紛一點，但是怎麼配色都覺得好俗好醜好浮誇好累喔，最後有點自暴自棄的用小畫家拉，懶得上色所以先用黑灰色示意，沒想到覺得滿好看的，顏色就這樣定下了。</p>
-<p>可以看的出來本來我想要做的更複雜的，可以收藏文章、查看瀏覽紀錄、不管哪個頁面都有可以廣告文章的版面，想要讓文章隨時都能出現在使用者面前。</p>
-<h3 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h3><p>本次使用Vue，因為想做的更複雜，也使用了Vue Route來做多頁面，跟原生的JS相比，Vue真的讓資料結構與變化更好操作。<br><em>（如果是原生JS我真的完全不知道怎麼做….要反省)</em></p>
-<p>我認為這次最難的部分大概是資料間的交互以及同步吧，因為我有使用到local storage來儲存收藏清單，另外，資料的加載是每個頁面打開時才動作，因此每次打開都要重新跟local storage同步一次，而每個頁面的資料結構可能不太一樣（例如：文章頁面和首頁的收藏功能取得的資料可能不太一樣），我承認我在一開始沒有好好規劃這部分，也讓作業在一些不該變得複雜的地方複雜了起來，花很多時間在統一格式以及檢查。</p>
-<p><img src="/images/2020-03-10-03.PNG" alt="文章頁"></p>
-<p><em>說一個有點好笑的事情：其實整個作品裡我最喜歡的是文章頁的那兩個頁籤，那個圓弧、那個顏色填滿的感覺、搭配有點圓圓的文字、怎麼那麼可愛……</em></p>
-<p>另外，也調整很多初步layout上的東西，在文章頁面和作者頁面少了廣告欄位，因為實際使用上覺得會太過拖沓。重新思考很多版面的編排，還有怎麼增加使用上的便利性。像是搜索這個功能，一開始只想說簡單用個string.includes就好，後來覺得應該再加上排除大小寫，有很多這樣子的時刻：好不容易刻出來一個功能，但怎麼看都不滿意，這邊應該要如何如何，那邊應該要這樣這樣……</p>
-<h3 id="可改進的地方"><a href="#可改進的地方" class="headerlink" title="可改進的地方"></a>可改進的地方</h3><p>網站上線之後有貼到六角的社群，得到一些寶貴的意見，大部分是版面的安排和css的小動畫，可以得到別人的回饋真的是很棒的事，而且大家還仔細的看了我的原始碼給出建議，真的很感謝。</p>
-<p><img src="/images/2020-03-10-02.png" alt="改進建議"></p>
-<p>這次也是我第一次使用scss，不過我課程才上到一半，很多觀念都還不會，因此寫得亂七八糟（笑）。</p>
-<p>也有請六角的助教替我code review，沒有被發現什麼可怕的錯誤，只是一些排版上的小建議，我本來超擔心的哈哈哈哈哈哈哈哈。<em>但我其實還沒有修……</em></p>
-<p>還有一點比較遺憾，是沒有做出收藏作者的功能，我本來滿期待做這個的，但是製作這個專案的時間超乎我預期，覺得自己應該再往前進了，就先擱下不做，也許在鐵人賽進行的這一年我會把它完成。</p>
-<p>另外，在ios上瀏覽的體驗有些不如我預期，因為我沒有清除掉ios上的樣式，導致按鈕和選單出現錯位，但我嘗試了查到的一些方法都沒有效果，六角的助教也說沒有發現這問題，謎。</p>
-<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>這樣寫下來，好像沒有寫到什麼很技術的東西（笑），即使經過這次專案，好像也不能說對vue更熟了些（？），有很多很多需要再改進的地方，也有很多想嘗試的功能最後沒用到（像是謎之slot），不過也學到很多小技巧，更有收穫的是在製作過程中的思考，不是只把這個網站當作一個作業，而是一個產品，它有符合我的想像嗎？有符合我的初衷嗎？另外，想像使用者會怎麼使用它，也許會遇到什麼問題，也許會欣賞其中的那些細節，就會讓人想花更多時間打磨，這是一個很有趣的過程，剛好在要準備Vue最終作業之前，給自己打氣一下。</p>
-<p>期望每個人在創作時都有人欣賞，閱讀時都有所收穫！</p>
 
+<h3 id="物件的宣告"><a href="#物件的宣告" class="headerlink" title="物件的宣告"></a>物件的宣告</h3><p>(推薦)物件實字 Object Literals</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//value可以是純值, 原始型別, 函式或另一個物件</span></span><br><span class="line"><span class="comment">//屬性名稱一定要是字串, 應避免 0:1 </span></span><br><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">    property: value,</span><br><span class="line">    name:<span class="string">'貓貓家'</span>,</span><br><span class="line">    deposit: <span class="number">500</span>,</span><br><span class="line">    members:&#123;</span><br><span class="line">        big_cat:<span class="string">'大貓貓'</span>,</span><br><span class="line">        small_cat:<span class="string">'小貓貓'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    food:[<span class="string">'fish'</span>, <span class="string">'dryFood'</span>],</span><br><span class="line">    callFamily: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        <span class="comment">//這個family物件</span></span><br><span class="line">        &#125;,</span><br><span class="line">    callAgain: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">//window物件</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>物件建構式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newFamily = <span class="keyword">new</span> <span class="built_in">Object</span>(family)</span><br><span class="line">newFamily == family <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="物件的取值、新增和刪除"><a href="#物件的取值、新增和刪除" class="headerlink" title="物件的取值、新增和刪除"></a>物件的取值、新增和刪除</h3><ol>
+<li>取值</li>
+</ol>
+<p>family.members<br>family[‘members’]<br>使用中括號不只可使用字串方式取值，可以用數字，也可以使用變數方式作取值，甚至在中括號中做運算後再取值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">family[<span class="string">'food'</span>][<span class="number">0</span>] <span class="comment">//'fish'</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">family.food[a] <span class="comment">//'fish'</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>新增</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新增一個屬性叫pet, 值為hamster</span></span><br><span class="line"> family.pet=<span class="string">'hamster'</span></span><br><span class="line"><span class="comment">//新增一個屬性叫mouse, 值為jerry</span></span><br><span class="line"> family[<span class="string">"mouse"</span>] = <span class="string">'jerry'</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>刪除 delete</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> family.food</span><br><span class="line"><span class="keyword">delete</span> family[<span class="string">'food'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//結果</span></span><br><span class="line">name: <span class="string">"貓貓家"</span></span><br><span class="line">deposit: <span class="number">500</span></span><br><span class="line">members: &#123;<span class="attr">big_cat</span>: <span class="string">"大貓貓"</span>, <span class="attr">small_cat</span>: <span class="string">"小貓貓"</span>&#125;</span><br><span class="line">callFamily: ƒ ()</span><br><span class="line">callAgain:  ƒ ()</span><br></pre></td></tr></table></figure>
+
+<h3 id="變數與物件屬性的差異"><a href="#變數與物件屬性的差異" class="headerlink" title="變數與物件屬性的差異"></a>變數與物件屬性的差異</h3><p>變數無法被刪除，物件的屬性才可以</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此時a,b都存在在window物件下</span></span><br><span class="line"><span class="comment">//a為變數</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//b是window物件內的property</span></span><br><span class="line">b=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> a; <span class="comment">//false</span></span><br><span class="line"><span class="keyword">delete</span> b; <span class="comment">//true 可被刪除</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//1 無法被刪除</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">//not defined (被刪除了)</span></span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>, <a class="has-link-grey -link" href="/tags/%E4%BD%9C%E5%93%81%E5%BF%83%E5%BE%97/" rel="tag">作品心得</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
                 </div>
             </div>
         </div>
@@ -222,17 +212,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/19/regular-expression/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">正規表達式 - 符號&amp;常用方法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/07/timer-and-happy-path/">
-                <span class="level-item">JS - 計時器與happy path</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/02/js-array/">
+                <span class="level-item">陣列常用方法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -342,21 +325,17 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#構想">
+        <a class="is-flex" href="#物件的宣告">
         <span class="has-mr-6">1</span>
-        <span>構想</span>
+        <span>物件的宣告</span>
         </a></li><li>
-        <a class="is-flex" href="#實作">
+        <a class="is-flex" href="#物件的取值、新增和刪除">
         <span class="has-mr-6">2</span>
-        <span>實作</span>
+        <span>物件的取值、新增和刪除</span>
         </a></li><li>
-        <a class="is-flex" href="#可改進的地方">
+        <a class="is-flex" href="#變數與物件屬性的差異">
         <span class="has-mr-6">3</span>
-        <span>可改進的地方</span>
-        </a></li><li>
-        <a class="is-flex" href="#感想">
-        <span class="has-mr-6">4</span>
-        <span>感想</span>
+        <span>變數與物件屬性的差異</span>
         </a></li></ul>
             </div>
         </div>
@@ -380,7 +359,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Hex post 開發心得" height="28">
+                    <img src="/images/logo.png" alt="javascript核心篇 - 物件 partI" height="28">
                 
                 </a>
                 <p class="is-size-7">
