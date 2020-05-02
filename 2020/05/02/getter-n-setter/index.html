@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>getter-n-setter - Rita Ho</title>
+
+
+    <meta name="description" content="getter 和 setter算是我比較不熟悉的物件屬性，在這邊跟大家分享一下上課筆記。希望我以後也能熟練地運用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="getter-n-setter">
+<meta property="og:url" content="http://yoursite.com/2020/05/02/getter-n-setter/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="getter 和 setter算是我比較不熟悉的物件屬性，在這邊跟大家分享一下上課筆記。希望我以後也能熟練地運用。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-05-02.png">
+<meta property="article:published_time" content="2020-05-02T14:33:10.000Z">
+<meta property="article:modified_time" content="2020-05-02T14:39:45.595Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-05-02.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="getter-n-setter" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-05-02.png" alt="getter-n-setter">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-02T14:33:10.000Z">2020-05-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 728 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                getter-n-setter
+            
+        </h1>
+        <div class="content">
+            <p>getter 和 setter算是我比較不熟悉的物件屬性，在這邊跟大家分享一下上課筆記。希望我以後也能熟練地運用。</p>
+<a id="more"></a>
+<h3 id="定義和使用"><a href="#定義和使用" class="headerlink" title="定義和使用"></a>定義和使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//改寫total</span></span><br><span class="line">wallet.total = <span class="number">60</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(wallet.total) <span class="comment">//60</span></span><br></pre></td></tr></table></figure>
+<p>Getter是取得特定值的方法，Setter能讓我們在存值之前先做一些手續。</p>
+<h4 id="如何使用setter"><a href="#如何使用setter" class="headerlink" title="如何使用setter"></a>如何使用setter</h4><p>setter會設定值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">100</span>,</span><br><span class="line">    <span class="keyword">set</span> save(price)&#123;</span><br><span class="line">        <span class="keyword">this</span>.total = <span class="keyword">this</span>.total + price/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等號右邊為要傳入setter save的參數，他並不會覆蓋掉save</span></span><br><span class="line">wallet.save = <span class="number">500</span>;</span><br><span class="line"><span class="built_in">console</span>.log(wallet.total); <span class="comment">//350</span></span><br></pre></td></tr></table></figure>
+<p>注意，要使用等號將參數傳入setter save函式</p>
+<h4 id="如何使用getter"><a href="#如何使用getter" class="headerlink" title="如何使用getter"></a>如何使用getter</h4><p>getter會取得值，因此要return</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">100</span>,   </span><br><span class="line">    <span class="keyword">get</span> save()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.total / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(wallet.save); <span class="comment">//50</span></span><br></pre></td></tr></table></figure>
+<p>注意調用的方法為物件屬性的調用方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">100</span>,   </span><br><span class="line">    <span class="keyword">get</span> save()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.total / <span class="number">2</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span> save(price)&#123;</span><br><span class="line">        <span class="keyword">this</span>.total = <span class="keyword">this</span>.total + price/<span class="number">2</span> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(wallet); <span class="comment">//50</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/7UHTgW7.png" alt=""></p>
+<h4 id="注意點"><a href="#注意點" class="headerlink" title="注意點"></a>注意點</h4><p>在使用chrome查看時，可以看到save屬性為一個括號，點開後才會有值，事實上在點開時，setter才會執行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">100</span>,   </span><br><span class="line">    <span class="keyword">get</span> save()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.total / <span class="number">2</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span> save(price)&#123;</span><br><span class="line">        <span class="keyword">this</span>.total = <span class="keyword">this</span>.total + price/<span class="number">2</span> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//印出getter和wallet</span></span><br><span class="line"><span class="built_in">console</span>.log(wallet.save, wallet); </span><br><span class="line"><span class="comment">//結果: 50, wallet物件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//setter</span></span><br><span class="line">wallet.save = <span class="number">200</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/KD69XsV.png" alt=""><br>按照程式碼由上往下運作的邏輯，<code>wallet.save = 200(setter)</code>發生在console.log之後，也就是說，setter應該會在印出結果之後才調整total，因此wallet.save才會印出第一個結果50，然而當我們打開wallet物件中的save屬性，卻發現它變成了100。</p>
+<p>為什麼是100？因為我們使用<code>wallet.save = 200</code>時，把200傳入Setter，按照Setter內的計算方式，total的值會是200/2+100 = 200，而getter的計算方法是將total(此時等於200)除以2，因此是100。</p>
+<p>這可以證明，當我們打開chrome內getter的括號後，getter才會開始運算，而這已經發生在<code>wallet.save = 200</code>這一行之後了。</p>
+<h3 id="另一種定義方式"><a href="#另一種定義方式" class="headerlink" title="另一種定義方式"></a>另一種定義方式</h3><p>使用defineProperty</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">500</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(wallet,<span class="string">'save'</span>,&#123;</span><br><span class="line">    <span class="keyword">set</span>:function(price)&#123;</span><br><span class="line">       <span class="keyword">this</span>.total = <span class="keyword">this</span>.total + price/<span class="number">2</span> </span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span>:function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.total/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(wallet);</span><br><span class="line"><span class="built_in">console</span>.log(wallet.save);</span><br></pre></td></tr></table></figure>
+
+<p>成功加上getter和setter<br><img src="https://i.imgur.com/GctmTXn.png" alt=""></p>
+<p>但是按照這方式新增的getter，特徵竟為不可列舉？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(wallet,<span class="string">'save'</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/NwyGoQR.png" alt=""><br>屬性特徵變成不可刪除(configurable)也不可列舉(enumerable)<br>因此在使用defineProperty時，記得設定這兩個特徵，以免出現不想要的結果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> wallet = &#123;</span><br><span class="line">    total:<span class="number">500</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(wallet,<span class="string">'save'</span>,&#123;</span><br><span class="line">    configurable:<span class="literal">true</span>,</span><br><span class="line">    enumerable:<span class="literal">true</span>,</span><br><span class="line">    <span class="keyword">set</span>:function(price)&#123;</span><br><span class="line">       <span class="keyword">this</span>.total = <span class="keyword">this</span>.total + price/<span class="number">2</span> </span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span>:function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.total/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(wallet);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(wallet,<span class="string">'save'</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/zyjZIPP.png" alt=""></p>
+<h3 id="實作上的範例"><a href="#實作上的範例" class="headerlink" title="實作上的範例"></a>實作上的範例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//取得陣列最末元素</span></span><br><span class="line"><span class="comment">//加在原型上，所有的陣列實體都能使用</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype,<span class="string">'last'</span>,&#123;</span><br><span class="line">    <span class="keyword">get</span>:function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>[<span class="keyword">this</span>.length<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(a.last) <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">15</span>];</span><br><span class="line"><span class="built_in">console</span>.log(b.last) <span class="comment">//15</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/22/js-function-methods/">
+                <span class="level-item">運用JS中的函式方法做一些小挑戰！</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#定義和使用">
+        <span class="has-mr-6">1</span>
+        <span>定義和使用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#如何使用setter">
+        <span class="has-mr-6">1.1</span>
+        <span>如何使用setter</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何使用getter">
+        <span class="has-mr-6">1.2</span>
+        <span>如何使用getter</span>
+        </a></li><li>
+        <a class="is-flex" href="#注意點">
+        <span class="has-mr-6">1.3</span>
+        <span>注意點</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#另一種定義方式">
+        <span class="has-mr-6">2</span>
+        <span>另一種定義方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#實作上的範例">
+        <span class="has-mr-6">3</span>
+        <span>實作上的範例</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="getter-n-setter" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
