@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>JS - 函式part 1 - Rita Ho</title>
+
+
+    <meta name="description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS - 函式part 1">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/function-pt1/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-05-10.png">
+<meta property="article:published_time" content="2020-05-10T05:18:37.000Z">
+<meta property="article:modified_time" content="2020-05-10T05:23:45.055Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-05-10.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="JS - 函式part 1" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-05-10.png" alt="JS - 函式part 1">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-10T05:18:37.000Z">2020-05-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 769 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                JS - 函式part 1
+            
+        </h1>
+        <div class="content">
+            <p>最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。</p>
+<a id="more"></a>
+<h3 id="什麼是函式？"><a href="#什麼是函式？" class="headerlink" title="什麼是函式？"></a>什麼是函式？</h3><p>函式本身是物件下的子類別，跟物件有區別。<br>函式可以被呼叫，裡面包含程式碼的片段而不是屬性和值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//函式結構</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afunction</span>(<span class="params">param</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> localVariable = <span class="string">'區域變數'</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, localVariable)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'收到了'</span> + param; <span class="comment">//將接收的參數回傳出去</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//表達式 data會接收到來自afunction的return</span></span><br><span class="line"><span class="keyword">var</span> data = afunction(<span class="string">'外部參數'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(data);</span><br><span class="line"><span class="comment">//函式的結果: this為window(全域) localVariable為'區域變數'(不變)  回傳:收到了外部參數</span></span><br></pre></td></tr></table></figure>
+<p>當使用function這個詞來宣告函式時，該程式碼就會成為函式，這個函式可以被呼叫，裡面包含程式碼片段，也會有名稱（但不一定，若沒有名稱的話就是匿名函式）</p>
+<h3 id="函式陳述式-amp-表達式"><a href="#函式陳述式-amp-表達式" class="headerlink" title="函式陳述式 &amp; 表達式"></a>函式陳述式 &amp; 表達式</h3><p><strong>陳述式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有名稱</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionA</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//some code...</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'陳述式'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(functionA)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//呼叫</span></span><br><span class="line">functionA();</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/FmkX6i0.png" alt=""><br>函式有名稱(f functionA)</p>
+<p><strong>表達式</strong><br>在這裡，關鍵詞function後面沒有接名稱，被稱為匿名函式<br>注意：不是所有表達式宣告的函式都是匿名函式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有名稱</span></span><br><span class="line"><span class="keyword">var</span> functionB = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//some code...</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'表達式'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(functionB)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//呼叫</span></span><br><span class="line">functionB();</span><br><span class="line"><span class="comment">//anotherFunction是一個變數，它接收的是後面所接函式的參考路徑</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/oyiu1eg.png" alt=""><br>函式沒有名稱(f(){})</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> functionC = <span class="function"><span class="keyword">function</span> <span class="title">functionD</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//some code...</span></span><br><span class="line">    <span class="built_in">console</span>.log(functionC, functionD)</span><br><span class="line">    <span class="comment">//具名函式能夠在函式內被調用</span></span><br><span class="line">&#125;</span><br><span class="line">functionC()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'cde'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/3LWyZqU.png" alt=""><br>執行結果：兩者呈現的函式名稱都是functionD</p>
+<h3 id="立即函式-IIFE"><a href="#立即函式-IIFE" class="headerlink" title="立即函式 IIFE"></a>立即函式 IIFE</h3><p>IIFE: Immediately Invoked Function Expression<br>立即呼叫的函式表達式<br>也被稱為會自我呼叫的匿名函式</p>
+<p>以小括號包住一個函式的陳述式，宣告完就會立即執行，無法在函式外被再次執行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具名</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'do something'</span>)</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line">IIFE(); <span class="comment">//IIFE is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//匿名</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'do something'</span>)</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line"><span class="comment">//後方的小括號也可以被移到外面</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'do something'</span>)</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>立即函式的用法</p>
+<p>因為</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ming = <span class="string">'小明'</span></span><br><span class="line">    <span class="built_in">console</span>.log(ming)</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ming) <span class="comment">//ming is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>使用外部變數儲存</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> position = (<span class="function"><span class="keyword">function</span>(<span class="params">where</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(where)</span><br><span class="line">    <span class="keyword">return</span> where; <span class="comment">//回傳</span></span><br><span class="line">&#125;)(<span class="string">'小明在這'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(position) <span class="comment">//小明在這</span></span><br><span class="line"><span class="comment">//小明在這</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">    b.person = <span class="string">'小花'</span></span><br><span class="line">&#125;)(a);</span><br><span class="line"><span class="comment">//立即函式的寫法不同於一般函式，若是沒有在結尾加上分號，就會無法被編譯</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(c.person)</span><br><span class="line">&#125;)(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//a &#123;person:'小花'&#125;</span></span><br><span class="line"><span class="comment">//a b c皆為同一物件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//將全域(window物件)傳入函式, 新增一個全域屬性為person</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">global</span>)</span>&#123;</span><br><span class="line">    global.person = <span class="string">'小花'</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(person)</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person) <span class="comment">//小花</span></span><br></pre></td></tr></table></figure>
+<p>*為什麼使用IIFE可以避免汙染全域變數?<br>IIFE在執行完後就會消失，在其內部所定義的變數也都會消失，就不會汙染到外部的變數</p>
+<p><a href="https://ithelp.ithome.com.tw/articles/10193313">參考</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/02/getter-n-setter/">
+                <span class="level-item">getter &amp; setter</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            16
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#什麼是函式？">
+        <span class="has-mr-6">1</span>
+        <span>什麼是函式？</span>
+        </a></li><li>
+        <a class="is-flex" href="#函式陳述式-amp-表達式">
+        <span class="has-mr-6">2</span>
+        <span>函式陳述式 & 表達式</span>
+        </a></li><li>
+        <a class="is-flex" href="#立即函式-IIFE">
+        <span class="has-mr-6">3</span>
+        <span>立即函式 IIFE</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="JS - 函式part 1" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
