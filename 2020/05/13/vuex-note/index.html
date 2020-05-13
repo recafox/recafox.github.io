@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Vuex官方文檔閱讀筆記 - Rita Ho</title>
+
+
+    <meta name="description" content="最近要使用Vuex，但是用得很不順手，因此一邊閱讀官方文檔一邊做個紀錄。（這個綠好好看喔）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex官方文檔閱讀筆記">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/vuex-note/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="最近要使用Vuex，但是用得很不順手，因此一邊閱讀官方文檔一邊做個紀錄。（這個綠好好看喔）">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-05-13-thumb.png">
+<meta property="article:published_time" content="2020-05-13T07:35:00.000Z">
+<meta property="article:modified_time" content="2020-05-13T07:47:24.517Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Vuex">
+<meta property="article:tag" content="閱讀筆記">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-05-13-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Vuex官方文檔閱讀筆記" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-05-13-thumb.png" alt="Vuex官方文檔閱讀筆記">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-13T07:35:00.000Z">2020-05-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分鐘 閱讀文 (大約 1256 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vuex官方文檔閱讀筆記
+            
+        </h1>
+        <div class="content">
+            <p>最近要使用Vuex，但是用得很不順手，因此一邊閱讀官方文檔一邊做個紀錄。<br>（這個綠好好看喔）</p>
+<a id="more"></a>
+
+<h3 id="什麼是Vuex？"><a href="#什麼是Vuex？" class="headerlink" title="什麼是Vuex？"></a>什麼是Vuex？</h3><p>Vuex的核心概念就是一個倉庫，存儲專案中的資料狀態。<br>Vuex中的儲存是響應式的，也就是說當其他元件讀取store中的狀態時，若是store中產生變化，相應的元件也會更新。</p>
+<p>store中的狀態是不可以直接被改變的，只能透過提交（commit）Mutation的方式。</p>
+<h3 id="簡易的倉庫-store-使用方式"><a href="#簡易的倉庫-store-使用方式" class="headerlink" title="簡易的倉庫(store)使用方式"></a>簡易的倉庫(store)使用方式</h3><h3 id="vuex起手式"><a href="#vuex起手式" class="headerlink" title="vuex起手式"></a>vuex起手式</h3><p><code>npm install --save vuex</code></p>
+<p>全域註冊元件 main.js<br><code>import Vuex from &#39;vuex&#39;</code><br><code>Vue.use(Vuex)</code></p>
+<p>在src中新增一個資料夾叫store，新增一個檔案叫index.js，這裡會彙整所有Vuex所有行為</p>
+<p>index中也需要import vue &amp; vuex</p>
+<p>index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>index.js載入main.js中<br>main.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//some code</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">'#app'</span>,</span><br><span class="line">    router,</span><br><span class="line">    <span class="comment">/*****/</span></span><br><span class="line">    store,</span><br><span class="line">    <span class="comment">/*****/</span></span><br><span class="line">    components:&#123;App&#125;,</span><br><span class="line">    template:<span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="創建一支檔案管理store"><a href="#創建一支檔案管理store" class="headerlink" title="創建一支檔案管理store"></a>創建一支檔案管理store</h4><p>也可以放在一個額外的資料夾中<br>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="如何在元件中取用store"><a href="#如何在元件中取用store" class="headerlink" title="如何在元件中取用store"></a>如何在元件中取用store</h4><p>在根實例中新增，所有元件皆可取用store</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">'#app'</span>,</span><br><span class="line">    <span class="comment">//注入vuex的store</span></span><br><span class="line">    store</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在元件中取用 - 使用this.$store前綴</p>
+<p>在某元件中提交mutation，改變store中的資料狀態</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">    increment()&#123;</span><br><span class="line">    <span class="comment">//提交mutation</span></span><br><span class="line">        <span class="keyword">this</span>.$store.commit(<span class="string">'increment'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.$store.state.count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="store內的交互關係"><a href="#store內的交互關係" class="headerlink" title="store內的交互關係"></a>store內的交互關係</h3><p><img src="https://i.imgur.com/25kFT9M.png" alt=""><br><img src="https://i.imgur.com/3VcQOx1.png" alt=""></p>
+<p>*資料來源: 六角學院 Vue出一個電商網站</p>
+<h3 id="核心觀念-State"><a href="#核心觀念-State" class="headerlink" title="核心觀念 - State"></a>核心觀念 - State</h3><p>使用Vuex是為了更好的追蹤資料的狀態變化，但是將所有資料一股腦丟進state中並不是最好選擇。若是元件內有專屬且必要的資料，就把它保留在元件中就好。</p>
+<h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><p>State類似Vue實例中的data屬性，他底下的資料必須是純值或是只含有純值屬性的物件。</p>
+<p>如何在元件中取用state內的資料？<br>使用computed-計算屬性來回傳store中的資料，若是store中資料有更新，computed就會重新更新。</p>
+<p>元件內調用state</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">    count()&#123;</span><br><span class="line">    <span class="comment">//取用store</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="輔助函數-mapState"><a href="#輔助函數-mapState" class="headerlink" title="輔助函數 - mapState"></a>輔助函數 - mapState</h4><p>若是需要使用計算屬性取用多個state資料，與其在computed內新增多個函式來回傳，可以使用mapState</p>
+<p>元件內</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取用mapState</span></span><br><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//寫法1 - 物件寫法</span></span><br><span class="line">computed: mapState(&#123;</span><br><span class="line">        <span class="comment">//state為必須</span></span><br><span class="line">    count: <span class="function"><span class="params">state</span> =&gt;</span> state.count</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//寫法2 - 若是要使用的計算屬性跟state的資料名稱一樣</span></span><br><span class="line">computed: mapState([</span><br><span class="line">    <span class="string">'count'</span></span><br><span class="line">    <span class="comment">//this.count 為this.$store.state.count</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">//寫法3 - 與元件內其他計算屬性混用，展開物件屬性</span></span><br><span class="line">computed:&#123;</span><br><span class="line">    localComputed()&#123;</span><br><span class="line">        <span class="keyword">return</span> something</span><br><span class="line">    &#125;,</span><br><span class="line">    ...mapState(&#123;</span><br><span class="line">        count: <span class="function"><span class="params">state</span> =&gt;</span> state.count</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心觀念-Getters"><a href="#核心觀念-Getters" class="headerlink" title="核心觀念 - Getters"></a>核心觀念 - Getters</h3><p>store中的計算屬性，若是我們需要對state中的某個資料做出一些調整後再使用，就可以使用Getter。<br>假使我們今天在做一個todolist，我們想要呈現列表中已完成的項目，我們會需要先過濾todos陣列，過濾出done屬性為true的項目再呈現，通常我們會在元件中使用computed屬性來完成。<br>但是假設有很多元件都需要使用到這個「已完成列表」的資料，那就可以把原始的todos陣列存在state中，然後使用store中的Getter，先過濾出來，再在各元件中使用。</p>
+<p>跟computed類似，getters只有在它依賴的資料發生改變時才會被重新觸發。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>getters接收的第一個參數固定為state</p>
+<p>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">'...'</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">'...'</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">  <span class="comment">//取出已經完成的</span></span><br><span class="line">    doneTodos: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在元件中取用<br>某元件內</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.getters.doneTodos <span class="comment">// -&gt; [&#123; id: 1, text: '...', done: true &#125;]</span></span><br></pre></td></tr></table></figure>
+
+<p>getter也可以接受其他getter作為參數</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">store/index.js</span><br><span class="line">getters:&#123;</span><br><span class="line">                    <span class="comment">//第二個參數為store的getter</span></span><br><span class="line">    countDoneTodos: <span class="function">(<span class="params">state, getter</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getter.doneTodos.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>元件中使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">    doneTodosCount()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.countDoneTodos</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用閉包來傳入外部參數給getter</p>
+<p>若是想要在state內資料中進行搜尋（標題／作者／某些屬性……，這裡的範例使用搜尋id），就可以使用這招</p>
+<p>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters:&#123;</span><br><span class="line">    <span class="comment">//ES6寫法</span></span><br><span class="line">    getTodoById:<span class="function">(<span class="params">state</span>) =&gt;</span> <span class="function">(<span class="params">id</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state.todos.find(<span class="function"><span class="params">todo</span> =&gt;</span> todo.id === id)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>元件中使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.getters.getTodoById(<span class="number">2</span>) <span class="comment">//// -&gt; &#123; id: 2, text: '...', done: false &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="輔助函數-mapGetters"><a href="#輔助函數-mapGetters" class="headerlink" title="輔助函數 - mapGetters"></a>輔助函數 - mapGetters</h4><p>元件內</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//元件內</span></span><br><span class="line">computed:&#123;</span><br><span class="line">    <span class="comment">//其他計算屬性</span></span><br><span class="line">    ...mapGetters([</span><br><span class="line">        <span class="string">'doneTodosCount'</span>,</span><br><span class="line">        <span class="string">'anotherGetter'</span></span><br><span class="line">    ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然後就可以做為一般computed屬性使用</p>
+<p>若是想將getter屬性在元件中另外取名，就使用物件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...mapGetters(&#123;</span><br><span class="line">  doneCount: <span class="string">'doneTodosCount'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h3><p><a href="https://vuex.vuejs.org/zh/">Vuex官方文檔</a><br>六角學院 - Vue出一個電商網站</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>, <a class="has-link-grey -link" href="/tags/Vuex/" rel="tag">Vuex</a>, <a class="has-link-grey -link" href="/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/" rel="tag">閱讀筆記</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/10/function-pt1/">
+                <span class="level-item">javascript核心篇 - 函式 partI</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#什麼是Vuex？">
+        <span class="has-mr-6">1</span>
+        <span>什麼是Vuex？</span>
+        </a></li><li>
+        <a class="is-flex" href="#簡易的倉庫-store-使用方式">
+        <span class="has-mr-6">2</span>
+        <span>簡易的倉庫(store)使用方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#vuex起手式">
+        <span class="has-mr-6">3</span>
+        <span>vuex起手式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#創建一支檔案管理store">
+        <span class="has-mr-6">3.1</span>
+        <span>創建一支檔案管理store</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何在元件中取用store">
+        <span class="has-mr-6">3.2</span>
+        <span>如何在元件中取用store</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#store內的交互關係">
+        <span class="has-mr-6">4</span>
+        <span>store內的交互關係</span>
+        </a></li><li>
+        <a class="is-flex" href="#核心觀念-State">
+        <span class="has-mr-6">5</span>
+        <span>核心觀念 - State</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#State">
+        <span class="has-mr-6">5.1</span>
+        <span>State</span>
+        </a></li><li>
+        <a class="is-flex" href="#輔助函數-mapState">
+        <span class="has-mr-6">5.2</span>
+        <span>輔助函數 - mapState</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#核心觀念-Getters">
+        <span class="has-mr-6">6</span>
+        <span>核心觀念 - Getters</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">6.1</span>
+        <span>使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#輔助函數-mapGetters">
+        <span class="has-mr-6">6.2</span>
+        <span>輔助函數 - mapGetters</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#資料來源">
+        <span class="has-mr-6">7</span>
+        <span>資料來源</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Vuex官方文檔閱讀筆記" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
