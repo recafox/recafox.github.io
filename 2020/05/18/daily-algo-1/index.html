@@ -7,24 +7,25 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>正規表達式 - 符號&amp;常用方法 - Rita Ho</title>
+<title>Day 1 - 反轉字串 - Rita Ho</title>
 
 
-    <meta name="description" content="最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考MDN來學習一下，放在這裡讓自己以後都可以查。">
+    <meta name="description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正規表達式 - 符號&amp;常用方法">
-<meta property="og:url" content="http://yoursite.com/2020/03/19/regular-expression/index.html">
+<meta property="og:title" content="Day 1 - 反轉字串">
+<meta property="og:url" content="http://yoursite.com/2020/05/18/daily-algo-1/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考MDN來學習一下，放在這裡讓自己以後都可以查。">
+<meta property="og:description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-03-19-thumb.png">
-<meta property="article:published_time" content="2020-03-19T06:51:28.000Z">
-<meta property="article:modified_time" content="2020-03-19T07:10:46.308Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-05-18-thumb.png">
+<meta property="article:published_time" content="2020-05-18T03:10:27.000Z">
+<meta property="article:modified_time" content="2020-05-18T03:29:27.218Z">
 <meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="正規表達式">
+<meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-03-19-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-05-18-thumb.png">
 
 
 
@@ -82,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="正規表達式 - 符號&amp;常用方法" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="Day 1 - 反轉字串" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +133,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-03-19-thumb.png" alt="正規表達式 - 符號&amp;常用方法">
+            <img class="thumbnail" src="/images/2020-05-18-thumb.png" alt="Day 1 - 反轉字串">
         </span>
     </div>
     
@@ -140,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-19T06:51:28.000Z">2020-03-19</time>
+                <time class="level-item has-text-grey" datetime="2020-05-18T03:10:27.000Z">2020-05-18</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分鐘 閱讀文 (大約 829 個字)
+                    3 分鐘 閱讀文 (大約 403 個字)
                 </span>
                 
                 
@@ -159,138 +160,29 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                正規表達式 - 符號&amp;常用方法
+                Day 1 - 反轉字串
             
         </h1>
         <div class="content">
-            <p>最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Regular_Expressions">MDN</a>來學習一下，放在這裡讓自己以後都可以查。</p>
+            <p>好像差不多該開始更進一步了，買了一堂叫做<a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a>的課學習演算法。<br>我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。</p>
 <a id="more"></a>
 
-<h3 id="寫法"><a href="#寫法" class="headerlink" title="寫法"></a>寫法</h3><p><code>const regExp = / regExp /</code><br>用兩個斜線包住</p>
-<p>或是使用正規表達式的建構函式</p>
-<p><code>const regExp = new RegExp(&quot;regexp&quot;)</code></p>
-<h3 id="簡易模式"><a href="#簡易模式" class="headerlink" title="簡易模式"></a>簡易模式</h3><p>找到的直接匹配所構成的，也就是結果會完全匹配要搜尋的字串</p>
-<p>例：尋找abc<br>“Let’s sing abc song!” 　“grab crab”</p>
-<p>要尋找”abc”時，第一個句子會匹配成功，因為在這個句子中有abc，沒有斷開也沒有順序不同，第二句就不會匹配成功，　因為在這裡雖然也包含abc三個字母, 但a和b被一個空白字元分開了 (ab c)</p>
-<h3 id="符號"><a href="#符號" class="headerlink" title="符號"></a>符號</h3><p>若是我們需要更複雜的搜索條件，例如：我們想要確認使用者輸入的email是否符合格式，或是搜尋一個字串中所有包含b的單字，就必須使用一些特殊符號</p>
-<table>
-<thead>
-<tr>
-<th align="left">符號</th>
-<th align="left">解釋</th>
-<th align="left">例子</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\</td>
-<td align="left">反斜線會搭配一些字母用在正規表達式的一些符號中, 但是當你想要搜尋的字剛好屬於正規表達式的特殊符號時, 可以將反斜線放在特殊符號前面, 讓它不會被視作特殊符號</td>
-<td align="left">a* 表示一個字串中包含0至多個a, 但a*僅代表字面意義上的a* (米字號因為反斜線而被以字面意義解釋了)</td>
-</tr>
-<tr>
-<td align="left">a*</td>
-<td align="left">表示一個字串中包含0至多個a，即使沒有a這個字元也會匹配</td>
-<td align="left">(/a*/).test(‘bbbb’) =&gt; true</td>
-</tr>
-<tr>
-<td align="left">a+</td>
-<td align="left">表示一個字串中包含1至多個a</td>
-<td align="left">(/a+/).test(‘bbbb’) =&gt;false</td>
-</tr>
-<tr>
-<td align="left">^a</td>
-<td align="left">匹配開頭符合a的字串</td>
-<td align="left">(/^a/).test(“ant”)　=&gt; true</td>
-</tr>
-<tr>
-<td align="left">a$</td>
-<td align="left">匹配結尾符合a的字串</td>
-<td align="left">(/a$/).test(‘tesla’)  =&gt;true</td>
-</tr>
-<tr>
-<td align="left">a{num}</td>
-<td align="left">尋找連續出現num次的a, num為正整數, 要注意若是a出現次數大於num, 還是會算做true</td>
-<td align="left">(/a{2}/).test(“area”) =&gt; false  (/a{2}/).test(“aah”) =&gt;true (/a{2}/).test(“aaaaah”) =&gt;true</td>
-</tr>
-<tr>
-<td align="left">a{min, max}</td>
-<td align="left">尋找連續出現至少min次, 至多max次的a, 跟上一條一樣的是, 要注意若是a出現次數大於max, 還是會算做true</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">[a-z]</td>
-<td align="left">尋找界在a~z之間的所有字母</td>
-<td align="left">(/[a-z]/).test(‘abc’) =&gt;true  (/[a-z]/).test(‘ABC’)=&gt; false</td>
-</tr>
-<tr>
-<td align="left">\ba</td>
-<td align="left">若斜線與b搭在一起時, 放在a前面時, 表示a前面沒有別的字元, 也就是說以a開頭, 若是放在a的後面, 表示a的後面沒有別的字元, 也就是以a結尾</td>
-<td align="left">(/\ba/).test(‘bag’) =&gt; false   (/\ba/).test(‘apple’) =&gt; true  (/a\b/).test(‘apple’) =&gt; false</td>
-</tr>
-<tr>
-<td align="left">\d</td>
-<td align="left">數字, 等同[0-9]</td>
-<td align="left">(/\d/).test(‘123’) =&gt;true</td>
-</tr>
-<tr>
-<td align="left">\D</td>
-<td align="left">非數字</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">\w</td>
-<td align="left">數字字母和底線</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">\W</td>
-<td align="left">非數字字母和底線, 例如: %, *這些符號</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h3 id="Flags-模式"><a href="#Flags-模式" class="headerlink" title="Flags 模式"></a>Flags 模式</h3><table>
-<thead>
-<tr>
-<th align="left">模式</th>
-<th align="left">解釋</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">/reg/g</td>
-<td align="left">g代表global search, 表示搜索指定字串中的全部字元</td>
-</tr>
-<tr>
-<td align="left">/reg/i</td>
-<td align="left">insensitive search 忽略大小寫 (/abc/i).test(‘ABC’) =&gt;true</td>
-</tr>
-</tbody></table>
-<h3 id="常見用法"><a href="#常見用法" class="headerlink" title="常見用法"></a>常見用法</h3><table>
-<thead>
-<tr>
-<th align="left">說明</th>
-<th align="left">表達式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">只能輸入文字或數字</td>
-<td align="left">/^[a-zA-Z0-9]*$/</td>
-</tr>
-<tr>
-<td align="left">只能輸入文字</td>
-<td align="left">/^[a-zA-Z]*$/</td>
-</tr>
-<tr>
-<td align="left">只能有數字</td>
-<td align="left">/^[0-9]*$/</td>
-</tr>
-</tbody></table>
+<h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p>string reversal<br> — Directions<br> Given a string, return a new string with the reversed<br> order of characters<br> — Examples<br>   reverse(‘apple’) === ‘leppa’<br>   reverse(‘hello’) === ‘olleh’<br>   reverse(‘Greetings!’) === ‘!sgniteerG’<br>反轉字串。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><h4 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>思路：將字串中每個字拆成獨自的元素，回傳成一個陣列，接著套用陣列方法將這個陣列反轉，最後將這個反轉陣列中的元素連接成一個字串。</p>
+<h5 id="note"><a href="#note" class="headerlink" title="note"></a>note</h5><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">string.prototype.split</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">array.prototype.reverse</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join">array.prototype.join</a></p>
+<h4 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h4><p>credit to <a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">Stephen Grider</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> reversed = <span class="string">''</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">let</span> character <span class="keyword">of</span> str)&#123;</span><br><span class="line">       reversed = character + reversed;</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="keyword">return</span> reversed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思路：<br>使用<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">for of</a>來遍歷js中可被遍歷的元素（字串、陣列）。<br>將傳入的字串中所有的元素遍歷一遍，然後把字串中每個字加到reversed空字串中，每次累加都把原本的reversed字串加在尾巴。</p>
+<h6 id="tags-Daily-Algo-演算法"><a href="#tags-Daily-Algo-演算法" class="headerlink" title="tags: Daily Algo 演算法"></a>tags: <code>Daily Algo</code> <code>演算法</code></h6>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>, <a class="has-link-grey -link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E9%81%94%E5%BC%8F/" rel="tag">正規表達式</a>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>, <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
                 </div>
             </div>
         </div>
@@ -307,17 +199,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/26/js-parentheses/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">JavaScript中的括號問題</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/10/hex-post/">
-                <span class="level-item">Hex post 開發心得</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/13/vuex-note/">
+                <span class="level-item">Vuex官方文檔閱讀筆記</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -427,26 +312,26 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#寫法">
+        <a class="is-flex" href="#題目">
         <span class="has-mr-6">1</span>
-        <span>寫法</span>
+        <span>題目</span>
         </a></li><li>
-        <a class="is-flex" href="#簡易模式">
+        <a class="is-flex" href="#解法">
         <span class="has-mr-6">2</span>
-        <span>簡易模式</span>
-        </a></li><li>
-        <a class="is-flex" href="#符號">
-        <span class="has-mr-6">3</span>
-        <span>符號</span>
-        </a></li><li>
-        <a class="is-flex" href="#Flags-模式">
-        <span class="has-mr-6">4</span>
-        <span>Flags 模式</span>
-        </a></li><li>
-        <a class="is-flex" href="#常見用法">
-        <span class="has-mr-6">5</span>
-        <span>常見用法</span>
-        </a></li></ul>
+        <span>解法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#我的解法">
+        <span class="has-mr-6">2.1</span>
+        <span>我的解法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#note">
+        <span class="has-mr-6">2.1.1</span>
+        <span>note</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#其他解法">
+        <span class="has-mr-6">2.2</span>
+        <span>其他解法</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -469,7 +354,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="正規表達式 - 符號&amp;常用方法" height="28">
+                    <img src="/images/logo.png" alt="Day 1 - 反轉字串" height="28">
                 
                 </a>
                 <p class="is-size-7">
