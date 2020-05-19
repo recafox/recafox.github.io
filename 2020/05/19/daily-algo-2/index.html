@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>JavaScript中的括號問題 - Rita Ho</title>
+<title>Day 2 - 檢查回文 - Rita Ho</title>
 
 
-    <meta name="description" content="之前在上一堂線上課程時，發現js在執行函式時有無括號的不同，有一位同學給出的解答我覺得很有幫助，翻譯出來給大家參考。 這篇文章譯自課程The Modern JavaScript Bootcamp中的一篇問答。這堂課雖然號稱開給初心者，但後半都是實作項目，雖然很有趣，但會碰到一些較進階的問題，且老師不一定有時間解答，而且有時候老師回答的超級簡短，若是沒辦法搞清楚，可能會懵懵懂懂不知道自己在幹嘛。">
+    <meta name="description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中的括號問題">
-<meta property="og:url" content="http://yoursite.com/2020/03/26/js-parentheses/index.html">
+<meta property="og:title" content="Day 2 - 檢查回文">
+<meta property="og:url" content="http://yoursite.com/2020/05/19/daily-algo-2/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="之前在上一堂線上課程時，發現js在執行函式時有無括號的不同，有一位同學給出的解答我覺得很有幫助，翻譯出來給大家參考。 這篇文章譯自課程The Modern JavaScript Bootcamp中的一篇問答。這堂課雖然號稱開給初心者，但後半都是實作項目，雖然很有趣，但會碰到一些較進階的問題，且老師不一定有時間解答，而且有時候老師回答的超級簡短，若是沒辦法搞清楚，可能會懵懵懂懂不知道自己在幹嘛。">
+<meta property="og:description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-03-26-thumb.png">
-<meta property="article:published_time" content="2020-03-26T04:12:33.000Z">
-<meta property="article:modified_time" content="2020-03-26T04:44:43.648Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-05-19-thumb.png">
+<meta property="article:published_time" content="2020-05-19T04:24:01.000Z">
+<meta property="article:modified_time" content="2020-05-19T04:33:35.977Z">
 <meta property="article:author" content="Rita Ho">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-03-26-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-05-19-thumb.png">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="JavaScript中的括號問題" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="Day 2 - 檢查回文" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -110,10 +110,6 @@
             <div class="navbar-end">
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -132,7 +128,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-03-26-thumb.png" alt="JavaScript中的括號問題">
+            <img class="thumbnail" src="/images/2020-05-19-thumb.png" alt="Day 2 - 檢查回文">
         </span>
     </div>
     
@@ -140,17 +136,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-26T04:12:33.000Z">2020-03-26</time>
+                <time class="level-item has-text-grey" datetime="2020-05-19T04:24:01.000Z">2020-05-19</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分鐘 閱讀文 (大約 1081 個字)
+                    3 分鐘 閱讀文 (大約 436 個字)
                 </span>
                 
                 
@@ -159,36 +155,42 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                JavaScript中的括號問題
+                Day 2 - 檢查回文
             
         </h1>
         <div class="content">
-            <p>之前在上一堂線上課程時，發現js在執行函式時有無括號的不同，有一位同學給出的解答我覺得很有幫助，翻譯出來給大家參考。</p>
-<p>這篇文章譯自課程<a href="https://www.udemy.com/course/javascript-beginners-complete-tutorial/">The Modern JavaScript Bootcamp</a>中的一篇問答。這堂課雖然號稱開給初心者，但後半都是實作項目，雖然很有趣，但會碰到一些較進階的問題，且老師不一定有時間解答，而且有時候老師回答的超級簡短，若是沒辦法搞清楚，可能會懵懵懂懂不知道自己在幹嘛。</p>
+            <p>好像差不多該開始更進一步了，買了一堂叫做<a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a>的課學習演算法。<br>我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。</p>
 <a id="more"></a>
 
-<h3 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h3><p>這份實作是要做出一個使用者在填寫搜尋欄位時，欄位會綁定監聽器，將輸入值與API的資料匹配．自動跳出符合結果的Autocomplete小工具，其中為了讓Ajax請求送出的頻率不要太過頻繁，原課程中使用了一個名為debounce的函式，這個函式中包含一個負責根據欄位輸入來送出請求的閉包。接著在input欄位綁定監聽，執行debounce。但是為什麼事件發生時執行的不是debounce而是裡面的閉包？造成很多人的疑問。</p>
-<p><em>以下原文搭配中文譯文，因為提及該課堂作業的一些程式碼，為了讓讀者好理解，做過一些刪減</em></p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p><strong>When you initially  load up your JS code, the code gets evaluated  by the JS Engine.</strong><br>在程式碼執行之前，會被js的引擎評估</p>
-<p><strong>To a JS parser, the two lines are different: each producing unique outcome</strong><br>對js的編譯器來說，以下這兩行是不同的，產生的結果也完全不同</p>
-<p><code>inputValue.addEventListener(&quot;input&quot;, debounce(onInput, 500));</code></p>
-<p><code>inputValue.addEventListener(&quot;input&quot;, debounce);</code></p>
-<p><strong>The first line tells the ENGINE to  invoke the debounce function immediately  and replace it with its result.</strong><br>第一行告訴引擎直接執行這個函式，並且將它替換成它的結果</p>
-<p><strong>the  anonymous closure is the result it produces, which ,as Stephen states above, gets repeatedly executed, each time a user types something into the input field</strong><br>結果就是它內部所含的匿名閉包，正如stephen（講者）所說，這個閉包會在使用者輸入欄位時被重複執行</p>
-<p><strong>The second line just references a function name that shall be executed when the input event is triggered.</strong><br>第二行則是說當input事件發生時在執行這個函式</p>
-<p><strong>Here’s a little demo :</strong><br>這裡是一點小示範</p>
-<p><strong>Imagine you have two, typical  function declarations that you wish to assign to a particular object : ROBOT in our example :</strong><br>想像你有兩個宣告方式一樣的函式，你想將這兩個函式分派給一個物件：robot</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//宣告</span></span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span> </span><br><span class="line">&#125; </span><br><span class="line">  </span><br><span class="line"><span class="comment">//宣告  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whoAmI</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line"><span class="keyword">return</span> <span class="string">` Who am I ? </span></span><br><span class="line"><span class="string"><span class="subst">$&#123;name&#125;</span></span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">`</span>&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="comment">//物件</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> robot= &#123;</span><br><span class="line"> </span><br><span class="line">name: <span class="string">" I am a Robot"</span>,</span><br><span class="line"> </span><br><span class="line">identity:identity,  <span class="comment">//沒有括號</span></span><br><span class="line"> </span><br><span class="line">whoAmI:whoAmI()  <span class="comment">//有括號</span></span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(robot.identity());</span><br><span class="line"><span class="built_in">console</span>.log(robot.whoAmI());</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020-03-26-01.png" alt="執行結果"></p>
-<p><strong>Pay close attention how the two functions are being assigned/ referenced inside of the robot object.</strong><br>請注意看看這兩個在robot物件中是怎麼被指派的。</p>
-<p><strong>when the robot has its methods invoked , one of those methods  - robot.whoAmI() - produces an error.</strong><br>當robot使用這兩個函式時，其中一個－robot.whoAmI()出錯了</p>
-<p><strong>As you can see from the image above, robot.whoAmI no longer points to the function .</strong><br>如你所見，此時robot.whoAmI不再指向一個函式</p>
-<p><strong>And that is correct with accordance to this line :</strong><br>但是根據這行程式碼, 這其實是正確的結果</p>
-<p><code>whoAmI:whoAmI()</code> </p>
-<p><strong>The line tells the ENGINE to  invoke the whoAmI function immediately  and replace it with its result.</strong><br>這一行程式碼告訴引擎馬上執行這個函式, 並且用它產生的結果替換它</p>
-<p><em>而whoami產生的結果就是回傳一個字串，而字串並不是一個函式，所以也無法被呼叫。</em></p>
-<h3 id="結論："><a href="#結論：" class="headerlink" title="結論："></a>結論：</h3><p><code>inputValue.addEventListener(&quot;input&quot;, debounce(onInput, 500));</code><br>而在原文的程式碼中，debounce函式在addEventListener被掛上時，其實就執行過了，它會被替換成裡面的閉包函式，這個函式才是監聽器被觸發時真正被呼叫的，也會接收到event。</p>
-<p>也就是說，js的編譯器在遇到括號時就會馬上執行，這也是立即執行函式(IIFE)的基礎。</p>
+<p>###　題目<br> — Directions<br> Given a string, return true if the string is a palindrome<br> or false if it is not.  Palindromes are strings that<br> form the same word if it is reversed. <em>Do</em> include spaces<br> and punctuation in determining if the string is a palindrome.<br> — Examples:<br>   palindrome(“abba”) === true<br>   palindrome(“abcdefg”) === false</p>
+<p>檢測是不是回文</p>
+<h3 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">palindrome</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reversed = str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">if</span>(reversed === str)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//精簡</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">palindrome</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>) === str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="另一種解法"><a href="#另一種解法" class="headerlink" title="另一種解法"></a>另一種解法</h3><p>使用陣列方法every</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.every(callback)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">element, index, array</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//...somde code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>將所有陣列內元素套入callback，設定回傳true的條件，若是全部元素皆通過的話會回傳true</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">palindrome</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).every(<span class="function">(<span class="params">char, index</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> char === str[str.length - index <span class="number">-1</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>思路：<br>假設要來應證以下字串是否為回文</p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>b</th>
+<th>a</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<p>由於回文的特性，我們可以知道，從字串的中心點出發，距離相同，方向相反的兩個字母會相同。<br>以這個例子來說，0位會等於第4位（末尾），1位會等於第3位，可以推斷，第i位的數，它的對照點位置會是array.length-i-1<br>運用every來檢查每一個元素，檢查該元素是否等同於其對照點的值。</p>
+<h4 id="note"><a href="#note" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Array.prototype.every</a></p>
 
         </div>
         
@@ -196,7 +198,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
                 </div>
             </div>
         </div>
@@ -213,17 +215,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/02/js-array/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">陣列常用方法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/19/regular-expression/">
-                <span class="level-item">正規表達式 - 符號&amp;常用方法</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/18/daily-algo-1/">
+                <span class="level-item">Day 1 - 反轉字串</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -325,30 +320,6 @@
 </div>
     
         
-
-    <div class="card widget" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label" style='font-size:14px'>
-                    文章目錄
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#前情提要">
-        <span class="has-mr-6">1</span>
-        <span>前情提要</span>
-        </a></li><li>
-        <a class="is-flex" href="#正文">
-        <span class="has-mr-6">2</span>
-        <span>正文</span>
-        </a></li><li>
-        <a class="is-flex" href="#結論：">
-        <span class="has-mr-6">3</span>
-        <span>結論：</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
-
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -367,7 +338,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="JavaScript中的括號問題" height="28">
+                    <img src="/images/logo.png" alt="Day 2 - 檢查回文" height="28">
                 
                 </a>
                 <p class="is-size-7">
