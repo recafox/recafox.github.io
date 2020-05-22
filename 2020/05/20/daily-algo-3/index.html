@@ -10,16 +10,16 @@
 <title>Day 3 - 反轉數字 - Rita Ho</title>
 
 
-    <meta name="description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
+    <meta name="description" content="今天的題目是－反轉一串數字。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day 3 - 反轉數字">
 <meta property="og:url" content="http://yoursite.com/2020/05/20/daily-algo-3/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
+<meta property="og:description" content="今天的題目是－反轉一串數字。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://yoursite.com/images/2020-05-20-thumb.png">
 <meta property="article:published_time" content="2020-05-20T04:35:56.000Z">
-<meta property="article:modified_time" content="2020-05-20T04:39:59.116Z">
+<meta property="article:modified_time" content="2020-05-22T09:35:26.386Z">
 <meta property="article:author" content="Rita Ho">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="演算法">
@@ -146,7 +146,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 531 個字)
+                    4 分鐘 閱讀文 (大約 537 個字)
                 </span>
                 
                 
@@ -159,11 +159,11 @@
             
         </h1>
         <div class="content">
-            <p>好像差不多該開始更進一步了，買了一堂叫做<a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a>的課學習演算法。<br>我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。</p>
+            <p>今天的題目是－反轉一串數字。<br>我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。。</p>
 <a id="more"></a>
 <hr>
 <h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p> — Directions<br> Given an integer, return an integer that is the reverse ordering of numbers.<br> — Examples<br>   reverseInt(15) === 51<br>   reverseInt(981) === 189<br>   reverseInt(500) === 5<br>   reverseInt(-15) === -51<br>   reverseInt(-90) === -9</p>
-<p>反轉字串</p>
+<p>反轉字串<br><em>有時候題目可能會限制數字的位元數，要注意</em></p>
 <h3 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseInt</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reversed =  <span class="built_in">Math</span>.abs(n).toString().split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">return</span> n&lt;<span class="number">0</span>? <span class="built_in">parseInt</span>(<span class="string">'-'</span>+reversed):<span class="built_in">parseInt</span>(reversed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>思路:<br>先將傳入的數字使用絕對值轉成正數，接著就是轉為字串、轉成陣列、反轉、拼回字串。<br>回傳之前用三元運算子判斷，n小於零嗎？是－將反轉後的字串前面加上負號，轉為整數後回傳，不是－將反轉後的字串轉成整數後直接回傳。</p>
 <h4 id="note"><a href="#note" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/abs">Math.abs</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt">parseInt</a><br><em>parseInt只會轉換字串中的數字，其他被視為非數字的符號會被移除，也就是說，parseInt(-153) = -153，parseInt(153-) = 153，前者的減號被視為負號，是這個數字的一部分，後者的減號被視為減號，並不是數字的一部分。</em></p>
@@ -171,6 +171,7 @@
 <p>思路：<br>Math.sign若是遇到負數會回傳-1，正數回傳1，0則回傳0，運用這個特性來根據傳入的數字翻轉結果的正負屬性。<br>其實我們不一定需要reversed這個變數，可以直接把這串程式碼丟到parseInt裡面，但是這樣會不好讀。</p>
 <p>好的程式碼應該要很直觀、簡潔，且好讀，為了這個目的，稍微長一點也可以。</p>
 <h4 id="note-1"><a href="#note-1" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign">Math.sign</a></p>
+<h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><p><a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a></p>
 
         </div>
         
@@ -194,6 +195,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/22/daily-algo-4/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Day 4 - 出現最多的字母</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -252,7 +260,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            20
+                            21
                         </p>
                     </a>
                 </div>

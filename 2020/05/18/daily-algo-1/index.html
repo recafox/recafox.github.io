@@ -10,19 +10,19 @@
 <title>Day 1 - 反轉字串 - Rita Ho</title>
 
 
-    <meta name="description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
+    <meta name="description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day 1 - 反轉字串">
 <meta property="og:url" content="http://yoursite.com/2020/05/18/daily-algo-1/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
+<meta property="og:description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://yoursite.com/images/2020-05-18-thumb.png">
 <meta property="article:published_time" content="2020-05-18T03:10:27.000Z">
-<meta property="article:modified_time" content="2020-05-18T03:29:27.218Z">
+<meta property="article:modified_time" content="2020-05-22T09:35:33.517Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="六角鼠年全馬挑戰賽">
 <meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/2020-05-18-thumb.png">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 403 個字)
+                    3 分鐘 閱讀文 (大約 415 個字)
                 </span>
                 
                 
@@ -164,7 +164,7 @@
             
         </h1>
         <div class="content">
-            <p>好像差不多該開始更進一步了，買了一堂叫做<a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a>的課學習演算法。<br>我會先自己解過一次，再參考答案，這篇文章兩者只會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。</p>
+            <p>好像差不多該開始更進一步了，買了一堂叫做<a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a>的課學習演算法。<br>我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。</p>
 <a id="more"></a>
 
 <h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p>string reversal<br> — Directions<br> Given a string, return a new string with the reversed<br> order of characters<br> — Examples<br>   reverse(‘apple’) === ‘leppa’<br>   reverse(‘hello’) === ‘olleh’<br>   reverse(‘Greetings!’) === ‘!sgniteerG’<br>反轉字串。</p>
@@ -175,7 +175,8 @@
 <h4 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h4><p>credit to <a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">Stephen Grider</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> reversed = <span class="string">''</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">let</span> character <span class="keyword">of</span> str)&#123;</span><br><span class="line">       reversed = character + reversed;</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="keyword">return</span> reversed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>思路：<br>使用<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">for of</a>來遍歷js中可被遍歷的元素（字串、陣列）。<br>將傳入的字串中所有的元素遍歷一遍，然後把字串中每個字加到reversed空字串中，每次累加都把原本的reversed字串加在尾巴。</p>
-<h6 id="tags-Daily-Algo-演算法"><a href="#tags-Daily-Algo-演算法" class="headerlink" title="tags: Daily Algo 演算法"></a>tags: <code>Daily Algo</code> <code>演算法</code></h6>
+<h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><p><a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a></p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -263,7 +264,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            20
+                            21
                         </p>
                     </a>
                 </div>
@@ -338,7 +339,11 @@
         <a class="is-flex" href="#其他解法">
         <span class="has-mr-6">2.2</span>
         <span>其他解法</span>
-        </a></li></ul></li></ul>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#參考">
+        <span class="has-mr-6">2.2.1</span>
+        <span>參考</span>
+        </a></li></ul></li></ul></li></ul>
             </div>
         </div>
     </div>
