@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Day 6 - 用js實現單向串列 - Rita Ho</title>
+
+
+    <meta name="description" content="用原生javascript來實現單向串列，實作了新增、查找、插入到特定位置、移除特定位置節點。程式碼還有很多改進空間，就……放出來跟大家分享。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day 6 - 用js實現單向串列">
+<meta property="og:url" content="http://yoursite.com/2020/05/24/daily-algo-6/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="用原生javascript來實現單向串列，實作了新增、查找、插入到特定位置、移除特定位置節點。程式碼還有很多改進空間，就……放出來跟大家分享。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-05-24-thumb.png">
+<meta property="article:published_time" content="2020-05-24T14:53:58.000Z">
+<meta property="article:modified_time" content="2020-05-24T14:59:25.098Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="演算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-05-24-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Day 6 - 用js實現單向串列" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-05-24-thumb.png" alt="Day 6 - 用js實現單向串列">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-24T14:53:58.000Z">2020-05-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分鐘 閱讀文 (大約 1436 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Day 6 - 用js實現單向串列
+            
+        </h1>
+        <div class="content">
+            <p>用原生javascript來實現單向串列，實作了新增、查找、插入到特定位置、移除特定位置節點。<br>程式碼還有很多改進空間，就……放出來跟大家分享。</p>
+<a id="more"></a>
+
+
+<h3 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h3><p>會寫兩個類別－串列和節點。</p>
+<p>先看節點</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(data)&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">    <span class="keyword">this</span>.index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>節點的結構很單純，data存放資料，index是這個節點所在位置，next則是指向下一個節點。</p>
+<p>串列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.head = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>.length = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>串列的結構也很單純，head是串列的起點，length為長度。<br>接下來介紹串列的方法，這些方法會接收節點作為參數，有時也會接收數字做為index</p>
+<h3 id="新增-append"><a href="#新增-append" class="headerlink" title="新增(append)"></a>新增(append)</h3><p>在串列的末尾新增節點。</p>
+<p>思路：<br>新增節點有兩種狀況，一是若串列為空，那這個新增的節點就會是串列的起點；若是串列不為空，那就加在最後面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">append(node)&#123;</span><br><span class="line">  <span class="keyword">this</span>.length += <span class="number">1</span>;</span><br><span class="line"><span class="comment">//若沒有head</span></span><br><span class="line">  <span class="keyword">if</span>(!<span class="keyword">this</span>.head)&#123;</span><br><span class="line">    <span class="keyword">this</span>.head = node;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//使用current來遍歷節點，先將current指派為head</span></span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">	<span class="comment">//運用while迴圈，若是current的next屬性有指向別的節點</span></span><br><span class="line">    <span class="keyword">while</span>(current.next)&#123;</span><br><span class="line">	<span class="comment">// 那current就移到節點的next</span></span><br><span class="line">      current = current.next;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// current會這樣從起點開始一個一個移動，直到它移到一個next為null的節點，跳出迴圈</span></span><br><span class="line">	<span class="comment">// 這時current會在串列的尾巴</span></span><br><span class="line">	<span class="comment">//新的元素會成為這個尾巴的next</span></span><br><span class="line">    current.next = node;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.redoIndex();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>redoIndex 是一個重新計算節點index的函式</em></p>
+<h3 id="編號-index"><a href="#編號-index" class="headerlink" title="編號(index)"></a>編號(index)</h3><p>我其實不太確定這樣有沒有多此一舉，但是替節點編號會讓之後的插入和移除比較方便，所以我寫了一個給節點編index的函式。</p>
+<p>思路：<br>在上一個函式中，有寫到遍歷節點的方式，這邊也運用到類似的技巧。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> redoIndex()&#123;</span><br><span class="line"><span class="comment">//current指派為起點</span></span><br><span class="line">   <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">	<span class="comment">// 若是current目前有next</span></span><br><span class="line">   <span class="keyword">while</span>(current.next)&#123;</span><br><span class="line">	<span class="comment">// current的next節點的index = current的index +1</span></span><br><span class="line">     current.next.index  = current.index +<span class="number">1</span>;</span><br><span class="line">		<span class="comment">// 移動current</span></span><br><span class="line">     current = current.next;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<p>當串列的節點發生變化時，就要執行這個函式再度編號，因此名稱為redoIndex（詞窮）。</p>
+<h3 id="查找-findIndex"><a href="#查找-findIndex" class="headerlink" title="查找(findIndex)"></a>查找(findIndex)</h3><p>既然將節點編號，那就要好好運用。findIndex會接收一個數字作為index，回傳該index的節點。</p>
+<p>思路：<br>使用一樣的遍歷手法，從頭到尾檢查節點的index值，直到找到為止。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> findIndex(index)&#123;</span><br><span class="line"><span class="comment">// 先檢查傳入的index是否合理，若為負數或超過串列長度就扔錯誤</span></span><br><span class="line"><span class="comment">// 節點的編號從0開始</span></span><br><span class="line">   <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index + <span class="number">1</span> &gt; <span class="keyword">this</span>.length)&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'not exist!'</span>);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">// 遍歷</span></span><br><span class="line">     <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">		<span class="comment">// 若是current有next，且current的編號小於傳入的index, 就移動current</span></span><br><span class="line">     <span class="keyword">while</span>(current.next &amp;&amp; current.index &lt; index)&#123;</span><br><span class="line">       current = current.next;</span><br><span class="line">     &#125;</span><br><span class="line">		<span class="comment">//current若是移動到index = 傳入index的節點，就會跳出迴圈</span></span><br><span class="line">		<span class="comment">//這時的current就是我們要的節點</span></span><br><span class="line">     <span class="keyword">return</span> current;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入到指定位置-insertAt"><a href="#插入到指定位置-insertAt" class="headerlink" title="插入到指定位置(insertAt)"></a>插入到指定位置(insertAt)</h3><p>insertAt會接收要插入位置的索引值，以及一個節點物件。</p>
+<p>思路：<br>既然已經實做好根據index找尋節點的函式，就好好運用。<br>插入指定位置有兩種狀況，插入到第0位和非第0位，若是插入到第0位，就要改變head的值，指派給這個新節點，若是非0位，且不超過這個串列，就改變原本這個index所在位置的節點的next指向，以及該index前一位的next指向。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> insertAt(index, node)&#123;</span><br><span class="line"><span class="comment">// 檢查index是否可行</span></span><br><span class="line">	<span class="keyword">if</span>(index &lt; <span class="number">0</span> || index + <span class="number">1</span> &gt; <span class="keyword">this</span>.length)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'not exist!'</span>);</span><br><span class="line">   &#125;;</span><br><span class="line">	<span class="comment">// 若要插入到第0位，就將它替換掉原本的head</span></span><br><span class="line">   <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">     node.next = <span class="keyword">this</span>.head;</span><br><span class="line">     <span class="keyword">this</span>.head = node;</span><br><span class="line">     <span class="keyword">this</span>.length += <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">// 若index是合理的數字且不為0，就進行替換</span></span><br><span class="line">     <span class="keyword">this</span>.length += <span class="number">1</span>;</span><br><span class="line">		<span class="comment">//先找到該index目前是哪個節點</span></span><br><span class="line">     <span class="keyword">let</span> current = <span class="keyword">this</span>.findIndex(index);</span><br><span class="line">		<span class="comment">// 再找到該index上一個節點是誰</span></span><br><span class="line">     <span class="keyword">let</span> prev = <span class="keyword">this</span>.findIndex(index<span class="number">-1</span>);</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">`替換第<span class="subst">$&#123;index&#125;</span>位`</span>, current);</span><br><span class="line">		<span class="comment">//替換: 因為原本位置的節點要往後移, 它會變成傳入node的next</span></span><br><span class="line">     node.next = current;</span><br><span class="line">		<span class="comment">// 該index上一位節點的next則會是傳入的node</span></span><br><span class="line">     prev.next = node;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">this</span>.redoIndex();</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="移除特定位置-removeAt"><a href="#移除特定位置-removeAt" class="headerlink" title="移除特定位置(removeAt)"></a>移除特定位置(removeAt)</h3><p>removeAt會接受一個數字做為參數，代表要移除的位置。</p>
+<p>思路：<br>其實跟插入滿像的，都是改變next這個指標。不過移除會有三種狀況，第一個是移除第0位，也就是起點，那就要重新指派起點；第二個是移除<code>this.length -1</code>位，也就是移除尾巴，那麼尾巴前一位的節點next就應該變成是null，最後就是移除頭尾之間位置的節點，要改變該index及之前節點。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">removeAt(index)&#123;</span><br><span class="line"><span class="comment">// 檢查</span></span><br><span class="line">  <span class="keyword">if</span>(index &lt;<span class="number">0</span> || index + <span class="number">1</span> &gt; <span class="keyword">this</span>.length)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'not exist!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 若要移除原本的頭</span></span><br><span class="line">  <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'去首'</span>);</span><br><span class="line">	<span class="comment">// 頭會被原本的第二位節點取代</span></span><br><span class="line">    <span class="keyword">this</span>.head = <span class="keyword">this</span>.head.next;</span><br><span class="line">    <span class="keyword">this</span>.head.index = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//若是移除尾</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( index === <span class="keyword">this</span>.length <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'去掉尾巴'</span>);</span><br><span class="line">	<span class="comment">//找到尾巴前一位節點, 重設next</span></span><br><span class="line">    <span class="keyword">let</span> prev = <span class="keyword">this</span>.findIndex(index<span class="number">-1</span>);</span><br><span class="line">    prev.next = <span class="literal">null</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//若是頭尾之間的數</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'去掉第'</span> + index + <span class="string">'位'</span>);</span><br><span class="line">	<span class="comment">//找到該index目前的節點</span></span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.findIndex(index);</span><br><span class="line">	<span class="comment">//以及該index的上一位</span></span><br><span class="line">    <span class="keyword">let</span> prev = <span class="keyword">this</span>.findIndex(index <span class="number">-1</span>);</span><br><span class="line">	<span class="comment">//由於該index的節點會被刪除, 上一位的next要指向該index的next</span></span><br><span class="line">    prev.next = current.next;</span><br><span class="line">    </span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">this</span>.length -= <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.redoIndex();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><p><a href="https://blog.kdchang.cc/2016/09/21/javascript-data-structure-algorithm-linked-list/">用 JavaScript 學習資料結構和演算法：鏈結串列（Linked List）篇 - by kdchang</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/23/daily-algo-5/">
+                <span class="level-item">Day 5 - 讀書筆記</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            23
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Day 6 - 用js實現單向串列" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
