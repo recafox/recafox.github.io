@@ -13,13 +13,13 @@
     <meta name="description" content="用原生javascript來實現單向串列，實作了新增、查找、插入到特定位置、移除特定位置節點。程式碼還有很多改進空間，就……放出來跟大家分享。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day 6 - 用js實現單向串列">
-<meta property="og:url" content="http://yoursite.com/2020/05/24/daily-algo-6/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/05/31/daily-algo-6/index.html">
 <meta property="og:site_name" content="Rita Ho">
 <meta property="og:description" content="用原生javascript來實現單向串列，實作了新增、查找、插入到特定位置、移除特定位置節點。程式碼還有很多改進空間，就……放出來跟大家分享。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://yoursite.com/images/2020-05-24-thumb.png">
-<meta property="article:published_time" content="2020-05-24T14:53:58.000Z">
-<meta property="article:modified_time" content="2020-05-24T14:59:25.098Z">
+<meta property="article:published_time" content="2020-05-31T14:53:58.000Z">
+<meta property="article:modified_time" content="2020-05-31T13:04:47.003Z">
 <meta property="article:author" content="Rita Ho">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
@@ -135,7 +135,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-24T14:53:58.000Z">2020-05-24</time>
+                <time class="level-item has-text-grey" datetime="2020-05-31T14:53:58.000Z">2020-05-31</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分鐘 閱讀文 (大約 1436 個字)
+                    10 分鐘 閱讀文 (大約 1476 個字)
                 </span>
                 
                 
@@ -188,7 +188,7 @@
 <h3 id="移除特定位置-removeAt"><a href="#移除特定位置-removeAt" class="headerlink" title="移除特定位置(removeAt)"></a>移除特定位置(removeAt)</h3><p>removeAt會接受一個數字做為參數，代表要移除的位置。</p>
 <p>思路：<br>其實跟插入滿像的，都是改變next這個指標。不過移除會有三種狀況，第一個是移除第0位，也就是起點，那就要重新指派起點；第二個是移除<code>this.length -1</code>位，也就是移除尾巴，那麼尾巴前一位的節點next就應該變成是null，最後就是移除頭尾之間位置的節點，要改變該index及之前節點。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">removeAt(index)&#123;</span><br><span class="line"><span class="comment">// 檢查</span></span><br><span class="line">  <span class="keyword">if</span>(index &lt;<span class="number">0</span> || index + <span class="number">1</span> &gt; <span class="keyword">this</span>.length)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'not exist!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 若要移除原本的頭</span></span><br><span class="line">  <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'去首'</span>);</span><br><span class="line">	<span class="comment">// 頭會被原本的第二位節點取代</span></span><br><span class="line">    <span class="keyword">this</span>.head = <span class="keyword">this</span>.head.next;</span><br><span class="line">    <span class="keyword">this</span>.head.index = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//若是移除尾</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( index === <span class="keyword">this</span>.length <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'去掉尾巴'</span>);</span><br><span class="line">	<span class="comment">//找到尾巴前一位節點, 重設next</span></span><br><span class="line">    <span class="keyword">let</span> prev = <span class="keyword">this</span>.findIndex(index<span class="number">-1</span>);</span><br><span class="line">    prev.next = <span class="literal">null</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//若是頭尾之間的數</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'去掉第'</span> + index + <span class="string">'位'</span>);</span><br><span class="line">	<span class="comment">//找到該index目前的節點</span></span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.findIndex(index);</span><br><span class="line">	<span class="comment">//以及該index的上一位</span></span><br><span class="line">    <span class="keyword">let</span> prev = <span class="keyword">this</span>.findIndex(index <span class="number">-1</span>);</span><br><span class="line">	<span class="comment">//由於該index的節點會被刪除, 上一位的next要指向該index的next</span></span><br><span class="line">    prev.next = current.next;</span><br><span class="line">    </span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">this</span>.length -= <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.redoIndex();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>這周都在忙著找工作和面試的事情，除了體力上累心也好累，這系列可能會變weekly algo吧。</p>
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><p><a href="https://blog.kdchang.cc/2016/09/21/javascript-data-structure-algorithm-linked-list/">用 JavaScript 學習資料結構和演算法：鏈結串列（Linked List）篇 - by kdchang</a></p>
 
         </div>
