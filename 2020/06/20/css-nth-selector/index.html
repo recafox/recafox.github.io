@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Git 指令 - Rita Ho</title>
+<title>CSS - nth pseudo selector - Rita Ho</title>
 
 
-    <meta name="description" content="git log 查詢過往commit紀錄(按q退出)  git branch 看目前分支  還原前版git checkout 要前往的過去版號四碼git checkout master 確定還原  HEAD 目前所在位置的指標  git branch new_branch_name 新增分支  git branch 查詢目前有的分支, 目前所在分支前面會有星號 git checkout new_">
+    <meta name="description" content="nth-of-type v.s. nth-child的簡介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 指令">
-<meta property="og:url" content="http://yoursite.com/2020/02/27/2020-02-27/index.html">
+<meta property="og:title" content="CSS - nth pseudo selector">
+<meta property="og:url" content="http://yoursite.com/2020/06/20/css-nth-selector/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="git log 查詢過往commit紀錄(按q退出)  git branch 看目前分支  還原前版git checkout 要前往的過去版號四碼git checkout master 確定還原  HEAD 目前所在位置的指標  git branch new_branch_name 新增分支  git branch 查詢目前有的分支, 目前所在分支前面會有星號 git checkout new_">
+<meta property="og:description" content="nth-of-type v.s. nth-child的簡介">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-02-27-thumb.png">
-<meta property="article:published_time" content="2020-02-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-26T16:47:31.356Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-06-20-thumb.png">
+<meta property="article:published_time" content="2020-06-20T14:24:22.000Z">
+<meta property="article:modified_time" content="2020-06-20T14:30:38.515Z">
 <meta property="article:author" content="Rita Ho">
 <meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-02-27-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-06-20-thumb.png">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Git 指令" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="CSS - nth pseudo selector" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-02-27-thumb.png" alt="Git 指令">
+            <img class="thumbnail" src="/images/2020-06-20-thumb.png" alt="CSS - nth pseudo selector">
         </span>
     </div>
     
@@ -140,7 +140,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-26T16:00:00.000Z">2020-02-27</time>
+                <time class="level-item has-text-grey" datetime="2020-06-20T14:24:22.000Z">2020-06-20</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分鐘 閱讀文 (大約 137 個字)
+                    2 分鐘 閱讀文 (大約 262 個字)
                 </span>
                 
                 
@@ -159,27 +159,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Git 指令
+                CSS - nth pseudo selector
             
         </h1>
         <div class="content">
-            <ol>
-<li><p>git log 查詢過往commit紀錄<br>(按q退出)</p>
-</li>
-<li><p>git branch 看目前分支</p>
-</li>
-<li><p>還原前版<br>git checkout 要前往的過去版號四碼<br>git checkout master 確定還原</p>
-</li>
-<li><p>HEAD 目前所在位置的指標</p>
-</li>
-<li><p>git branch new_branch_name 新增分支</p>
-<p> git branch 查詢目前有的分支, 目前所在分支前面會有星號<br> git checkout new_branch_name 切換到新增的分支<br> git checkout master 切回主枝</p>
-</li>
-<li><p>git status 目前分支的狀態, 檔案修改紀錄</p>
-</li>
-<li><p>git merge new_branch<br>將新增分支中的更新也套用至master</p>
-</li>
-</ol>
+            <p>nth-of-type v.s. nth-child的簡介</p>
+<a id="more"></a>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p><code>classname:nth-of-type(num)</code><br>在class選擇器後面加上一個冒號後再使用</p>
+<h3 id="nth-of-type"><a href="#nth-of-type" class="headerlink" title="nth-of-type"></a>nth-of-type</h3><p>在一堆同層級且同類的標籤中選取位在特定位置的同類標籤。注意，只會選取同類！</p>
+<p><code>p:nth-of-type(num)</code><br>在一堆p中選取第num個</p>
+<p><code>p:nth-of-type(odd)</code><br><code>p:nth-of-type(even)</code><br>在一堆p中選取位在偶數/奇數位的p</p>
+<p><code>p:nth-of-type(a*n + b)</code><br>在一堆P中，每a個中，選取第b個<br><img src="https://i.imgur.com/f8hut6e.png" alt=""><br><code>p:nth-of-type(３n + 1)</code><br>每3個中，選取第1個</p>
+<h3 id="nth-last-of-type"><a href="#nth-last-of-type" class="headerlink" title=":nth-last-of-type"></a>:nth-last-of-type</h3><p>用法跟nth-of-type類似，接收的參數也相同，只是他是從最後面數回來<br><img src="https://i.imgur.com/XLYCMYz.png" alt=""></p>
+<p><code>p:nth-last-of-type(2)</code><br>選取倒數第二個</p>
+<h3 id="nth-child"><a href="#nth-child" class="headerlink" title="nth-child"></a>nth-child</h3><p>在一堆同層級標籤中選取位在特定位置的，注意，不分類別，只要是同層級的標籤都可選。<br>用法跟nth-type差不多</p>
 
         </div>
         
@@ -187,7 +180,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Git/" rel="tag">Git</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/CSS/" rel="tag">CSS</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
                 </div>
             </div>
         </div>
@@ -204,17 +197,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/02/sort/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">JS - sort以及演算法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/19/2020-02-19/">
-                <span class="level-item">口罩地圖開發心得</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/14/http-note/">
+                <span class="level-item">HTTP 學習筆記</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -317,6 +303,33 @@
     
         
 
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#用法">
+        <span class="has-mr-6">1</span>
+        <span>用法</span>
+        </a></li><li>
+        <a class="is-flex" href="#nth-of-type">
+        <span class="has-mr-6">2</span>
+        <span>nth-of-type</span>
+        </a></li><li>
+        <a class="is-flex" href="#nth-last-of-type">
+        <span class="has-mr-6">3</span>
+        <span>:nth-last-of-type</span>
+        </a></li><li>
+        <a class="is-flex" href="#nth-child">
+        <span class="has-mr-6">4</span>
+        <span>nth-child</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -335,7 +348,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Git 指令" height="28">
+                    <img src="/images/logo.png" alt="CSS - nth pseudo selector" height="28">
                 
                 </a>
                 <p class="is-size-7">
