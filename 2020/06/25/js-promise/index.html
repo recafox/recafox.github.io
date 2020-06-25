@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>js-promise - Rita Ho</title>
+
+
+    <meta name="description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-promise">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/js-promise/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-06-25-thumb.png">
+<meta property="article:published_time" content="2020-06-25T14:17:07.000Z">
+<meta property="article:modified_time" content="2020-06-25T14:19:54.159Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-06-25-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="js-promise" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-06-25-thumb.png" alt="js-promise">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-06-25T14:17:07.000Z">2020-06-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 623 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                js-promise
+            
+        </h1>
+        <div class="content">
+            <p>最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。</p>
+<a id="more"></a>
+
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>用來處理非同步行為(Ajax)。</p>
+<p>axios</p>
+<h3 id="寫法"><a href="#寫法" class="headerlink" title="寫法"></a>寫法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promiseFn</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(num) &#123;</span><br><span class="line">				resolve(<span class="string">'success!!'</span>)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail!!!'</span>))</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, <span class="number">0</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">promiseFn(<span class="number">1</span>)</span><br><span class="line">	.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(res);</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="comment">//捕捉失敗訊息</span></span><br><span class="line">	.catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.error(err);</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 鍊結</span></span><br><span class="line"><span class="string">一個完成後在做下一個</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promiseFn</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(num) &#123;</span><br><span class="line">				resolve(<span class="string">`成功 值為<span class="subst">$&#123;num&#125;</span>`</span>)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail!!!'</span>))</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, <span class="number">0</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">promiseFn(<span class="number">1</span>)</span><br><span class="line">	.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(res);</span><br><span class="line">			<span class="comment">//第二次非同步</span></span><br><span class="line">			<span class="keyword">return</span> promiseFn(<span class="number">2</span>);</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="comment">//第二次非同步完成的結果</span></span><br><span class="line">	.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(res);</span><br><span class="line">		<span class="keyword">return</span> promiseFn(<span class="number">3</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(res);</span><br><span class="line">		<span class="keyword">return</span> promiseFn(<span class="number">3</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">		<span class="comment">//捕捉失敗訊息</span></span><br><span class="line">	.catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.error(err);</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">//新的鏈結</span></span><br><span class="line">	.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(res);</span><br><span class="line">		<span class="keyword">return</span> promiseFn(<span class="number">4</span>);</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>promise的鍊結要注意，若是其中一環拋出錯誤，後面皆不會執行，直接跳catch，catch之後的promise會形成新的鏈結</p>
+<p>then可以傳入兩個callback, 一個接成功一個接失敗</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promiseFn</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(num) &#123;</span><br><span class="line">				resolve(<span class="string">`成功 值為<span class="subst">$&#123;num&#125;</span>`</span>)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail!!!'</span>))</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, <span class="number">0</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">promiseFn(<span class="number">1</span>)</span><br><span class="line">	.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> promiseFn(<span class="number">2</span>)</span><br><span class="line">	&#125;, (reject) =&gt; &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'fail'</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> promiseFn(<span class="number">3</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'success'</span> + res)</span><br><span class="line">	&#125;, (reject) =&gt; &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'fail'</span>)</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">promiseFn</span>(<span class="params">num, time = <span class="number">500</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(num) &#123;</span><br><span class="line">				resolve(<span class="string">'success!!!'</span> + num)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				reject(<span class="string">'fail!!!'</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, time);</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">promiseFn(<span class="number">1</span>, <span class="number">2000</span>)</span><br><span class="line">	.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(res);</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Promise-all-arr"><a href="#Promise-all-arr" class="headerlink" title="Promise.all([arr])"></a>Promise.all([arr])</h4><p>使用promise.all()可以同時發送多個請求，等到全部都完成後再進行下一步</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全部成功</span></span><br><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">	promiseFn(<span class="number">1</span>, <span class="number">100</span>),</span><br><span class="line">	promiseFn(<span class="number">2</span>, <span class="number">300</span>),</span><br><span class="line">	promiseFn(<span class="number">3</span>, <span class="number">500</span>)</span><br><span class="line">]).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(res); <span class="comment">//["success!!!", "success!!!", "success!!!"]</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//其中一項失敗</span></span><br><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">	promiseFn(<span class="number">1</span>, <span class="number">100</span>),</span><br><span class="line">	promiseFn(<span class="literal">false</span>, <span class="number">300</span>),</span><br><span class="line">	promiseFn(<span class="number">3</span>, <span class="number">500</span>)</span><br><span class="line">])</span><br><span class="line">	.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(res);</span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function">(<span class="params">rej</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(rej)</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="comment">//error: fail!!!</span></span><br></pre></td></tr></table></figure>
+<p>全部完成後會以陣列回傳所有結果，但鍊接中若有其中一項失敗，則全部失敗</p>
+<h4 id="Promise-race-arr"><a href="#Promise-race-arr" class="headerlink" title="Promise.race([arr])"></a>Promise.race([arr])</h4><p>只回傳最快得到結果的，只傳一個，根據最快完成的promise結果決定成功或失敗</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全部成功</span></span><br><span class="line"><span class="built_in">Promise</span>.race([</span><br><span class="line">	promiseFn(<span class="number">1</span>, <span class="number">500</span>),</span><br><span class="line">	promiseFn(<span class="number">2</span>, <span class="number">300</span>), <span class="comment">//最快的</span></span><br><span class="line">	promiseFn(<span class="number">3</span>, <span class="number">500</span>)</span><br><span class="line">]).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(res); <span class="comment">// success!!!2</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//其中一項失敗 (失敗為最快的)</span></span><br><span class="line"><span class="built_in">Promise</span>.race([</span><br><span class="line">	promiseFn(<span class="number">1</span>, <span class="number">700</span>),</span><br><span class="line">	promiseFn(<span class="literal">false</span>, <span class="number">300</span>),</span><br><span class="line">	promiseFn(<span class="number">3</span>, <span class="number">500</span>)</span><br><span class="line">])</span><br><span class="line">	.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(res);</span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function">(<span class="params">rej</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(rej)</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="comment">//error: fail!!!</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="promise-ajax"><a href="#promise-ajax" class="headerlink" title="promise + ajax"></a>promise + ajax</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> url= <span class="string">'https://jsonplaceholder.typicode.com/todos/1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> req = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">req.open(<span class="string">'GET'</span>, url);</span><br><span class="line"></span><br><span class="line"><span class="comment">//資料取得完成後進行</span></span><br><span class="line">req.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (req.status === <span class="number">200</span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(req.response);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail!!!'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/*&#123;</span></span><br><span class="line"><span class="comment">  "userId": 1,</span></span><br><span class="line"><span class="comment">  "id": 1,</span></span><br><span class="line"><span class="comment">  "title": "delectus aut autem",</span></span><br><span class="line"><span class="comment">  "completed": false</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>promise改寫</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url= <span class="string">'https://jsonplaceholder.typicode.com/todos/1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> req = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">		req.open(<span class="string">'GET'</span>, url);</span><br><span class="line">		req.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (req.status === <span class="number">200</span>) &#123;</span><br><span class="line">				resolve(req.response);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				reject(req);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;	</span><br><span class="line">		req.send();</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//串聯</span></span><br><span class="line"><span class="keyword">get</span>(url)</span><br><span class="line">	.then((res) =&gt; &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'got!!'</span>, res);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">get</span>(url)</span><br><span class="line">	&#125;)</span><br><span class="line">	.then((res) =&gt; &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'got twice!!!'</span>,res)</span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function">(<span class="params">rej</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Error</span>(rej))</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/20/css-nth-selector/">
+                <span class="level-item">CSS - nth pseudo selector</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            27
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            19
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Promise">
+        <span class="has-mr-6">1</span>
+        <span>Promise</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#寫法">
+        <span class="has-mr-6">1.1</span>
+        <span>寫法</span>
+        </a></li><li>
+        <a class="is-flex" href="#技巧">
+        <span class="has-mr-6">1.2</span>
+        <span>技巧</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Promise-all-arr">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Promise.all([arr])</span>
+        </a></li><li>
+        <a class="is-flex" href="#Promise-race-arr">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Promise.race([arr])</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#promise-ajax">
+        <span class="has-mr-6">1.3</span>
+        <span>promise + ajax</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="js-promise" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
