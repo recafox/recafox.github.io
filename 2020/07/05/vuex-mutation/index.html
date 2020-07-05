@@ -7,23 +7,25 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>用原生js實作堆疊 - Rita Ho</title>
+<title>Vuex官方文檔閱讀筆記 - Mutations - Rita Ho</title>
 
 
-    <meta name="description" content="用原生javascript來實做堆疊，">
+    <meta name="description" content="之前的Vuex官方文檔筆記沒有寫完，來慢慢補上。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用原生js實作堆疊">
-<meta property="og:url" content="http://yoursite.com/2020/06/04/stack/index.html">
+<meta property="og:title" content="Vuex官方文檔閱讀筆記 - Mutations">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/vuex-mutation/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="用原生javascript來實做堆疊，">
+<meta property="og:description" content="之前的Vuex官方文檔筆記沒有寫完，來慢慢補上。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-06-04-thumb.png">
-<meta property="article:published_time" content="2020-06-04T09:36:08.000Z">
-<meta property="article:modified_time" content="2020-06-04T09:41:40.860Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-07-05-thumb.png">
+<meta property="article:published_time" content="2020-07-05T13:22:14.000Z">
+<meta property="article:modified_time" content="2020-07-05T13:28:30.164Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="演算法">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Vuex">
+<meta property="article:tag" content="閱讀筆記">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-06-04-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-07-05-thumb.png">
 
 
 
@@ -81,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="用原生js實作堆疊" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="Vuex官方文檔閱讀筆記 - Mutations" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -109,6 +111,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -127,7 +133,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-06-04-thumb.png" alt="用原生js實作堆疊">
+            <img class="thumbnail" src="/images/2020-07-05-thumb.png" alt="Vuex官方文檔閱讀筆記 - Mutations">
         </span>
     </div>
     
@@ -135,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-06-04T09:36:08.000Z">2020-06-04</time>
+                <time class="level-item has-text-grey" datetime="2020-07-05T13:22:14.000Z">2020-07-05</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 628 個字)
+                    5 分鐘 閱讀文 (大約 709 個字)
                 </span>
                 
                 
@@ -154,43 +160,42 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                用原生js實作堆疊
+                Vuex官方文檔閱讀筆記 - Mutations
             
         </h1>
         <div class="content">
-            <p>用原生javascript來實做堆疊，</p>
+            <p>之前的Vuex官方文檔筆記沒有寫完，來慢慢補上。</p>
 <a id="more"></a>
 
-<p>堆疊（Stack），如同字面意義，你可以想像成一疊堆疊的書，或是一疊堆疊的碗盤。堆疊遵守last in first out（LIFO）原則，也就是最後放入的會被放在最後面，它也會是最先被移除的。沿用書本的比喻，第一本書會被堆在最下面，第二本、第三本一本本往上堆，最後一本就會在最上面，若你想要抽出第一本，撇開直接抽取導致書本全部跌落的暴力情況，你必須要從最上面那一本開始，一本本移除。不管你要取得哪一本，最後一本總是最先被移除的。</p>
-<p>要實作的方法有：<br><strong>push</strong> 新增元素<br><strong>pop</strong> 移除最新/最上方的元素<br><strong>peek</strong> 查看目前最新的元素<br><strong>clear</strong> 移除堆疊裡所有元素<br>計算屬性：<br><strong>isEmpty</strong> 查看目前堆疊情況，若無堆疊則回傳false，若堆疊中有元素傳true<br><strong>size</strong> 回傳目前堆疊中元素總數</p>
-<h3 id="類別"><a href="#類別" class="headerlink" title="類別"></a>類別</h3><p>因為很多方法跟js中原生陣列方法很像，所以運用陣列來做。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.stack = [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="核心觀念-Mutation"><a href="#核心觀念-Mutation" class="headerlink" title="核心觀念 - Mutation"></a>核心觀念 - Mutation</h3><p>要更改stroe中的資料狀態，唯一的方法是使用store.commit方法來喚醒一個已註冊的事件。<br>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state:&#123;</span><br><span class="line">        count:<span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        increment(state)&#123;</span><br><span class="line">            state.count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>mutation中的方法的第一個參數一定為state。increment是這個事件的名稱（官方文件稱為type，但名稱也許比較好理解？），後方接要執行的函式。<br>要注意，mutation看起來也許很像vue中的methods方法，但是他是不能被直接調用的，必須要store.commit呼叫這個mutation的名稱（type），才能執行它。</p>
+<p>元件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.commit(<span class="string">'increment'</span>) <span class="comment">//調用mutation必須使用store內的方法:commit</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><p>push會將新的元素加在堆疊的尾端，跟陣列的push一樣</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push(element) &#123;</span><br><span class="line">  <span class="keyword">this</span>.stack.push(element);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="note"><a href="#note" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/push">Array.push</a></p>
-<h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h3><p>pop會刪除堆疊最尾端的元素，並且回傳它</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pop() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.stack.pop();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>除了state之外，mutation也接受另外一個參數 - payload，要注意，它只能接受這兩個，因此若是有多個參數要傳入的話，可以將payload以物件形式傳入。</p>
+<p>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations:&#123;</span><br><span class="line">    increment(state, payload)&#123;</span><br><span class="line">        state.count += payload.amount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>元件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            <span class="comment">//事件名稱（type） payload</span></span><br><span class="line">store.commit(<span class="string">'increment'</span>, &#123;</span><br><span class="line">    amount:<span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h4 id="note-1"><a href="#note-1" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.pop</a></p>
-<h3 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h3><p>查看目前在堆疊最尾端的元素，<strong>不會回傳</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> length = <span class="keyword">this</span>.stack.length;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.stack[length - <span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-<h3 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h3><p>清除堆疊裡全部元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clear() &#123;</span><br><span class="line">  <span class="keyword">this</span>.stack.length = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>也可以用整個物件來包裹要傳入Mutation的參數</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">store.commit(&#123;</span><br><span class="line">    <span class="comment">//事件名稱</span></span><br><span class="line">    type:<span class="string">'increment'</span>,</span><br><span class="line">    <span class="comment">//payload</span></span><br><span class="line">    amount: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>store中的寫法不變<br>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations:&#123;</span><br><span class="line">    increment(state, payload)&#123;</span><br><span class="line">        state.count += payload.amount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="getStack"><a href="#getStack" class="headerlink" title="getStack"></a>getStack</h3><p>取得整個堆疊</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getStack() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.stack;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="命名方式的建議"><a href="#命名方式的建議" class="headerlink" title="命名方式的建議"></a>命名方式的建議</h4><p>Mutation的事件名稱可以全大寫命名（常數命名），方便辨識，也能讓linter工具（統一程式碼風格的工具）發揮作用，但這只是建議，尤其在多人協作時會更發揮效用。不過就算不這麼做也完全沒有關係。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">store.commit(&#123;</span><br><span class="line">    <span class="comment">//事件名稱</span></span><br><span class="line">    type:<span class="string">'INCREMENT'</span>,</span><br><span class="line">    <span class="comment">//payload</span></span><br><span class="line">    amount: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>store中的寫法不變<br>store/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations:&#123;</span><br><span class="line">    INCREMENT(state, payload)&#123;</span><br><span class="line">        state.count += payload.amount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="size"><a href="#size" class="headerlink" title="size"></a>size</h3><p>計算屬性。取得目前堆疊長度</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> size() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.stack.length;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Mutation的注意事項"><a href="#Mutation的注意事項" class="headerlink" title="Mutation的注意事項"></a>Mutation的注意事項</h4><p>Mutation必須要是同步函式，這意味著我們不能在mutation使用ajax，無論是setTimeout或是發送http請求，這是出於除錯上的考量，因為Vuex devtool會追蹤每一個mutation發生的時間點，若是Mutation被觸發，但是他的行為卻還沒完成，這種時間上的不同步會導致不必要的混亂。<br>那什麼時候才可以進行異步處理呢？之後會提到的Action。</p>
+<h4 id="輔助函式-mapMutations"><a href="#輔助函式-mapMutations" class="headerlink" title="輔助函式 - mapMutations"></a>輔助函式 - mapMutations</h4><p>調用mutation除了在元件中使用<code>this.$store.coommit(&#39;evtType事件名稱&#39;)</code>，若是有多個mutation需要被調用，也可以使用mapMutation</p>
+<p>使用方式跟前述的mapGetters等大同小異。</p>
+<p>元件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    <span class="comment">//...come code</span></span><br><span class="line">    methods:&#123;</span><br><span class="line">        <span class="comment">//展開</span></span><br><span class="line">        ...mapMutations([</span><br><span class="line">            <span class="string">'INCREMENT'</span>, <span class="comment">//元件內使用方式: this.INCREMENT();</span></span><br><span class="line">            <span class="comment">//傳參數</span></span><br><span class="line">            <span class="string">'INCREMENTBY'</span>, <span class="comment">//元件內使用方式: this.INCREMENTBY(payload)</span></span><br><span class="line">        ])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty"></a>isEmpty</h3><p>計算屬性。根據目前堆疊是否為空回傳布林值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> isEmpty() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.stack.length !== <span class="number">0</span> ? <span class="literal">false</span> : <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>全部程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.stack = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> size() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.stack.length;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">get</span> isEmpty() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.stack.length !== <span class="number">0</span> ? <span class="literal">false</span> : <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  push(element) &#123;</span><br><span class="line">    <span class="keyword">this</span>.stack.push(element);</span><br><span class="line">  &#125;;</span><br><span class="line">  pop() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.stack.pop();</span><br><span class="line">  &#125;;</span><br><span class="line">  peek() &#123;</span><br><span class="line">    <span class="keyword">const</span> length = <span class="keyword">this</span>.stack.length;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.stack[length - <span class="number">1</span>];</span><br><span class="line">  &#125;;</span><br><span class="line">  clear() &#123;</span><br><span class="line">    <span class="keyword">this</span>.stack.length = <span class="number">0</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  getStack() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.stack;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實際操作</span></span><br><span class="line"><span class="keyword">const</span> stack = <span class="keyword">new</span> Stack();</span><br><span class="line">stack.push(<span class="number">1</span>);</span><br><span class="line">stack.push(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// stack [1, 2]</span></span><br><span class="line"><span class="built_in">console</span>.log(stack.size); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(stack.isEmpty); <span class="comment">//false</span></span><br><span class="line">stack.pop(); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(stack.size) <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><p><a href="https://www.taaze.tw/goods/11100862461.html">JavaScript資料結構及演算法實作</a></p>
+<h3 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h3><p><a href="https://vuex.vuejs.org/zh/">Vuex官方文檔</a></p>
 
         </div>
         
@@ -198,7 +203,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
+                    <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>, <a class="has-link-grey -link" href="/tags/Vuex/" rel="tag">Vuex</a>, <a class="has-link-grey -link" href="/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/" rel="tag">閱讀筆記</a>
                 </div>
             </div>
         </div>
@@ -215,17 +220,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/06/14/http-note/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">HTTP 學習筆記</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/31/linked-list/">
-                <span class="level-item">用JS實現單向串列</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/25/js-promise/">
+                <span class="level-item">javascript核心篇 - Promise</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -327,6 +325,38 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#核心觀念-Mutation">
+        <span class="has-mr-6">1</span>
+        <span>核心觀念 - Mutation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#命名方式的建議">
+        <span class="has-mr-6">1.1</span>
+        <span>命名方式的建議</span>
+        </a></li><li>
+        <a class="is-flex" href="#Mutation的注意事項">
+        <span class="has-mr-6">1.2</span>
+        <span>Mutation的注意事項</span>
+        </a></li><li>
+        <a class="is-flex" href="#輔助函式-mapMutations">
+        <span class="has-mr-6">1.3</span>
+        <span>輔助函式 - mapMutations</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#資料來源">
+        <span class="has-mr-6">2</span>
+        <span>資料來源</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -345,7 +375,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="用原生js實作堆疊" height="28">
+                    <img src="/images/logo.png" alt="Vuex官方文檔閱讀筆記 - Mutations" height="28">
                 
                 </a>
                 <p class="is-size-7">
