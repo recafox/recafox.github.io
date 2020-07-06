@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://yoursite.com/images/2020-07-06-thumb.png">
 <meta property="article:published_time" content="2020-07-06T14:38:16.000Z">
-<meta property="article:modified_time" content="2020-07-06T14:57:56.050Z">
+<meta property="article:modified_time" content="2020-07-06T15:04:07.905Z">
 <meta property="article:author" content="Rita Ho">
 <meta property="article:tag" content="終端機">
 <meta property="article:tag" content="指令">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分鐘 閱讀文 (大約 960 個字)
+                    7 分鐘 閱讀文 (大約 1034 個字)
                 </span>
                 
                 
@@ -229,6 +229,10 @@
 <h3 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h3><h4 id="說明一："><a href="#說明一：" class="headerlink" title="說明一："></a>說明一：</h4><p>路徑－絕對路徑與相對路徑，相對路徑表現的是兩個檔案之間路徑的關係。終端機中我們會使用相對路徑做檔案之間的移動。<br>例如桌面上的a資料夾，若是我們要在終端機上，從桌面移動到a資料夾，我們會先移動到桌面：<code>cd desktop</code> 。在終端機移動到桌面之後，輸入 <code>cd a</code>，<code>desktop/a</code> 就是從桌面移動到a的路徑。<br>假設今天反過來，要從a移動到桌面呢？<br>相對路徑有幾個重要的符號（會在後方加上/表示在該資料夾中）：<br><img src="https://i.imgur.com/4hjuaCr.png" alt=""><br>因此從a資料夾移動到桌面的路徑是這樣　<code>cd ..</code><br>由於a資料夾位在桌面，桌面也是一個資料夾，同時也是a資料夾的父資料夾，因此使用..移動。進一步的說，根據你目前所在位置不同，前往桌面的相對路徑可能都不一樣。<br><code>..</code> 就是a到桌面的路徑<br><img src="https://i.imgur.com/EDDYLwp.png" alt=""><br>至於絕對路徑，則是檔案的絕對位置，請看上圖，<strong>&gt;</strong> 之前的就是檔案的絕對路徑，檔案之間的階層關係寫得非常清楚，而且也不像相對路徑一樣，會因為檔案位置不同有所變動。<br>相對路徑就像你在路上隨便找人問路，根據你目前所在的位置，得到的回答就會不一樣，而絕對路徑則是目標的地址，無論你在哪裡，地址都是不會變的。</p>
 <h4 id="說明二："><a href="#說明二：" class="headerlink" title="說明二："></a>說明二：</h4><p>星字號為通配符，可以和任何字元匹配，在這裡就是搜尋任何含有指定副檔名、任意名稱的檔案</p>
 <h4 id="說明三："><a href="#說明三：" class="headerlink" title="說明三："></a>說明三：</h4><p>例(windows)：我想將桌面上名為test的資料夾中裡面的style.css複製一份並移動到桌面該怎麼做呢？首先，test資料夾在桌面(desktop)這個資料夾底下，路徑 <code>Desktop\test</code>，我要先移動到test資料夾 <code>cd test</code>，使用指令：<code>copy style.css ..</code>，兩個點(..)表示目前資料夾的父資料夾，以test來說就是desktop，這樣style.css就會被複製到桌面上了</p>
+<h3 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h3><p><a href="https://gitbook.tw/chapters/command-line/command-line.html">Git 教學：終端機及常用指令介紹</a></p>
+<p><a href="https://dotblogs.com.tw/im_sqz777/2017/07/26/220713">Web 基本觀念 - 相對路徑 和 絕對路徑</a></p>
+<p><a href="https://dotblogs.com.tw/grayyin/2016/07/28/171747">Windows Batch 常用命令</a></p>
+<p><a href="https://www.makeuseof.com/tag/mac-terminal-commands-cheat-sheet/">The Mac Terminal Commands Cheat Sheet</a></p>
 
         </div>
         
@@ -385,7 +389,11 @@
         <a class="is-flex" href="#說明三：">
         <span class="has-mr-6">2.3</span>
         <span>說明三：</span>
-        </a></li></ul></li></ul>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#參考文件">
+        <span class="has-mr-6">3</span>
+        <span>參考文件</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
