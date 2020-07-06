@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Day 3 - 反轉數字 - Rita Ho</title>
+<title>常用終端機指令 - Rita Ho</title>
 
 
-    <meta name="description" content="今天的題目是－反轉一串數字。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。。">
+    <meta name="description" content="整理一些常見的終端機指令，包含mac和windows。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day 3 - 反轉數字">
-<meta property="og:url" content="http://yoursite.com/2020/05/20/daily-algo-3/index.html">
+<meta property="og:title" content="常用終端機指令">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/cmd-line/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="今天的題目是－反轉一串數字。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。。">
+<meta property="og:description" content="整理一些常見的終端機指令，包含mac和windows。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-05-20-thumb.png">
-<meta property="article:published_time" content="2020-05-20T04:35:56.000Z">
-<meta property="article:modified_time" content="2020-05-22T09:35:26.386Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-07-06-thumb.png">
+<meta property="article:published_time" content="2020-07-06T14:38:16.000Z">
+<meta property="article:modified_time" content="2020-07-06T14:57:56.050Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="演算法">
+<meta property="article:tag" content="終端機">
+<meta property="article:tag" content="指令">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-05-20-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-07-06-thumb.png">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Day 3 - 反轉數字" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="常用終端機指令" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -110,6 +110,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -128,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-05-20-thumb.png" alt="Day 3 - 反轉數字">
+            <img class="thumbnail" src="/images/2020-07-06-thumb.png" alt="常用終端機指令">
         </span>
     </div>
     
@@ -136,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-20T04:35:56.000Z">2020-05-20</time>
+                <time class="level-item has-text-grey" datetime="2020-07-06T14:38:16.000Z">2020-07-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 537 個字)
+                    6 分鐘 閱讀文 (大約 960 個字)
                 </span>
                 
                 
@@ -155,23 +159,76 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Day 3 - 反轉數字
+                常用終端機指令
             
         </h1>
         <div class="content">
-            <p>今天的題目是－反轉一串數字。<br>我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。。</p>
+            <p>整理一些常見的終端機指令，包含mac和windows。</p>
 <a id="more"></a>
-<hr>
-<h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p> — Directions<br> Given an integer, return an integer that is the reverse ordering of numbers.<br> — Examples<br>   reverseInt(15) === 51<br>   reverseInt(981) === 189<br>   reverseInt(500) === 5<br>   reverseInt(-15) === -51<br>   reverseInt(-90) === -9</p>
-<p>反轉字串<br><em>有時候題目可能會限制數字的位元數，要注意</em></p>
-<h3 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseInt</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reversed =  <span class="built_in">Math</span>.abs(n).toString().split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">return</span> n&lt;<span class="number">0</span>? <span class="built_in">parseInt</span>(<span class="string">'-'</span>+reversed):<span class="built_in">parseInt</span>(reversed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思路:<br>先將傳入的數字使用絕對值轉成正數，接著就是轉為字串、轉成陣列、反轉、拼回字串。<br>回傳之前用三元運算子判斷，n小於零嗎？是－將反轉後的字串前面加上負號，轉為整數後回傳，不是－將反轉後的字串轉成整數後直接回傳。</p>
-<h4 id="note"><a href="#note" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/abs">Math.abs</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt">parseInt</a><br><em>parseInt只會轉換字串中的數字，其他被視為非數字的符號會被移除，也就是說，parseInt(-153) = -153，parseInt(153-) = 153，前者的減號被視為負號，是這個數字的一部分，後者的減號被視為減號，並不是數字的一部分。</em></p>
-<h3 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseInt</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> reversed = n.toString().split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(reversed) * <span class="built_in">Math</span>.sign(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思路：<br>Math.sign若是遇到負數會回傳-1，正數回傳1，0則回傳0，運用這個特性來根據傳入的數字翻轉結果的正負屬性。<br>其實我們不一定需要reversed這個變數，可以直接把這串程式碼丟到parseInt裡面，但是這樣會不好讀。</p>
-<p>好的程式碼應該要很直觀、簡潔，且好讀，為了這個目的，稍微長一點也可以。</p>
-<h4 id="note-1"><a href="#note-1" class="headerlink" title="note"></a>note</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign">Math.sign</a></p>
-<h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><p><a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a></p>
+
+<h3 id="終端機指令"><a href="#終端機指令" class="headerlink" title="終端機指令"></a>終端機指令</h3><p>注意：空白格不可省略！</p>
+<table>
+<thead>
+<tr>
+<th align="left">Windows</th>
+<th>Mac</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>cd</strong> 路徑 (說明一)</td>
+<td><strong>cd</strong> 路徑</td>
+<td align="left">前往路徑</td>
+</tr>
+<tr>
+<td align="left"><strong>dir</strong></td>
+<td><strong>ls</strong></td>
+<td align="left">列出目前所在資料夾下所有檔案和資料夾</td>
+</tr>
+<tr>
+<td align="left"><strong>dir /a</strong></td>
+<td><strong>ls -a</strong></td>
+<td align="left">列出目前所在資料夾下所有檔案和資料夾，包含隱藏檔案</td>
+</tr>
+<tr>
+<td align="left"><strong>mkdir</strong> 資料夾名稱</td>
+<td><strong>mkdir</strong> 資料夾名稱</td>
+<td align="left">mkdir</td>
+</tr>
+<tr>
+<td align="left"><strong>type nul &gt;</strong> index.html <br><strong>echo.&gt;</strong> style.css <br><strong>call &gt;</strong> text.js</td>
+<td><strong>touch</strong> index.html</td>
+<td align="left">新建檔案</td>
+</tr>
+<tr>
+<td align="left"><strong>type</strong> *.副檔名(說明二)</td>
+<td><strong>find</strong> . -檔案名稱 ‘*.副檔名’</td>
+<td align="left">尋找所有具備特定副檔名的檔案</td>
+</tr>
+<tr>
+<td align="left"><strong>copy</strong> 檔案名稱 新路徑(說明三)</td>
+<td><strong>cp</strong> 檔案名稱 新路徑</td>
+<td align="left">將某檔案複製到新的路徑(不可為原路徑)**</td>
+</tr>
+<tr>
+<td align="left"><strong>move (/y)</strong> filename path /y選擇性填入，若是移動的檔案已在目的地存在，輸入這個指令就不會跳出提示直接覆寫</td>
+<td><strong>mv (-i)</strong> filename path 與windows相反，mac會默認覆寫重名檔，加上-i會跳出提示</td>
+<td align="left">移動檔案到指定路徑</td>
+</tr>
+<tr>
+<td align="left"><strong>del</strong> filename</td>
+<td><strong>rm</strong> filename</td>
+<td align="left">刪除檔案，要注意，使用指令刪除的檔案不會進回收桶而是永遠消失，要小心使用</td>
+</tr>
+<tr>
+<td align="left"><strong>cls</strong></td>
+<td><strong>clear</strong></td>
+<td align="left">清除目前終端機上所有指令</td>
+</tr>
+</tbody></table>
+<h3 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h3><h4 id="說明一："><a href="#說明一：" class="headerlink" title="說明一："></a>說明一：</h4><p>路徑－絕對路徑與相對路徑，相對路徑表現的是兩個檔案之間路徑的關係。終端機中我們會使用相對路徑做檔案之間的移動。<br>例如桌面上的a資料夾，若是我們要在終端機上，從桌面移動到a資料夾，我們會先移動到桌面：<code>cd desktop</code> 。在終端機移動到桌面之後，輸入 <code>cd a</code>，<code>desktop/a</code> 就是從桌面移動到a的路徑。<br>假設今天反過來，要從a移動到桌面呢？<br>相對路徑有幾個重要的符號（會在後方加上/表示在該資料夾中）：<br><img src="https://i.imgur.com/4hjuaCr.png" alt=""><br>因此從a資料夾移動到桌面的路徑是這樣　<code>cd ..</code><br>由於a資料夾位在桌面，桌面也是一個資料夾，同時也是a資料夾的父資料夾，因此使用..移動。進一步的說，根據你目前所在位置不同，前往桌面的相對路徑可能都不一樣。<br><code>..</code> 就是a到桌面的路徑<br><img src="https://i.imgur.com/EDDYLwp.png" alt=""><br>至於絕對路徑，則是檔案的絕對位置，請看上圖，<strong>&gt;</strong> 之前的就是檔案的絕對路徑，檔案之間的階層關係寫得非常清楚，而且也不像相對路徑一樣，會因為檔案位置不同有所變動。<br>相對路徑就像你在路上隨便找人問路，根據你目前所在的位置，得到的回答就會不一樣，而絕對路徑則是目標的地址，無論你在哪裡，地址都是不會變的。</p>
+<h4 id="說明二："><a href="#說明二：" class="headerlink" title="說明二："></a>說明二：</h4><p>星字號為通配符，可以和任何字元匹配，在這裡就是搜尋任何含有指定副檔名、任意名稱的檔案</p>
+<h4 id="說明三："><a href="#說明三：" class="headerlink" title="說明三："></a>說明三：</h4><p>例(windows)：我想將桌面上名為test的資料夾中裡面的style.css複製一份並移動到桌面該怎麼做呢？首先，test資料夾在桌面(desktop)這個資料夾底下，路徑 <code>Desktop\test</code>，我要先移動到test資料夾 <code>cd test</code>，使用指令：<code>copy style.css ..</code>，兩個點(..)表示目前資料夾的父資料夾，以test來說就是desktop，這樣style.css就會被複製到桌面上了</p>
 
         </div>
         
@@ -179,7 +236,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%8C%87%E4%BB%A4/" rel="tag">指令</a>, <a class="has-link-grey -link" href="/tags/%E7%B5%82%E7%AB%AF%E6%A9%9F/" rel="tag">終端機</a>
                 </div>
             </div>
         </div>
@@ -196,17 +253,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/22/daily-algo-4/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Day 4 - 出現最多的字母</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/19/daily-algo-2/">
-                <span class="level-item">Day 2 - 檢查回文</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/07/05/vuex-mutation/">
+                <span class="level-item">Vuex官方文檔閱讀筆記 - Mutations</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -308,6 +358,38 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#終端機指令">
+        <span class="has-mr-6">1</span>
+        <span>終端機指令</span>
+        </a></li><li>
+        <a class="is-flex" href="#說明">
+        <span class="has-mr-6">2</span>
+        <span>說明</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#說明一：">
+        <span class="has-mr-6">2.1</span>
+        <span>說明一：</span>
+        </a></li><li>
+        <a class="is-flex" href="#說明二：">
+        <span class="has-mr-6">2.2</span>
+        <span>說明二：</span>
+        </a></li><li>
+        <a class="is-flex" href="#說明三：">
+        <span class="has-mr-6">2.3</span>
+        <span>說明三：</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -326,7 +408,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Day 3 - 反轉數字" height="28">
+                    <img src="/images/logo.png" alt="常用終端機指令" height="28">
                 
                 </a>
                 <p class="is-size-7">
