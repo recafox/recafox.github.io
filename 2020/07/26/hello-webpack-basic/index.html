@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Hello webpack! 基礎設定 - Rita Ho</title>
+
+
+    <meta name="description" content="Why do we need Webpack? 在沒有打包工具以前, 一個網頁程式中包含多個CSS, HTML, JS, 而JS中有些可能是外部套件，有些可能會高度耦合, 導致import的順序不可輕易更動。後來有了Grunt和gulp, js可以被整合成一支檔案, 就不用擔心引入的順序問題,　可是這些工具無法判別哪些是套件。 Webpack可以判別哪些是額外使用的套件, 並且幫助我們打包程式碼,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello webpack! 基礎設定">
+<meta property="og:url" content="http://yoursite.com/2020/07/26/hello-webpack-basic/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="Why do we need Webpack? 在沒有打包工具以前, 一個網頁程式中包含多個CSS, HTML, JS, 而JS中有些可能是外部套件，有些可能會高度耦合, 導致import的順序不可輕易更動。後來有了Grunt和gulp, js可以被整合成一支檔案, 就不用擔心引入的順序問題,　可是這些工具無法判別哪些是套件。 Webpack可以判別哪些是額外使用的套件, 並且幫助我們打包程式碼,">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-07-26-thumb.png">
+<meta property="article:published_time" content="2020-07-26T12:11:27.000Z">
+<meta property="article:modified_time" content="2020-07-26T12:16:21.142Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="Webpack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-07-26-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Hello webpack! 基礎設定" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-07-26-thumb.png" alt="Hello webpack! 基礎設定">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-26T12:11:27.000Z">2020-07-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分鐘 閱讀文 (大約 1361 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Hello webpack! 基礎設定
+            
+        </h1>
+        <div class="content">
+            <p><strong>Why do we need Webpack?</strong></p>
+<p>在沒有打包工具以前, 一個網頁程式中包含多個CSS, HTML, JS, 而JS中有些可能是外部套件，有些可能會高度耦合, 導致import的順序不可輕易更動。後來有了Grunt和gulp, js可以被整合成一支檔案, 就不用擔心引入的順序問題,　可是這些工具無法判別哪些是套件。</p>
+<p>Webpack可以判別哪些是額外使用的套件, 並且幫助我們打包程式碼, 不管是javascript, typescript, css, sass…, Webpack都可以幫我們把繁雜且交錯的程式碼整合成一份, 就不用再去擔心引入的順序問題</p>
+<a id="more"></a>
+
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><h4 id="在webpack之前"><a href="#在webpack之前" class="headerlink" title="在webpack之前"></a>在webpack之前</h4><p>在還沒有引入webpack之前, 我們的專案會這樣寫</p>
+<p><img src="https://i.imgur.com/FeFbkqs.png" alt=""></p>
+<p>hello.js和index.js可以被當作是套件, 或是js模組。</p>
+<p>在hello.js中定義一個function<br>hello.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hello world!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在index.js中呼叫<br>index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello();</span><br></pre></td></tr></table></figure>
+
+<p>這時打開瀏覽器, 會跳出錯誤:<br><code>hello is not defined</code></p>
+<p>問題並不在這兩支檔案的程式碼中，而是他們在index.html中引入的順序問題。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;.&#x2F;src&#x2F;index.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;.&#x2F;src&#x2F;hello.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>呼叫hello的index比hello被定義的位置hello.js還要先被import和執行, 此時hello尚未產生。</p>
+<p>正確的順序應該是這樣</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;.&#x2F;src&#x2F;hello.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;.&#x2F;src&#x2F;index.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>這個例子說明了相依性(dependency)產生的問題<br>現在只有兩支檔案, 所以記憶他們的順序並不困難, 可是當引入的檔案多，且彼此的相依關係又很複雜的時候，就會要花很多心力。<br>這時可以使用Webpack幫助我們整合內部的模組和外部套件，打包成一支js，也只要在html中引入這一支js就好，這支檔案就是我們的入口檔案(entrypoint)</p>
+<h4 id="引入webpack"><a href="#引入webpack" class="headerlink" title="引入webpack"></a>引入webpack</h4><p>在終端機中使用<code>npm init -y</code>來啟用npm，參數<code>-y</code>代表默認預設配置, 就不用自己設定一堆有的沒的。</p>
+<p>這個指令會產生一個package.json檔案</p>
+<p>package.json</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"webpack_tutorial"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"keywords"</span>: [],</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接著安裝webpack, 在終端機輸入以下指令<br><code>npm install webpack webpack-cli --save-dev</code><br>安裝webpack和其command line interface, 指令介面工具, 就是可以在終端機中輸入webpack的指令啦</p>
+<p><code>--save-dev</code>的意義可以見<a href="https://chriskang028.wordpress.com/2017/07/05/%E5%BC%84%E6%87%82-npm-install-%E7%9A%84-dependencies-v-s-devdependencies/">這裡</a></p>
+<p>現在package.json會變這樣</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"webpack_tutorial"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"keywords"</span>: [],</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">	<span class="comment">// ---- 套件</span></span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"webpack"</span>: <span class="string">"^4.43.0"</span>,</span><br><span class="line">    <span class="string">"webpack-cli"</span>: <span class="string">"^3.3.12"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此時工作目錄中新增了一個資料夾: node_modules, 套件的原始碼都會放在這裡<br><img src="https://i.imgur.com/flD1Skp.png" alt=""></p>
+<p>之後若是有人下載這份專案, 想要在自己的電腦上運作的話, 可以看這份檔案找套件的相關紀錄, 以及跑<code>npm install</code>把需要的套件下載起來</p>
+<h4 id="webpack設定檔"><a href="#webpack設定檔" class="headerlink" title="webpack設定檔"></a>webpack設定檔</h4><p>在根目錄新增一支<code>webpack.config.js</code>的檔案<br><img src="https://i.imgur.com/iZCj59H.png" alt=""></p>
+<p>這支檔案會是一個物件</p>
+<p>webpack.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// ----- 必填</span></span><br><span class="line">  <span class="comment">// entrypoint: 載入所有需要的套件的地方, 在打包時webpack會從這裡開始跑</span></span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    <span class="comment">// 完成打包之後產生的檔案名稱</span></span><br><span class="line">    filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">    <span class="comment">// 打包之後檔案會被放在哪裡</span></span><br><span class="line">    path: <span class="string">'./dist'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  mode: <span class="string">'none'</span>,</span><br><span class="line">  <span class="comment">// ----- 必填</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在package.json新增一個腳本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"webpack"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+<p>我們可以把html中的script tag移除了, 改成引入剛剛設定的output檔</p>
+<p>index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 我們要引入的js是打包完的, 根據剛剛的設定, 它會在dist資料夾中 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;.&#x2F;dist&#x2F;bundle.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>我們需要在剛剛設定的入口(entrypoint)檔案中import所有我們需要的東西, 打包會從這裡開始<br>./src/index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hello <span class="keyword">from</span> <span class="string">'./hello.js'</span>;</span><br><span class="line"></span><br><span class="line">hello();</span><br></pre></td></tr></table></figure>
+
+<p>被引入的檔案要記得export</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hello world!'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// es6</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> hello;</span><br></pre></td></tr></table></figure>
+
+<h3 id="產生dist"><a href="#產生dist" class="headerlink" title="產生dist"></a>產生dist</h3><p>設定完之後，可以來打包看看了。<br>跑<code>npm run build</code>開始打包，沒想到跳錯</p>
+<p><img src="https://i.imgur.com/PERhqlG.png" alt=""><br>這個錯誤是說，我們的設定檔不符合webpack的api要求, 因為目前輸出的路徑是相對路徑, 而api要求絕對路徑</p>
+<p>我們目前的輸出(output)路徑是這樣寫</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">  <span class="comment">// 相對路徑</span></span><br><span class="line">  path: <span class="string">'./dist'</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>要改成絕對路徑, 可以運用node.js底下的path改寫</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入node.js中的path物件</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">	<span class="comment">// 要是絕對路徑</span></span><br><span class="line">	<span class="comment">// path.resolve會產生一個絕對路徑</span></span><br><span class="line">	<span class="comment">// __dirname, 指向目前的資料夾, 例如目前是webpack_tutorial/, __dirname就是webpack_tutorial/, resolve會將這個路徑與後方的參數結合, 解析出絕對路徑</span></span><br><span class="line">	<span class="comment">// ./表示是目前的同層資料夾, 以現在的例子來說就是在根目錄下, 產生的一個dist資料夾,　路徑為：webpack_tutorial/dist</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mode: <span class="string">'none'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/dWQ50Wz.png" alt=""></p>
+<p>可以看到根目錄底下產生一個名為dist的資料夾, 裡面放的是打包後的檔案, 檔名跟我們在設定檔中作的設定一致</p>
+<p><img src="https://i.imgur.com/k6NEvX2.png" alt=""></p>
+<p>js也能運作了</p>
+<h3 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h3><p><a href="https://www.udemy.com/course/webpack-from-beginner-to-advanced/">Webpack 4 in 2020</a></p>
+<p><a href="https://pjchender.github.io/2018/01/29/node-path-module/">path module</a></p>
+<h6 id="tags-webpack"><a href="#tags-webpack" class="headerlink" title="tags: webpack"></a>tags: <code>webpack</code></h6>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Webpack/" rel="tag">Webpack</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/07/19/vuex-action/">
+                <span class="level-item">Vuex官方文檔閱讀筆記 - actions</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            31
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#範例">
+        <span class="has-mr-6">1</span>
+        <span>範例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#在webpack之前">
+        <span class="has-mr-6">1.1</span>
+        <span>在webpack之前</span>
+        </a></li><li>
+        <a class="is-flex" href="#引入webpack">
+        <span class="has-mr-6">1.2</span>
+        <span>引入webpack</span>
+        </a></li><li>
+        <a class="is-flex" href="#webpack設定檔">
+        <span class="has-mr-6">1.3</span>
+        <span>webpack設定檔</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#產生dist">
+        <span class="has-mr-6">2</span>
+        <span>產生dist</span>
+        </a></li><li>
+        <a class="is-flex" href="#參考來源">
+        <span class="has-mr-6">3</span>
+        <span>參考來源</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#tags-webpack">
+        <span class="has-mr-6">3.1.1</span>
+        <span>tags: webpack</span>
+        </a></li></ul></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Hello webpack! 基礎設定" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
