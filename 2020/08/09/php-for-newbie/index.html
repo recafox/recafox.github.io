@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>javascript核心篇 - 物件 partI - Rita Ho</title>
+<title>菜鳥的php - Rita Ho</title>
 
 
-    <meta name="description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
+    <meta name="description" content="最近碰到了一點php, 分享一下學習筆記, 不過不管是工作還是學習重心都還是放在前端, 所以內容真的都寫的很粗淺, 只是個出於興趣的學習筆記而已">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript核心篇 - 物件 partI">
-<meta property="og:url" content="http://yoursite.com/2020/04/07/js-object-part1/index.html">
+<meta property="og:title" content="菜鳥的php">
+<meta property="og:url" content="http://yoursite.com/2020/08/09/php-for-newbie/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。">
+<meta property="og:description" content="最近碰到了一點php, 分享一下學習筆記, 不過不管是工作還是學習重心都還是放在前端, 所以內容真的都寫的很粗淺, 只是個出於興趣的學習筆記而已">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-04-07-thumb.png">
-<meta property="article:published_time" content="2020-04-07T05:24:48.000Z">
-<meta property="article:modified_time" content="2020-04-07T05:30:13.342Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-08-09-thumb.png">
+<meta property="article:published_time" content="2020-08-09T09:09:34.000Z">
+<meta property="article:modified_time" content="2020-08-09T09:25:58.611Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-04-07-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-08-09-thumb.png">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="javascript核心篇 - 物件 partI" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="菜鳥的php" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-04-07-thumb.png" alt="javascript核心篇 - 物件 partI">
+            <img class="thumbnail" src="/images/2020-08-09-thumb.png" alt="菜鳥的php">
         </span>
     </div>
     
@@ -140,7 +140,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T05:24:48.000Z">2020-04-07</time>
+                <time class="level-item has-text-grey" datetime="2020-08-09T09:09:34.000Z">2020-08-09</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 348 個字)
+                    2 分鐘 閱讀文 (大約 240 個字)
                 </span>
                 
                 
@@ -159,43 +159,45 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                javascript核心篇 - 物件 partI
+                菜鳥的php
             
         </h1>
         <div class="content">
-            <p>最近在上六角學院的js核心篇，將筆記整理出來跟大家分享。</p>
+            <p>最近碰到了一點php, 分享一下學習筆記, 不過不管是工作還是學習重心都還是放在前端, 所以內容真的都寫的很粗淺, 只是個出於興趣的學習筆記而已</p>
 <a id="more"></a>
 
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//code...</span></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="物件的宣告"><a href="#物件的宣告" class="headerlink" title="物件的宣告"></a>物件的宣告</h3><p>(推薦)物件實字 Object Literals</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//value可以是純值, 原始型別, 函式或另一個物件</span></span><br><span class="line"><span class="comment">//屬性名稱一定要是字串, 應避免 0:1 </span></span><br><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">    property: value,</span><br><span class="line">    name:<span class="string">'貓貓家'</span>,</span><br><span class="line">    deposit: <span class="number">500</span>,</span><br><span class="line">    members:&#123;</span><br><span class="line">        big_cat:<span class="string">'大貓貓'</span>,</span><br><span class="line">        small_cat:<span class="string">'小貓貓'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    food:[<span class="string">'fish'</span>, <span class="string">'dryFood'</span>],</span><br><span class="line">    callFamily: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        <span class="comment">//這個family物件</span></span><br><span class="line">        &#125;,</span><br><span class="line">    callAgain: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">//window物件</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>物件建構式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newFamily = <span class="keyword">new</span> <span class="built_in">Object</span>(family)</span><br><span class="line">newFamily == family <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h3 id="物件的取值、新增和刪除"><a href="#物件的取值、新增和刪除" class="headerlink" title="物件的取值、新增和刪除"></a>物件的取值、新增和刪除</h3><ol>
-<li>取值</li>
-</ol>
-<p>family.members<br>family[‘members’]<br>使用中括號不只可使用字串方式取值，可以用數字，也可以使用變數方式作取值，甚至在中括號中做運算後再取值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">family[<span class="string">'food'</span>][<span class="number">0</span>] <span class="comment">//'fish'</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">family.food[a] <span class="comment">//'fish'</span></span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>新增</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新增一個屬性叫pet, 值為hamster</span></span><br><span class="line"> family.pet=<span class="string">'hamster'</span></span><br><span class="line"><span class="comment">//新增一個屬性叫mouse, 值為jerry</span></span><br><span class="line"> family[<span class="string">"mouse"</span>] = <span class="string">'jerry'</span></span><br></pre></td></tr></table></figure>
+<h3 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$name = value;</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>刪除 delete</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> family.food</span><br><span class="line"><span class="keyword">delete</span> family[<span class="string">'food'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//結果</span></span><br><span class="line">name: <span class="string">"貓貓家"</span></span><br><span class="line">deposit: <span class="number">500</span></span><br><span class="line">members: &#123;<span class="attr">big_cat</span>: <span class="string">"大貓貓"</span>, <span class="attr">small_cat</span>: <span class="string">"小貓貓"</span>&#125;</span><br><span class="line">callFamily: ƒ ()</span><br><span class="line">callAgain:  ƒ ()</span><br></pre></td></tr></table></figure>
 
-<h3 id="變數與物件屬性的差異"><a href="#變數與物件屬性的差異" class="headerlink" title="變數與物件屬性的差異"></a>變數與物件屬性的差異</h3><p>變數無法被刪除，物件的屬性才可以</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此時a,b都存在在window物件下</span></span><br><span class="line"><span class="comment">//a為變數</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//b是window物件內的property</span></span><br><span class="line">b=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> a; <span class="comment">//false</span></span><br><span class="line"><span class="keyword">delete</span> b; <span class="comment">//true 可被刪除</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//1 無法被刪除</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">//not defined (被刪除了)</span></span><br></pre></td></tr></table></figure>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnName</span><span class="params">($param)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// do something with param...</span></span><br><span class="line">  <span class="keyword">return</span> $param;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="some-string-methods"><a href="#some-string-methods" class="headerlink" title="some string methods"></a>some string methods</h3><h4 id="strip-tags-string-str"><a href="#strip-tags-string-str" class="headerlink" title="strip_tags(string $str)"></a>strip_tags(string $str)</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// strip all the html in this variable</span></span><br><span class="line"><span class="comment">//e.g. $inputTxt = "lisa&lt;p&gt;some thing here&lt;/p&gt;", get rid of that p tag</span></span><br><span class="line">  $inputTxt = strip_tags($inputTxt);</span><br></pre></td></tr></table></figure>
+
+<h4 id="str-replace-“-“-“”-string"><a href="#str-replace-“-“-“”-string" class="headerlink" title="str_replace(“ “, “”, string)"></a>str_replace(“ “, “”, string)</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// str_replace = str.replace(" ", ""), 以空字串代替空白字元</span></span><br><span class="line">$inputTxt = str_replace(<span class="string">" "</span>, <span class="string">""</span>, $inputTxt);</span><br></pre></td></tr></table></figure>
+
+<h4 id="strtolower-inputTxt"><a href="#strtolower-inputTxt" class="headerlink" title="strtolower($inputTxt)"></a>strtolower($inputTxt)</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字串轉為全小寫</span></span><br><span class="line">$inputTxt = strtolower(string)</span><br></pre></td></tr></table></figure>
+<h4 id="ucfirst-string"><a href="#ucfirst-string" class="headerlink" title="ucfirst(string)"></a>ucfirst(string)</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首字大寫</span></span><br><span class="line">$inputTxt = ucfirst(string)</span><br></pre></td></tr></table></figure>
+
+<h4 id="strlen-string"><a href="#strlen-string" class="headerlink" title="strlen(string)"></a>strlen(string)</h4><p>回傳字串長度</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$string = <span class="string">"hello"</span>;</span><br><span class="line">strlen($string) <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array()"></a>Array()</h3><p>在php中, array是一個函式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$array = <span class="keyword">array</span>()</span><br></pre></td></tr></table></figure>
+
+<h4 id="array-push-array-item"><a href="#array-push-array-item" class="headerlink" title="array_push(array, item)"></a>array_push(array, item)</h4><p>推入陣列</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$arrayA = <span class="keyword">array</span>();</span><br><span class="line">array_push($arrayA, item);</span><br></pre></td></tr></table></figure>
+
+<p>注意點:<br>在php中, 陣列的索引不一定要是數字, 也可以是字元, 感覺很像js的物件中鍵與值的關係?</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/php/" rel="tag">php</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
                 </div>
             </div>
         </div>
@@ -212,17 +214,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/14/js-object-part2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">javascript核心篇 - 物件 partII</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/02/js-array/">
-                <span class="level-item">陣列常用方法</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/02/what-is-dist/">
+                <span class="level-item">Dist 是什麼?</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -332,18 +327,50 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#物件的宣告">
+        <a class="is-flex" href="#使用">
         <span class="has-mr-6">1</span>
-        <span>物件的宣告</span>
+        <span>使用</span>
         </a></li><li>
-        <a class="is-flex" href="#物件的取值、新增和刪除">
+        <a class="is-flex" href="#變數">
         <span class="has-mr-6">2</span>
-        <span>物件的取值、新增和刪除</span>
+        <span>變數</span>
         </a></li><li>
-        <a class="is-flex" href="#變數與物件屬性的差異">
+        <a class="is-flex" href="#function">
         <span class="has-mr-6">3</span>
-        <span>變數與物件屬性的差異</span>
-        </a></li></ul>
+        <span>function</span>
+        </a></li><li>
+        <a class="is-flex" href="#some-string-methods">
+        <span class="has-mr-6">4</span>
+        <span>some string methods</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#strip-tags-string-str">
+        <span class="has-mr-6">4.1</span>
+        <span>strip_tags(string $str)</span>
+        </a></li><li>
+        <a class="is-flex" href="#str-replace-“-“-“”-string">
+        <span class="has-mr-6">4.2</span>
+        <span>str_replace(“ “, “”, string)</span>
+        </a></li><li>
+        <a class="is-flex" href="#strtolower-inputTxt">
+        <span class="has-mr-6">4.3</span>
+        <span>strtolower($inputTxt)</span>
+        </a></li><li>
+        <a class="is-flex" href="#ucfirst-string">
+        <span class="has-mr-6">4.4</span>
+        <span>ucfirst(string)</span>
+        </a></li><li>
+        <a class="is-flex" href="#strlen-string">
+        <span class="has-mr-6">4.5</span>
+        <span>strlen(string)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Array">
+        <span class="has-mr-6">5</span>
+        <span>Array()</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#array-push-array-item">
+        <span class="has-mr-6">5.1</span>
+        <span>array_push(array, item)</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -366,7 +393,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="javascript核心篇 - 物件 partI" height="28">
+                    <img src="/images/logo.png" alt="菜鳥的php" height="28">
                 
                 </a>
                 <p class="is-size-7">
