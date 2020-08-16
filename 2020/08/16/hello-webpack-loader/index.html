@@ -7,24 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Git 指令 - Rita Ho</title>
+<title>Hello webpack! Loader - Rita Ho</title>
 
 
-    <meta name="description" content="git log 查詢過往commit紀錄(按q退出)  git branch 看目前分支  還原前版git checkout 要前往的過去版號四碼git checkout master 確定還原  HEAD 目前所在位置的指標  git branch new_branch_name 新增分支  git branch 查詢目前有的分支, 目前所在分支前面會有星號 git checkout new_">
+    <meta name="description" content="除了javascript之外, webpack也能幫我們管理scss, less, html…等等其他的程式碼, 這時要借助的工具就是loader。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 指令">
-<meta property="og:url" content="http://yoursite.com/2020/02/27/2020-02-27/index.html">
+<meta property="og:title" content="Hello webpack! Loader">
+<meta property="og:url" content="http://yoursite.com/2020/08/16/hello-webpack-loader/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="git log 查詢過往commit紀錄(按q退出)  git branch 看目前分支  還原前版git checkout 要前往的過去版號四碼git checkout master 確定還原  HEAD 目前所在位置的指標  git branch new_branch_name 新增分支  git branch 查詢目前有的分支, 目前所在分支前面會有星號 git checkout new_">
+<meta property="og:description" content="除了javascript之外, webpack也能幫我們管理scss, less, html…等等其他的程式碼, 這時要借助的工具就是loader。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-02-27-thumb.png">
-<meta property="article:published_time" content="2020-02-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-26T16:47:31.356Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-08-16-thumb.png">
+<meta property="article:published_time" content="2020-08-16T13:44:34.000Z">
+<meta property="article:modified_time" content="2020-08-16T13:51:15.304Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-02-27-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-08-16-thumb.png">
 
 
 
@@ -82,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Git 指令" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="Hello webpack! Loader" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +131,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-02-27-thumb.png" alt="Git 指令">
+            <img class="thumbnail" src="/images/2020-08-16-thumb.png" alt="Hello webpack! Loader">
         </span>
     </div>
     
@@ -140,7 +139,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-26T16:00:00.000Z">2020-02-27</time>
+                <time class="level-item has-text-grey" datetime="2020-08-16T13:44:34.000Z">2020-08-16</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -150,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分鐘 閱讀文 (大約 137 個字)
+                    6 分鐘 閱讀文 (大約 871 個字)
                 </span>
                 
                 
@@ -159,27 +158,49 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Git 指令
+                Hello webpack! Loader
             
         </h1>
         <div class="content">
-            <ol>
-<li><p>git log 查詢過往commit紀錄<br>(按q退出)</p>
-</li>
-<li><p>git branch 看目前分支</p>
-</li>
-<li><p>還原前版<br>git checkout 要前往的過去版號四碼<br>git checkout master 確定還原</p>
-</li>
-<li><p>HEAD 目前所在位置的指標</p>
-</li>
-<li><p>git branch new_branch_name 新增分支</p>
-<p> git branch 查詢目前有的分支, 目前所在分支前面會有星號<br> git checkout new_branch_name 切換到新增的分支<br> git checkout master 切回主枝</p>
-</li>
-<li><p>git status 目前分支的狀態, 檔案修改紀錄</p>
-</li>
-<li><p>git merge new_branch<br>將新增分支中的更新也套用至master</p>
-</li>
-</ol>
+            <p>除了javascript之外, webpack也能幫我們管理scss, less, html…等等其他的程式碼, 這時要借助的工具就是loader。</p>
+<a id="more"></a>
+<h3 id="引入圖片"><a href="#引入圖片" class="headerlink" title="引入圖片"></a>引入圖片</h3><p>先準備一張範例圖片, 放到src資料夾裡</p>
+<p><img src="https://i.imgur.com/82W7eB8.png" alt=""></p>
+<p>這張圖片我不會直接放在html, 而是會由一支js來把它放到畫面上。</p>
+<p>這支Js會叫做addImg, 它的目的就是產生一個img標籤, 這個img會貼出這張魚的圖片</p>
+<p>目前的檔案結構:</p>
+<p><img src="https://i.imgur.com/tDZL6gE.png" alt=""></p>
+<p>addImg.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Fish <span class="keyword">from</span> <span class="string">'./fish.png'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addImg</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//產生一個img標籤</span></span><br><span class="line">  <span class="keyword">const</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">  img.alt = <span class="string">'fish'</span>;</span><br><span class="line">  img.width = <span class="number">300</span>;</span><br><span class="line">  img.src = Fish;</span><br><span class="line">  <span class="keyword">const</span> body = <span class="built_in">document</span>.querySelector(<span class="string">'body'</span>);</span><br><span class="line">	<span class="comment">// 設定完img的屬性後就把它塞進body裡</span></span><br><span class="line">  body.appendChild(img);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> addImg;</span><br></pre></td></tr></table></figure>
+
+<p>在index.js中引入</p>
+<p>indes.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> addImg <span class="keyword">from</span> <span class="string">'./addImg.js'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addImg();</span><br></pre></td></tr></table></figure>
+
+<p>完成之後來打包！<code>npm run build</code></p>
+<p><img src="https://i.imgur.com/6PpnQ4K.png" alt=""><br>跳錯了<br>這個錯誤訊息的意思是說：webpack無法解析這個檔案, 你需要一個合適的loader來處理它。</p>
+<h4 id="引入loader"><a href="#引入loader" class="headerlink" title="引入loader"></a>引入loader</h4><p>有些檔案格式並不需要loader就能被webpack識別, 例如javascript或json, 但是遇到它無法識別的類型(例如圖片)時, 我們需要在config中為這些類型的檔案設定規則和相應的loader</p>
+<p>webpack.config.js<br>新增module物件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//loaders</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.(png|jpg)$/</span>,</span><br><span class="line">      use: [</span><br><span class="line">        <span class="string">'file-loader'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>module是一個物件, 我們用rules來寫使用loader的規則, rules是一個物件組成的陣列, 裡面的物件接受兩個屬性: test和use。</p>
+<p>test中的正規表達式, 意思是接收到有<code>.png</code>或<code>.jpg</code>類型的檔案時, 使用<code>&#39;file-loader&#39;</code>。運用這個正規表達式也可以套用在別種檔案類型上。</p>
+<p>webpack在打包時, 若是遇到它無法解析的檔案, 就會在這個rules中尋找, 找到對應的規則時就應用。</p>
+<p><a href="https://juejin.im/post/5980752ef265da3e2e56e82e">webpack 之 loader 和 plugin 简介</a></p>
+<p>loader並不是原生的, 而是要另外下載, 使用<br><code>npm install file-loader --save-dev</code></p>
+<p>這時再跑<code>npm run build</code>就成功了</p>
+<p><img src="https://i.imgur.com/cqMd7UZ.png" alt=""><br>可是圖片卻沒有跑出來, 查看devtool, 顯示如下</p>
+<p><code>&lt;img alt=&quot;fish&quot; width=&quot;300&quot; src=&quot;027ea48430dfaf4e58e4131788a65bb2.png&quot;&gt;</code></p>
+<p><a href="https://ithelp.ithome.com.tw/users/20069901/profile">為什麼檔名會變亂碼?</a></p>
+<p>file-loader會將這張圖片複製一份放到build完的dist底下, 檔名也會因為加密過後改變。<br><img src="https://i.imgur.com/7WCznnB.png" alt=""><br>但是很顯然的, 產生出來的img標籤中的src路徑是錯誤的，路徑應該要是<code>dist/img.png</code>, 才能抓到圖片</p>
+<h4 id="解決路徑問題"><a href="#解決路徑問題" class="headerlink" title="解決路徑問題"></a>解決路徑問題</h4><p>我們要在config中新增publicPath屬性</p>
+<p>webpack.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">  path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line"><span class="comment">// 位置</span></span><br><span class="line">  publicPath: <span class="string">'dist/'</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://i.imgur.com/Hk6WybA.png" alt=""></p>
+<p>圖片出現了, 來看一下剛才錯誤的路徑是否修正了<br><code>&lt;img alt=&quot;fish&quot; width=&quot;300&quot; src=&quot;dist/027ea48430dfaf4e58e4131788a65bb2.png&quot;&gt;</code><br>這次路徑中從dist開始找, 圖片也呈現, 表示路徑正確了</p>
+<h5 id="path-vs-publicPath"><a href="#path-vs-publicPath" class="headerlink" title="path vs publicPath ?"></a>path vs publicPath ?</h5><p>path是webpack打包後將程式碼輸出的目的地, 產生的網站根目錄, 也就是說, 這個網站下的所有打包完的程式碼, 資源, 都可以在這個根目錄找到, 可以說是網站的倉庫。</p>
+<p>publicPath則是告訴webpack這個倉庫的位置, 告訴它這個資源要去哪裡找, 以目前的例子來說, 就是去dist這個資料夾裡面找。<br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/201833/">Webpack path與publicPath的區別詳解</a></p>
 
         </div>
         
@@ -187,7 +208,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Git/" rel="tag">Git</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/Webpack/" rel="tag">Webpack</a>
                 </div>
             </div>
         </div>
@@ -204,17 +225,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/02/sort/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">JS - sort以及演算法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/19/2020-02-19/">
-                <span class="level-item">口罩地圖開發心得</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/09/php-for-newbie/">
+                <span class="level-item">菜鳥的php</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -317,6 +331,33 @@
     
         
 
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#引入圖片">
+        <span class="has-mr-6">1</span>
+        <span>引入圖片</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#引入loader">
+        <span class="has-mr-6">1.1</span>
+        <span>引入loader</span>
+        </a></li><li>
+        <a class="is-flex" href="#解決路徑問題">
+        <span class="has-mr-6">1.2</span>
+        <span>解決路徑問題</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#path-vs-publicPath">
+        <span class="has-mr-6">1.2.1</span>
+        <span>path vs publicPath ?</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -335,7 +376,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Git 指令" height="28">
+                    <img src="/images/logo.png" alt="Hello webpack! Loader" height="28">
                 
                 </a>
                 <p class="is-size-7">
