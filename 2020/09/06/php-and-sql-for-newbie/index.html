@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>CSS - nth pseudo selector - Rita Ho</title>
+<title>菜鳥的php(part 3) ... 還有一點SQL - Rita Ho</title>
 
 
-    <meta name="description" content="nth-of-type v.s. nth-child的簡介">
+    <meta name="description" content="最近碰到了一點php, 分享一下學習筆記">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS - nth pseudo selector">
-<meta property="og:url" content="http://yoursite.com/2020/06/20/css-nth-selector/index.html">
+<meta property="og:title" content="菜鳥的php(part 3) ... 還有一點SQL">
+<meta property="og:url" content="http://yoursite.com/2020/09/06/php-and-sql-for-newbie/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="nth-of-type v.s. nth-child的簡介">
+<meta property="og:description" content="最近碰到了一點php, 分享一下學習筆記">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-06-20-thumb.png">
-<meta property="article:published_time" content="2020-06-20T14:24:22.000Z">
-<meta property="article:modified_time" content="2020-06-20T14:30:38.515Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-08-09-thumb.png">
+<meta property="article:published_time" content="2020-09-06T12:44:04.000Z">
+<meta property="article:modified_time" content="2020-09-06T12:46:21.890Z">
 <meta property="article:author" content="Rita Ho">
 <meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-06-20-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-08-09-thumb.png">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="CSS - nth pseudo selector" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="菜鳥的php(part 3) ... 還有一點SQL" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-06-20-thumb.png" alt="CSS - nth pseudo selector">
+            <img class="thumbnail" src="/images/2020-08-09-thumb.png" alt="菜鳥的php(part 3) ... 還有一點SQL">
         </span>
     </div>
     
@@ -140,7 +140,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-06-20T14:24:22.000Z">2020-06-20</time>
+                <time class="level-item has-text-grey" datetime="2020-09-06T12:44:04.000Z">2020-09-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 262 個字)
+                    4 分鐘 閱讀文 (大約 528 個字)
                 </span>
                 
                 
@@ -159,20 +159,39 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                CSS - nth pseudo selector
+                菜鳥的php(part 3) ... 還有一點SQL
             
         </h1>
         <div class="content">
-            <p>nth-of-type v.s. nth-child的簡介</p>
+            <p>最近碰到了一點php, 分享一下學習筆記</p>
 <a id="more"></a>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p><code>classname:nth-of-type(num)</code><br>在class選擇器後面加上一個冒號後再使用</p>
-<h3 id="nth-of-type"><a href="#nth-of-type" class="headerlink" title="nth-of-type"></a>nth-of-type</h3><p>在一堆同層級且同類的標籤中選取位在特定位置的同類標籤。注意，只會選取同類！</p>
-<p><code>p:nth-of-type(num)</code><br>在一堆p中選取第num個</p>
-<p><code>p:nth-of-type(odd)</code><br><code>p:nth-of-type(even)</code><br>在一堆p中選取位在偶數/奇數位的p</p>
-<p><code>p:nth-of-type(a*n + b)</code><br>在一堆P中，每a個中，選取第b個<br><img src="https://i.imgur.com/f8hut6e.png" alt=""><br><code>p:nth-of-type(３n + 1)</code><br>每3個中，選取第1個</p>
-<h3 id="nth-last-of-type"><a href="#nth-last-of-type" class="headerlink" title=":nth-last-of-type"></a>:nth-last-of-type</h3><p>用法跟nth-of-type類似，接收的參數也相同，只是他是從最後面數回來<br><img src="https://i.imgur.com/XLYCMYz.png" alt=""></p>
-<p><code>p:nth-last-of-type(2)</code><br>選取倒數第二個</p>
-<h3 id="nth-child"><a href="#nth-child" class="headerlink" title="nth-child"></a>nth-child</h3><p>在一堆同層級標籤中選取位在特定位置的，注意，不分類別，只要是同層級的標籤都可選。<br>用法跟nth-type差不多</p>
+
+<h3 id="什麼是SQL"><a href="#什麼是SQL" class="headerlink" title="什麼是SQL ?"></a>什麼是SQL ?</h3><p>後端的資料庫(database)其實是由一張張資料表(table)組成的，資料表根據該存放的目的,會設置不同的欄位(column)，像是名為user的資料表可能會有的欄位就是: 使用者名稱、帳號、加密過的密碼、電子信箱等等。而SQL是與資料庫溝通的語言，主要用來新增、搜尋、刪除以及管理資料庫中的龐大資料。</p>
+<h3 id="取得資料-pt1"><a href="#取得資料-pt1" class="headerlink" title="取得資料 pt1"></a>取得資料 pt1</h3><p>最簡單的SQL大概看起來像這樣</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span></span><br></pre></td></tr></table></figure>
+<p>users是我們要取出資料的資料表名稱，這段sql的意義就是：取得user table中所有資料</p>
+<h3 id="取得資料-pt2"><a href="#取得資料-pt2" class="headerlink" title="取得資料 pt2"></a>取得資料 pt2</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> username = <span class="string">'kitty'</span> <span class="keyword">AND</span> email = <span class="string">'kitty@gmail.com'</span><span class="string">"</span></span><br></pre></td></tr></table></figure>
+<p>上述是一段更為複雜的sql語句，主要的目的在於：從users table中，取得所有符合</p>
+<ol>
+<li>username 欄位的值為kitty的user, </li>
+<li>且email欄位為<a href="mailto:kitty@gmail.com">kitty@gmail.com</a></li>
+</ol>
+<p>的使用者資料<br>上述語句中我們可以看到更複雜的條件語句 - WHERE 和 AND</p>
+<h3 id="php-amp-sql-資料庫查詢"><a href="#php-amp-sql-資料庫查詢" class="headerlink" title="php &amp; sql - 資料庫查詢"></a>php &amp; sql - 資料庫查詢</h3><h4 id="mysqli-資料庫連接"><a href="#mysqli-資料庫連接" class="headerlink" title="mysqli_ 資料庫連接"></a>mysqli_ 資料庫連接</h4><p>範例: 建立連接, 使用query</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="comment">// 打開物件的暫存區</span></span><br><span class="line">  ob_start();</span><br><span class="line">	session_start();</span><br><span class="line"> <span class="comment">// 建立連線</span></span><br><span class="line">  <span class="comment">// server / default username / default password / mysql name</span></span><br><span class="line">$con = mysqli_connect(<span class="string">"localhost"</span>, <span class="string">"root"</span>, <span class="string">""</span>, <span class="string">"mysqlName"</span>);</span><br><span class="line"><span class="comment">//若連接失敗</span></span><br><span class="line"> <span class="keyword">if</span>(mysqli_connect_error()) &#123;</span><br><span class="line">    <span class="comment">//str . str  -&gt; 連接字串</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"Failed to connect:"</span> . mysqli_connect_error();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$dataQuery = mysqli_query($con, <span class="string">"SQL"</span>);</span><br></pre></td></tr></table></figure>
+<p>SQL為你想要下的sql指令, 套用前面的例子, 我們可以這樣寫</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$dataQuery = mysqli_query($con, <span class="string">"SELECT * FROM users WHERE username = 'kitty' AND email = 'kitty@gmail.com'"</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="輸出資料表中的資料"><a href="#輸出資料表中的資料" class="headerlink" title="輸出資料表中的資料"></a>輸出資料表中的資料</h4><p>將從資料庫撈出的資料的欄位印出來</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>($row = mysql_fetch_array($dataQuery)&#123;</span><br><span class="line"><span class="keyword">echo</span> $row[<span class="string">'columnName'</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/XiOysBy.png" alt=""><br>資料表會長這樣, 一排排(row)的, 上排的文字就是欄位(column)名稱</p>
+<h4 id="輸出字串與變數"><a href="#輸出字串與變數" class="headerlink" title="輸出字串與變數"></a>輸出字串與變數</h4><p>若要在字串中插入變數, 可使用{}來包住</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$variable = <span class="string">"a surprise!"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"this is a string with &#123;$variable&#125;"</span>;</span><br></pre></td></tr></table></figure>
+<p>在輸出資料到畫面上時會很好用</p>
 
         </div>
         
@@ -180,7 +199,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/CSS/" rel="tag">CSS</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                    <a class="has-link-grey -link" href="/tags/php/" rel="tag">php</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
                 </div>
             </div>
         </div>
@@ -197,17 +216,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/06/25/js-promise/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">javascript核心篇 - Promise</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/14/http-note/">
-                <span class="level-item">HTTP 學習筆記</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/30/use-svg-for-icon/">
+                <span class="level-item">使用SVG作為icon的方法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -317,22 +329,34 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#用法">
+        <a class="is-flex" href="#什麼是SQL">
         <span class="has-mr-6">1</span>
-        <span>用法</span>
+        <span>什麼是SQL ?</span>
         </a></li><li>
-        <a class="is-flex" href="#nth-of-type">
+        <a class="is-flex" href="#取得資料-pt1">
         <span class="has-mr-6">2</span>
-        <span>nth-of-type</span>
+        <span>取得資料 pt1</span>
         </a></li><li>
-        <a class="is-flex" href="#nth-last-of-type">
+        <a class="is-flex" href="#取得資料-pt2">
         <span class="has-mr-6">3</span>
-        <span>:nth-last-of-type</span>
+        <span>取得資料 pt2</span>
         </a></li><li>
-        <a class="is-flex" href="#nth-child">
+        <a class="is-flex" href="#php-amp-sql-資料庫查詢">
         <span class="has-mr-6">4</span>
-        <span>nth-child</span>
-        </a></li></ul>
+        <span>php & sql - 資料庫查詢</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#mysqli-資料庫連接">
+        <span class="has-mr-6">4.1</span>
+        <span>mysqli_ 資料庫連接</span>
+        </a></li><li>
+        <a class="is-flex" href="#輸出資料表中的資料">
+        <span class="has-mr-6">4.2</span>
+        <span>輸出資料表中的資料</span>
+        </a></li><li>
+        <a class="is-flex" href="#輸出字串與變數">
+        <span class="has-mr-6">4.3</span>
+        <span>輸出字串與變數</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -355,7 +379,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="CSS - nth pseudo selector" height="28">
+                    <img src="/images/logo.png" alt="菜鳥的php(part 3) ... 還有一點SQL" height="28">
                 
                 </a>
                 <p class="is-size-7">
