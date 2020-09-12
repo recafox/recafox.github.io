@@ -7,25 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Day 1 - 反轉字串 - Rita Ho</title>
+<title>成為前端工程師的三個月回顧 - Rita Ho</title>
 
 
-    <meta name="description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。 這系列就……持續到找到工作為止吧。">
+    <meta name="description" content="到職三個月了，是時候來面對一些逃避許久的問題，以及重新審視自己。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day 1 - 反轉字串">
-<meta property="og:url" content="http://yoursite.com/2020/05/18/daily-algo-1/index.html">
+<meta property="og:title" content="成為前端工程師的三個月回顧">
+<meta property="og:url" content="http://yoursite.com/2020/09/13/third-month-as-frontend-developer/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="好像差不多該開始更進一步了，買了一堂叫做The Coding Interview Bootcamp: Algorithms + Data Structures的課學習演算法。我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。 這系列就……持續到找到工作為止吧。">
+<meta property="og:description" content="到職三個月了，是時候來面對一些逃避許久的問題，以及重新審視自己。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-05-18-thumb.png">
-<meta property="article:published_time" content="2020-05-18T03:10:27.000Z">
-<meta property="article:modified_time" content="2020-05-23T06:49:30.737Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-09-12-thumb.png">
+<meta property="article:published_time" content="2020-09-12T16:41:16.000Z">
+<meta property="article:modified_time" content="2020-09-12T16:49:05.746Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="演算法">
+<meta property="article:tag" content="回顧">
+<meta property="article:tag" content="心情紀錄">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-05-18-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-09-12-thumb.png">
 
 
 
@@ -83,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Day 1 - 反轉字串" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="成為前端工程師的三個月回顧" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -133,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-05-18-thumb.png" alt="Day 1 - 反轉字串">
+            <img class="thumbnail" src="/images/2020-09-12-thumb.png" alt="成為前端工程師的三個月回顧">
         </span>
     </div>
     
@@ -141,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-18T03:10:27.000Z">2020-05-18</time>
+                <time class="level-item has-text-grey" datetime="2020-09-12T16:41:16.000Z">2020-09-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 432 個字)
+                    15 分鐘 閱讀文 (大約 2200 個字)
                 </span>
                 
                 
@@ -160,23 +159,50 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Day 1 - 反轉字串
+                成為前端工程師的三個月回顧
             
         </h1>
         <div class="content">
-            <p>好像差不多該開始更進一步了，買了一堂叫做<a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a>的課學習演算法。<br>我會先自己解過一次，再參考答案，這篇文章會記錄我的解法，若是我覺得其他解法有值得注意的地方，也許也會記錄在這裡。</p>
-<p>這系列就……持續到找到工作為止吧。</p>
+            <p>到職三個月了，是時候來面對一些逃避許久的問題，以及重新審視自己。</p>
 <a id="more"></a>
 
-<h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p>string reversal<br> — Directions<br> Given a string, return a new string with the reversed<br> order of characters<br> — Examples<br>   reverse(‘apple’) === ‘leppa’<br>   reverse(‘hello’) === ‘olleh’<br>   reverse(‘Greetings!’) === ‘!sgniteerG’<br>反轉字串。</p>
-<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><h4 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>思路：將字串中每個字拆成獨自的元素，回傳成一個陣列，接著套用陣列方法將這個陣列反轉，最後將這個反轉陣列中的元素連接成一個字串。</p>
-<h5 id="note"><a href="#note" class="headerlink" title="note"></a>note</h5><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">string.prototype.split</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">array.prototype.reverse</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join">array.prototype.join</a></p>
-<h4 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h4><p>credit to <a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">Stephen Grider</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> reversed = <span class="string">''</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">let</span> character <span class="keyword">of</span> str)&#123;</span><br><span class="line">       reversed = character + reversed;</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="keyword">return</span> reversed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思路：<br>使用<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">for of</a>來遍歷js中可被遍歷的元素（字串、陣列）。<br>將傳入的字串中所有的元素遍歷一遍，然後把字串中每個字加到reversed空字串中，每次累加都把原本的reversed字串加在尾巴。</p>
-<h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><p><a href="https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/">The Coding Interview Bootcamp: Algorithms + Data Structures</a></p>
+<h2 id="關於我"><a href="#關於我" class="headerlink" title="關於我"></a>關於我</h2><p>大學就讀外文，大五從國外交換回來時下定決心想成為前端工程師，從2019年開始跟隨六角學院的課程自學，在2020年的六月成為了前端工程師。這是我的第一份正職工作。</p>
+<p>公司使用的技術比較傳統，沒有使用任何現在流行的前端框架，主要是使用主管自己開發的框架搭配jQuery開發，css部分是使用Sass。開發團隊規模不大，後端一人，資深全端兩人（也就是我的兩位主管），前端一人（我啦），UI/UX一人，測試（兼客服）一人。比較特別的是除了兩位主管之外，後端、前端、以及UI都是自學技術後轉職的，因此我們部門的人還被笑說是不務正業的一群人。</p>
+<p>最近的工作項目都是在做界面更新，修bug，以及消化其他部門之前提過的要求。</p>
+<h2 id="回顧"><a href="#回顧" class="headerlink" title="回顧"></a>回顧</h2><p>就讓我用每周做retrospective meeting時主管常問的三個問題做回顧吧！</p>
+<h3 id="What-went-well"><a href="#What-went-well" class="headerlink" title="What went well ?"></a>What went well ?</h3><p><strong>1. 跟同事相處融洽</strong></p>
+<p>我們的開發團隊很小，因此合作會非常緊密。這時能夠誠實提出意見以及問題就會很重要。幸好我的同事們都很願意傾聽和討論，在我遇到瓶頸時也願意支持我、體諒我。我很感謝他們。</p>
+<p><strong>2. 每天都有堅持學習</strong></p>
+<p>這三個月無論是平日還是假日，我每天都會留兩小時學習，或是閱讀。不過學習的成果有待檢討，這個我會放在下面的問題中。</p>
+<p><strong>3. 開始思考自己的Coding Style</strong></p>
+<p>由於我的工作都在維護既有的產品，每天都要面對前人留下來的程式碼，常常會因為程式碼太過繁雜而暈頭轉向，卡關很久。也讓我開始思考起：「我想要留給後人什麼樣的程式碼？」這個問題，連帶地開始注意起各種不同的coding style。在寫作時也會更加留意可讀性的問題，這是以前自己寫project時不會注意到的面向。</p>
+<p><strong>4. 維持了每周寫文章的習慣</strong></p>
+<p>說來真的很不可思議，我居然已經堅持每周寫文半年以上了！這絕對是去年的我無法想像的。雖然寫的文章都很發散，內容也不深，這也是我之後想要改進的地方。</p>
+<h3 id="What-did-not-go-well"><a href="#What-did-not-go-well" class="headerlink" title="What did not go well ?"></a>What did not go well ?</h3><p><strong>1. 學的多而不精</strong></p>
+<p>這算是我這三個月來最深的感受。上班之後不像待業的時候能夠全職學習，每天都能花六到八小時專注在學習上，上班之後由於時間和體力上的限制，很容易分心或偷懶，讓學習效果打折扣。另外，雖然我有規劃自己的學習目標和地圖，但是在各大求職網站了解產業現況後，發現跟自己的學習路徑有所落差，是否代表我的規畫走錯方向了呢？這是我最近在反省的問題，還有，即使是根據自己安排的學習路徑走，卻發現我對某些技術並不是很感興趣，導致學習時興致缺缺，成效自然也不彰。</p>
+<p><strong>2. 切版技術不夠熟練</strong></p>
+<p>上班之後是我第一次接到比較複雜的設計稿，光是閱讀就花了很多時間。在開始切版時也因為要顧及現有的架構，做的綁手綁腳的，在規劃CSS上也做得很不好，寫了很多可怕的巢狀架構。最可怕的是會因為達不到UI的要求而脾氣暴躁，效率不好，回家加班等等……總之衍生了很多問題。</p>
+<p><strong>3. 估任務工時不夠準確</strong></p>
+<p>這一點我也跟主管討論過，他們說至少要半年以上才會估的準。現在的我為以防加班都會估的很鬆……要改一個icon? 先給我六小時吧！</p>
+<p><strong>4. 對工作有顧慮</strong></p>
+<p>其實我在面試的時候就已經知道這間公司使用的技術並不符合我的期待了。我最希望能使用到的其實是Vue，也很希望公司能夠有一個完整的前端團隊，以及大家code review的環節，但是我的主管們其實都是偏向後端，而且公務都很繁忙，沒有時間可以跟我討論程式碼的品質（但他們都會盡力解答我的問題，我真的真的很感激，彷彿得到兩位老師）。<br>由於都是一個人單幹，我常常對自己感到很迷惘，我真的能比之前的人表現得更好嗎？會不會我其實一點都沒有進步，而且還更糟？我前進的方向是對的嗎？每天每天我都會問自己這些問題，也曾經開始考慮過要找更符合我期待的公司……</p>
+<h3 id="What-can-be-improved"><a href="#What-can-be-improved" class="headerlink" title="What can be improved?"></a>What can be improved?</h3><p><strong>1. 重新建立學習習慣和目標</strong></p>
+<p>前面的問題有提到，我認為自己學習的方向有誤，並且對成效不太滿意。我目前調整之後，想要用以下方式解決：</p>
+<ul>
+<li><p>設定自己一年後想做的工作岡位，查詢該工作需要的技能<br>我列出幾家我夢想的公司，以及感興趣的工作，統計他們的職缺要求，列出了新的學習主題。</p>
+</li>
+<li><p>重新評估每周的學習時間以及學習重點<br>比起之前發散的學習方式，這次我想採用高強度的方式，在列出學習主題後，每個月朝一個主題衝刺，在學習一個主題時，就心無旁鶩的學習它。</p>
+</li>
+<li><p>定期回顧學習成果<br>根據新訂定的學習方式，我計劃每個月回顧一次自己學習的成果，作為檢討和調整學習進度的參考。</p>
+</li>
+<li><p>學的快樂<br>在學習的時候，其實自我的覺察相當重要，若是覺得無聊了、沒興趣了，一定要誠實面對自己，不然接下來的自我懷疑會很痛苦。</p>
+</li>
+</ul>
+<p><strong>2. 累積Side project</strong><br>這幾個月都沒有做出像樣的作品，真的讓我挺沮喪的。這個月開始期許自己每周都能投入時間做side project（無論規模）。其實我滿喜歡做Side project的，自由自在寫code的感覺很好，很適合調劑身心靈。總之，接下來希望每個月都能產出作品。</p>
+<p><strong>3. 更有系統地寫文章</strong><br>為了拿到六角的金角獎，我真的是豁出去了（笑）。每周都會逼自己擠出一點文章，但是其實我對文章的品質很不滿意，每周都沒有仔細校稿就發布了，而且主題也很凌亂。由於接下來會把每個月的學習目標固定下來，寫文章時應該也能更有連貫性了（吧？），總之我會盡力改善這個問題。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>說真的，這三個月我覺得自己停滯不前，一無所成，常常在跟挫折感與自我質疑對抗，但是滿足、快樂也很真實，讓我能在心情灰暗的時候，也能繼續前進。</p>
+<p>我最常鼓勵自己的一句話就是：「大神們看起來神，是因為他們已經有好幾年經驗的累積。」在遇到挫折時這樣想就能讓我稍微舒服一點，即使是我這種菜鳥，只要不斷前進，也就走在成為大神的路上。</p>
+<p>總之，三個月就這樣過去了！感謝我自己的努力！等到六個月的時候，我也會做一個回顧，希望到那個時候，我能稍微對自己滿意點了。</p>
 
         </div>
         
@@ -184,7 +210,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>, <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
+                    <a class="has-link-grey -link" href="/tags/%E5%9B%9E%E9%A1%A7/" rel="tag">回顧</a>, <a class="has-link-grey -link" href="/tags/%E5%BF%83%E6%83%85%E7%B4%80%E9%8C%84/" rel="tag">心情紀錄</a>
                 </div>
             </div>
         </div>
@@ -201,17 +227,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/19/daily-algo-2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Day 2 - 檢查回文</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/13/vuex-note/">
-                <span class="level-item">Vuex官方文檔閱讀筆記</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/06/php-and-sql-for-newbie/">
+                <span class="level-item">菜鳥的php(part 3) ... 還有一點SQL</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -321,30 +340,30 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#題目">
+        <a class="is-flex" href="#關於我">
         <span class="has-mr-6">1</span>
-        <span>題目</span>
+        <span>關於我</span>
         </a></li><li>
-        <a class="is-flex" href="#解法">
+        <a class="is-flex" href="#回顧">
         <span class="has-mr-6">2</span>
-        <span>解法</span>
+        <span>回顧</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#我的解法">
+        <a class="is-flex" href="#What-went-well">
         <span class="has-mr-6">2.1</span>
-        <span>我的解法</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#note">
-        <span class="has-mr-6">2.1.1</span>
-        <span>note</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#其他解法">
+        <span>What went well ?</span>
+        </a></li><li>
+        <a class="is-flex" href="#What-did-not-go-well">
         <span class="has-mr-6">2.2</span>
-        <span>其他解法</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#參考">
-        <span class="has-mr-6">2.2.1</span>
-        <span>參考</span>
-        </a></li></ul></li></ul></li></ul>
+        <span>What did not go well ?</span>
+        </a></li><li>
+        <a class="is-flex" href="#What-can-be-improved">
+        <span class="has-mr-6">2.3</span>
+        <span>What can be improved?</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#總結">
+        <span class="has-mr-6">3</span>
+        <span>總結</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -367,7 +386,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Day 1 - 反轉字串" height="28">
+                    <img src="/images/logo.png" alt="成為前端工程師的三個月回顧" height="28">
                 
                 </a>
                 <p class="is-size-7">
