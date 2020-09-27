@@ -7,24 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>正規表達式 - 符號&amp;常用方法 - Rita Ho</title>
+<title>Hello webpack! Plugins - Rita Ho</title>
 
 
-    <meta name="description" content="最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考MDN來學習一下，放在這裡讓自己以後都可以查。">
+    <meta name="description" content="plugin(插件)是替webpack擴充功能的函式庫。loaders可以讓我們引入不同類型的檔案, plugin是讓我們完成功能性的擴充或優化, 舉例來說, 有支叫做uglify的plugin可以進一步壓縮和最小化打包好的js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正規表達式 - 符號&amp;常用方法">
-<meta property="og:url" content="http://yoursite.com/2020/03/19/regular-expression/index.html">
+<meta property="og:title" content="Hello webpack! Plugins">
+<meta property="og:url" content="http://yoursite.com/2020/09/27/hello-webpack-plugins/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考MDN來學習一下，放在這裡讓自己以後都可以查。">
+<meta property="og:description" content="plugin(插件)是替webpack擴充功能的函式庫。loaders可以讓我們引入不同類型的檔案, plugin是讓我們完成功能性的擴充或優化, 舉例來說, 有支叫做uglify的plugin可以進一步壓縮和最小化打包好的js">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-03-19-thumb.png">
-<meta property="article:published_time" content="2020-03-19T06:51:28.000Z">
-<meta property="article:modified_time" content="2020-03-19T07:10:46.308Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-09-27-thumb.png">
+<meta property="article:published_time" content="2020-09-27T07:06:30.000Z">
+<meta property="article:modified_time" content="2020-09-27T07:26:56.514Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="六角鼠年全馬挑戰賽">
-<meta property="article:tag" content="正規表達式">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-03-19-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-09-27-thumb.png">
 
 
 
@@ -82,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="正規表達式 - 符號&amp;常用方法" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="Hello webpack! Plugins" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +131,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-03-19-thumb.png" alt="正規表達式 - 符號&amp;常用方法">
+            <img class="thumbnail" src="/images/2020-09-27-thumb.png" alt="Hello webpack! Plugins">
         </span>
     </div>
     
@@ -140,7 +139,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-19T06:51:28.000Z">2020-03-19</time>
+                <time class="level-item has-text-grey" datetime="2020-09-27T07:06:30.000Z">2020-09-27</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
@@ -150,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分鐘 閱讀文 (大約 829 個字)
+                    4 分鐘 閱讀文 (大約 557 個字)
                 </span>
                 
                 
@@ -159,130 +158,33 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                正規表達式 - 符號&amp;常用方法
+                Hello webpack! Plugins
             
         </h1>
         <div class="content">
-            <p>最近發現自己還滿常用到正規表達式的，每次都是上網找然後複製貼上，因為看起來像亂碼一樣每次看都覺得頭痛，今天就參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Regular_Expressions">MDN</a>來學習一下，放在這裡讓自己以後都可以查。</p>
+            <p>plugin(插件)是替webpack擴充功能的函式庫。<br>loaders可以讓我們引入不同類型的檔案, plugin是讓我們完成功能性的擴充或優化, 舉例來說, 有支叫做uglify的plugin可以進一步壓縮和最小化打包好的js</p>
 <a id="more"></a>
 
-<h3 id="寫法"><a href="#寫法" class="headerlink" title="寫法"></a>寫法</h3><p><code>const regExp = / regExp /</code><br>用兩個斜線包住</p>
-<p>或是使用正規表達式的建構函式</p>
-<p><code>const regExp = new RegExp(&quot;regexp&quot;)</code></p>
-<h3 id="簡易模式"><a href="#簡易模式" class="headerlink" title="簡易模式"></a>簡易模式</h3><p>找到的直接匹配所構成的，也就是結果會完全匹配要搜尋的字串</p>
-<p>例：尋找abc<br>“Let’s sing abc song!” 　“grab crab”</p>
-<p>要尋找”abc”時，第一個句子會匹配成功，因為在這個句子中有abc，沒有斷開也沒有順序不同，第二句就不會匹配成功，　因為在這裡雖然也包含abc三個字母, 但a和b被一個空白字元分開了 (ab c)</p>
-<h3 id="符號"><a href="#符號" class="headerlink" title="符號"></a>符號</h3><p>若是我們需要更複雜的搜索條件，例如：我們想要確認使用者輸入的email是否符合格式，或是搜尋一個字串中所有包含b的單字，就必須使用一些特殊符號</p>
-<table>
-<thead>
-<tr>
-<th align="left">符號</th>
-<th align="left">解釋</th>
-<th align="left">例子</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\</td>
-<td align="left">反斜線會搭配一些字母用在正規表達式的一些符號中, 但是當你想要搜尋的字剛好屬於正規表達式的特殊符號時, 可以將反斜線放在特殊符號前面, 讓它不會被視作特殊符號</td>
-<td align="left">a* 表示一個字串中包含0至多個a, 但a*僅代表字面意義上的a* (米字號因為反斜線而被以字面意義解釋了)</td>
-</tr>
-<tr>
-<td align="left">a*</td>
-<td align="left">表示一個字串中包含0至多個a，即使沒有a這個字元也會匹配</td>
-<td align="left">(/a*/).test(‘bbbb’) =&gt; true</td>
-</tr>
-<tr>
-<td align="left">a+</td>
-<td align="left">表示一個字串中包含1至多個a</td>
-<td align="left">(/a+/).test(‘bbbb’) =&gt;false</td>
-</tr>
-<tr>
-<td align="left">^a</td>
-<td align="left">匹配開頭符合a的字串</td>
-<td align="left">(/^a/).test(“ant”)　=&gt; true</td>
-</tr>
-<tr>
-<td align="left">a$</td>
-<td align="left">匹配結尾符合a的字串</td>
-<td align="left">(/a$/).test(‘tesla’)  =&gt;true</td>
-</tr>
-<tr>
-<td align="left">a{num}</td>
-<td align="left">尋找連續出現num次的a, num為正整數, 要注意若是a出現次數大於num, 還是會算做true</td>
-<td align="left">(/a{2}/).test(“area”) =&gt; false  (/a{2}/).test(“aah”) =&gt;true (/a{2}/).test(“aaaaah”) =&gt;true</td>
-</tr>
-<tr>
-<td align="left">a{min, max}</td>
-<td align="left">尋找連續出現至少min次, 至多max次的a, 跟上一條一樣的是, 要注意若是a出現次數大於max, 還是會算做true</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">[a-z]</td>
-<td align="left">尋找界在a~z之間的所有字母</td>
-<td align="left">(/[a-z]/).test(‘abc’) =&gt;true  (/[a-z]/).test(‘ABC’)=&gt; false</td>
-</tr>
-<tr>
-<td align="left">\ba</td>
-<td align="left">若斜線與b搭在一起時, 放在a前面時, 表示a前面沒有別的字元, 也就是說以a開頭, 若是放在a的後面, 表示a的後面沒有別的字元, 也就是以a結尾</td>
-<td align="left">(/\ba/).test(‘bag’) =&gt; false   (/\ba/).test(‘apple’) =&gt; true  (/a\b/).test(‘apple’) =&gt; false</td>
-</tr>
-<tr>
-<td align="left">\d</td>
-<td align="left">數字, 等同[0-9]</td>
-<td align="left">(/\d/).test(‘123’) =&gt;true</td>
-</tr>
-<tr>
-<td align="left">\D</td>
-<td align="left">非數字</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">\w</td>
-<td align="left">數字字母和底線</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">\W</td>
-<td align="left">非數字字母和底線, 例如: %, *這些符號</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h3 id="Flags-模式"><a href="#Flags-模式" class="headerlink" title="Flags 模式"></a>Flags 模式</h3><table>
-<thead>
-<tr>
-<th align="left">模式</th>
-<th align="left">解釋</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">/reg/g</td>
-<td align="left">g代表global search, 表示搜索指定字串中的全部字元</td>
-</tr>
-<tr>
-<td align="left">/reg/i</td>
-<td align="left">insensitive search 忽略大小寫 (/abc/i).test(‘ABC’) =&gt;true</td>
-</tr>
-</tbody></table>
-<h3 id="常見用法"><a href="#常見用法" class="headerlink" title="常見用法"></a>常見用法</h3><table>
-<thead>
-<tr>
-<th align="left">說明</th>
-<th align="left">表達式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">只能輸入文字或數字</td>
-<td align="left">/^[a-zA-Z0-9]*$/</td>
-</tr>
-<tr>
-<td align="left">只能輸入文字</td>
-<td align="left">/^[a-zA-Z]*$/</td>
-</tr>
-<tr>
-<td align="left">只能有數字</td>
-<td align="left">/^[0-9]*$/</td>
-</tr>
-</tbody></table>
+
+<h3 id="如何安裝"><a href="#如何安裝" class="headerlink" title="如何安裝?"></a>如何安裝?</h3><p>plugin的安裝流程大同小異,第一步是在config檔中使用require引入, 第二步是在plugins區塊中使用, 最後, 使用<code>npm install plugin-name --save-dev</code>安裝</p>
+<h3 id="壓縮js-Terser"><a href="#壓縮js-Terser" class="headerlink" title="壓縮js - Terser"></a>壓縮js - Terser</h3><p>網頁程式碼長度越短, 載入的速度就越快, 達到更好的使用者體驗, 因此我們要盡可能精簡程式碼</p>
+<p>目前的bundle.js是17kb<br><img src="https://i.imgur.com/k63FXu5.png" alt=""></p>
+<p>引入terser webpack plugin幫我們壓縮</p>
+<p>webpack.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增一個plugins屬性, 接收的值為陣列</span></span><br><span class="line"><span class="comment">// 現在config已經有entry, output, mode, module, plugins區塊</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在檔案的開頭先require terser</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TerserPlugin = <span class="built_in">require</span>(<span class="string">'terser-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// plugin 陣列</span></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> TerserPlugin(),</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<p>安裝plugin時記得加上<code>--save-dev</code>, 因為只會在開發環境中用到</p>
+<p>安裝完且使用之後, bunde.js的確變小了!</p>
+<p><img src="https://i.imgur.com/uyzHvp5.png" alt=""></p>
+<h3 id="分離css"><a href="#分離css" class="headerlink" title="分離css"></a>分離css</h3><p>現在我們是使用js載入css, 並使用loader幫我們編譯, 編譯完後不會有一支css幫我們管理所有樣式, 所有程式碼和樣式都在bundle.js中, 隨著專案變得複雜, 樣式越來越多, bundle.js就會變得太肥。<br>把css抽出來做為一支獨立的檔案管理也許是個解決方法, 這樣我們的bundle.js就不會變的臃腫, 且可以同時載入多支檔案, 減少載入時間</p>
+<p>使用MiniCssExtractPlugin</p>
+<p><a href="https://webpack.js.org/plugins/mini-css-extract-plugin/">參考</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>);</span><br><span class="line"></span><br><span class="line">...<span class="comment">//其他設定</span></span><br><span class="line"></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> TerserPlugin(),</span><br><span class="line">    <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">		<span class="comment">//可以指定產生的檔名</span></span><br><span class="line">      filename: <span class="string">'style.css'</span>,</span><br><span class="line"></span><br><span class="line">    &#125;),</span><br><span class="line"></span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入之後, 要對loader做一些調整</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="comment">// 使用MiniCssExtractPlugin的loader取代原本style-loader</span></span><br><span class="line">          MiniCssExtractPlugin.loader,</span><br><span class="line">          <span class="string">'css-loader'</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="comment">// sass也能使用</span></span><br><span class="line">          MiniCssExtractPlugin.loader,</span><br><span class="line">          <span class="string">'css-loader'</span>,</span><br><span class="line">          <span class="string">'sass-loader'</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      </span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>設定完再build之後, dist底下會新增一支style.css</p>
+<p>要記得在index.html中引入這支css</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Webpack tutorial!!!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	引入打包好的css</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./dist/style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣就能正確呈現了!</p>
 
         </div>
         
@@ -290,7 +192,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>, <a class="has-link-grey -link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E9%81%94%E5%BC%8F/" rel="tag">正規表達式</a>
+                    <a class="has-link-grey -link" href="/tags/Webpack/" rel="tag">Webpack</a>
                 </div>
             </div>
         </div>
@@ -307,17 +209,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/26/js-parentheses/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">JavaScript中的括號問題</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/10/hex-post/">
-                <span class="level-item">Hex post 開發心得</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/20/vscode-hotkeys/">
+                <span class="level-item">VS code 常用快捷鍵 (for windows)</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -427,25 +322,17 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#寫法">
+        <a class="is-flex" href="#如何安裝">
         <span class="has-mr-6">1</span>
-        <span>寫法</span>
+        <span>如何安裝?</span>
         </a></li><li>
-        <a class="is-flex" href="#簡易模式">
+        <a class="is-flex" href="#壓縮js-Terser">
         <span class="has-mr-6">2</span>
-        <span>簡易模式</span>
+        <span>壓縮js - Terser</span>
         </a></li><li>
-        <a class="is-flex" href="#符號">
+        <a class="is-flex" href="#分離css">
         <span class="has-mr-6">3</span>
-        <span>符號</span>
-        </a></li><li>
-        <a class="is-flex" href="#Flags-模式">
-        <span class="has-mr-6">4</span>
-        <span>Flags 模式</span>
-        </a></li><li>
-        <a class="is-flex" href="#常見用法">
-        <span class="has-mr-6">5</span>
-        <span>常見用法</span>
+        <span>分離css</span>
         </a></li></ul>
             </div>
         </div>
@@ -469,7 +356,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="正規表達式 - 符號&amp;常用方法" height="28">
+                    <img src="/images/logo.png" alt="Hello webpack! Plugins" height="28">
                 
                 </a>
                 <p class="is-size-7">
