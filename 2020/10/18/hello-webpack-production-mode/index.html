@@ -7,24 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>JS - 計時器與happy path - Rita Ho</title>
+<title>Hello Webpack! 開發模式 - Rita Ho</title>
 
 
-    <meta name="description" content="計時器demo 雖然已經用Vue寫過一些小專案，但我知道自己原生JS的知識其實並不算足夠，因此趁著著手六角Vue最終作業前的一小段時間，開始上之前買的課程JavaScript Bootcamp，這堂課的後半段都是實作項目，其中有一項是製作一個簡單的計時器。原理並不複雜，在不斷驗證和調整的過程中，我想到一個詞－happy path。">
+    <meta name="description" content="production是客戶端看到的完整版, 因此在production模式下我們會想要網站運行的速度越快越好, 連帶的我們打包出的bundle也應該越小越好development模式是工程師端的開發中產品, development時由於除錯需要, 我們會想看到更多額外訊息, 速度則不是重點 在這兩種開發情境下, 需要的webpack設定就會不同">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS - 計時器與happy path">
-<meta property="og:url" content="http://yoursite.com/2020/03/07/timer-and-happy-path/index.html">
+<meta property="og:title" content="Hello Webpack! 開發模式">
+<meta property="og:url" content="http://yoursite.com/2020/10/18/hello-webpack-production-mode/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="計時器demo 雖然已經用Vue寫過一些小專案，但我知道自己原生JS的知識其實並不算足夠，因此趁著著手六角Vue最終作業前的一小段時間，開始上之前買的課程JavaScript Bootcamp，這堂課的後半段都是實作項目，其中有一項是製作一個簡單的計時器。原理並不複雜，在不斷驗證和調整的過程中，我想到一個詞－happy path。">
+<meta property="og:description" content="production是客戶端看到的完整版, 因此在production模式下我們會想要網站運行的速度越快越好, 連帶的我們打包出的bundle也應該越小越好development模式是工程師端的開發中產品, development時由於除錯需要, 我們會想看到更多額外訊息, 速度則不是重點 在這兩種開發情境下, 需要的webpack設定就會不同">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-03-07-thumb.png">
-<meta property="article:published_time" content="2020-03-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-10T04:57:58.927Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-10-18-thumb.png">
+<meta property="article:published_time" content="2020-10-18T12:45:22.000Z">
+<meta property="article:modified_time" content="2020-10-18T12:48:12.095Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="作品心得">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-03-07-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-10-18-thumb.png">
 
 
 
@@ -82,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="JS - 計時器與happy path" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="Hello Webpack! 開發模式" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -132,7 +131,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-03-07-thumb.png" alt="JS - 計時器與happy path">
+            <img class="thumbnail" src="/images/2020-10-18-thumb.png" alt="Hello Webpack! 開發模式">
         </span>
     </div>
     
@@ -140,17 +139,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-06T16:00:00.000Z">2020-03-07</time>
+                <time class="level-item has-text-grey" datetime="2020-10-18T12:45:22.000Z">2020-10-18</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分鐘 閱讀文 (大約 1317 個字)
+                    4 分鐘 閱讀文 (大約 571 個字)
                 </span>
                 
                 
@@ -159,52 +158,39 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                JS - 計時器與happy path
+                Hello Webpack! 開發模式
             
         </h1>
         <div class="content">
-            <p><a href="https://recafox.github.io/js-timer/">計時器demo</a></p>
-<p>雖然已經用Vue寫過一些小專案，但我知道自己原生JS的知識其實並不算足夠，因此趁著著手六角Vue最終作業前的一小段時間，開始上之前買的課程<a href="https://www.udemy.com/course/javascript-beginners-complete-tutorial/">JavaScript Bootcamp</a>，這堂課的後半段都是實作項目，其中有一項是製作一個簡單的計時器。原理並不複雜，在不斷驗證和調整的過程中，我想到一個詞－happy path。</p>
+            <p>production是客戶端看到的完整版, 因此在production模式下我們會想要網站運行的速度越快越好, 連帶的我們打包出的bundle也應該越小越好<br>development模式是工程師端的開發中產品, development時由於除錯需要, 我們會想看到更多額外訊息, 速度則不是重點</p>
+<p>在這兩種開發情境下, 需要的webpack設定就會不同</p>
 <a id="more"></a>
 
-<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>課程中的原始碼可以看這裡 =&gt; <a href="https://codepen.io/ritatari/pen/YzXrmjb">codepen</a><br>我個人的原始碼可以看這裡 =&gt; <a href="https://github.com/recafox/js-timer">github</a></p>
-<p><img src="/images/2020-03-07-01.png" alt="計時器成果圖"></p>
-<p>課程中的成品功能非常單純：使用者可以點擊中間的輸入框，輸入要設定的時間，按下開始鍵開始計時，按下暫停鍵暫停。</p>
-<p>不過有以下幾個問題：</p>
-<ol>
-<li>計時到一半按下暫停時，外圍的邊框就會重新來過，而不是從停下的地方開始。</li>
-<li>沒有reset功能。</li>
-<li>只能計算秒數。</li>
-</ol>
-<p>本來想說只是個小作品就不管那麼多了，但想一想這些問題不解決心裡會很煩，就手賤的打開了VSCODE…..<em>被迫捲入精神時光屋….</em></p>
-<h3 id="什麼是Happy-path-滿意路徑-？"><a href="#什麼是Happy-path-滿意路徑-？" class="headerlink" title="什麼是Happy path (滿意路徑)？"></a>什麼是Happy path (滿意路徑)？</h3><p>根據<a href="https://en.wikipedia.org/wiki/Happy_path">維基</a>，所謂的滿意路徑就是你在設計一個功能時預設使用者會使用的方式，而不考慮任何極端或錯誤的狀況。以這個計時器來說，happy path可以是：</p>
-<p>使用者會輸入數字 =&gt; 這些數字就會成為秒數／分鐘 =&gt; 使用者按下開始，計時器開始倒數 =&gt; 計時器在倒數時邊框會隨著遞減 =&gt; 邊框跟著時間一起歸零。</p>
-<p>而既然有happy path，相反的就有unhappy path。</p>
-<h3 id="unhappy-path-不滿意路徑"><a href="#unhappy-path-不滿意路徑" class="headerlink" title="unhappy path (不滿意路徑)"></a>unhappy path (不滿意路徑)</h3><p>一個計時器能夠有什麼好unhappy的？</p>
-<p><img src="/images/2020-03-07-01.png" alt="原版計時器"></p>
-<p>以原版計時器來說，unhappy path可以有以下幾個：</p>
-<ol>
-<li>使用者輸入非數字（文字／符號） =&gt; 計時器產生NaN</li>
-<li>使用者輸入小數點 =&gt; 在運作上沒什麼問題，可是這好像太過極端</li>
-<li>使用者在按下開始後，又誤按下開始 =&gt; 計時器的倒數莫名的加速</li>
-<li>使用者在倒數開始後，沒有按下暫停就又直接編輯輸入框　</li>
-</ol>
-<h3 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h3><p><img src="/images/2020-03-07-03.png" alt="(左)修正後  (右)原版"><br>結合一開始提到的缺點，並考慮到不滿意路徑，我作了一些修正。</p>
-<ol>
-<li>限制使用者輸入</li>
-</ol>
-<p>這是一個很直觀的解法，就是從一開始就解決使用者可能亂輸入的問題。為了解決可能的NaN問題，我使用正則表達式禁止使用者輸入數字以外的字元（包括小數點），另外，由於我的版本新增分鐘，因此也在JS中限定輸入的邊界：若使用者輸入超過60秒，會自動轉為60秒。另外，若使用者沒有輸入值，或是輸入負數，會自動轉為0，避免任何不想要的值。</p>
-<p><em>其實我一開始有考慮改用select，像ios的計時器一樣，但我總覺得直接輸入有一種說不出來的魅力……？</em></p>
-<ol start="2">
-<li>開始計時後，封鎖一些按鈕</li>
-</ol>
-<p>計時開始後，我將開始鈕、重設鈕、時間輸入框這些我不希望使用者亂碰的區域都設為<code>disabled</code>，以避免任何因前述原因導致的錯誤。主動限定使用者在計時開始後只能按下暫停。</p>
-<ol start="3">
-<li>新增變數以及輸入框監測</li>
-</ol>
-<p>在原版中只使用了一個變數來儲存時間，導致了計時器倒數中若按下暫停，再按下開始時邊框的錯誤。這個問題困擾我最久，最後的解法是：我使用兩個變數，一個儲存設定的時間，一個儲存剩下的時間。另外，不管有沒有按下重設，使用者編輯輸入框時，設定的時間都會重新計算。主要的目標就是：讓整個流程變得更<strong>嚴謹</strong>。</p>
-<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>我認為，<strong>嚴謹的定義每個流程</strong>，是解決不滿意路徑時的中心思想，在什麼時機，使用者要做什麼，這個「什麼」是否有一個清楚的答案？有了答案，才會知道錯誤是什麼。不過，在開始動手的時候我肯定是沒有想到這麼多的，最開始時我也只是想新增一些功能而已，這些都是不斷驗證不斷校正得出的理論。</p>
-<p>我滿喜歡這堂課的，接下來還有很多實作項目，超級期待！</p>
+<h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><p>webpack設定檔中的mode選項可以滿足我們根據不同開發情境設定webpack的需要</p>
+<p>webpack.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode: <span class="string">'none'</span>,</span><br></pre></td></tr></table></figure>
+
+<p>mode有三種選項, none, production和development, 根據不同選項webpack會幫我們採用不同plugin</p>
+<p>看<a href="https://webpack.js.org/configuration/mode/">這裡</a></p>
+<p>process.env.NODE_ENV 是一個webpack幫我們設定的全域變數, 對應的就是mode的值</p>
+<p>development和production模式下, 扔的錯誤訊息會不一樣</p>
+<p>我在index.js中呼叫一個無中生有的函式 - methodNotExist();</p>
+<p>production<br><img src="https://i.imgur.com/uXSgumM.png" alt=""><br>production會根據程式碼在打包好的bundle的位置來扔錯, 由於程式碼都混在一起了很難知道到底哪裡出錯</p>
+<p>development<br><img src="https://i.imgur.com/qApqAM3.png" alt=""><br>development則是根據打包前的位置扔錯, 也因此更好除錯</p>
+<h3 id="如何自動切換模式"><a href="#如何自動切換模式" class="headerlink" title="如何自動切換模式?"></a>如何自動切換模式?</h3><p>可以建立兩個config file, 一個給development一個給production<br>webpack.production.config.js</p>
+<p><img src="https://i.imgur.com/lZ7Fjlb.png" alt=""></p>
+<p>還要在npm中新增腳本, 好執行不同模式的打包</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",</span><br><span class="line"><span class="comment">// production mode =&gt; 套用對應的設定檔</span></span><br><span class="line"><span class="comment">// npm run build</span></span><br><span class="line">  "build": "webpack --config webpack.production.config.js",</span><br><span class="line"><span class="comment">// development mode</span></span><br><span class="line"><span class="comment">// npm run dev</span></span><br><span class="line">  "dev": "webpack --config webpack.dev.config.js"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack dev server"></a>webpack dev server</h3><p>在開發模式下我們會希望打包的時間越少越好, 除錯和更新才不會太耗時間, 最好能夠即寫即看, 甚至不用打包</p>
+<p>安裝webpack dev server<br><code>npm install webpack-dev-server --save-dev</code></p>
+<p>在dev.config.js中新增devserver區塊<br>webpack.dev.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> devServer: &#123;</span><br><span class="line"><span class="comment">// output的絕對路徑</span></span><br><span class="line">   contentBase: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">   index: <span class="string">'index.html'</span>,</span><br><span class="line">	<span class="comment">// 要運行程式碼的port</span></span><br><span class="line">	<span class="comment">// http://localhost:9000</span></span><br><span class="line">   port: <span class="number">9000</span>,</span><br><span class="line"></span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>修改npm腳本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",</span><br><span class="line">  "build": "webpack --config webpack.production.config.js",</span><br><span class="line"><span class="comment">// 由dev-server來運行                                     //熱更新</span></span><br><span class="line">  "dev": "webpack-dev-server --config webpack.dev.config.js --hot"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>熱更新的意思就是即改即看, 不需要重新build</p>
 
         </div>
         
@@ -212,7 +198,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E4%BD%9C%E5%93%81%E5%BF%83%E5%BE%97/" rel="tag">作品心得</a>
+                    <a class="has-link-grey -link" href="/tags/Webpack/" rel="tag">Webpack</a>
                 </div>
             </div>
         </div>
@@ -229,17 +215,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/10/hex-post/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hex post 開發心得</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/02/sort/">
-                <span class="level-item">JS - sort以及演算法</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/10/11/how-to-name-variables-in-sass/">
+                <span class="level-item">Sass的變數名稱</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -349,25 +328,17 @@
                     文章目錄
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#起因">
+        <a class="is-flex" href="#mode">
         <span class="has-mr-6">1</span>
-        <span>起因</span>
+        <span>mode</span>
         </a></li><li>
-        <a class="is-flex" href="#什麼是Happy-path-滿意路徑-？">
+        <a class="is-flex" href="#如何自動切換模式">
         <span class="has-mr-6">2</span>
-        <span>什麼是Happy path (滿意路徑)？</span>
+        <span>如何自動切換模式?</span>
         </a></li><li>
-        <a class="is-flex" href="#unhappy-path-不滿意路徑">
+        <a class="is-flex" href="#webpack-dev-server">
         <span class="has-mr-6">3</span>
-        <span>unhappy path (不滿意路徑)</span>
-        </a></li><li>
-        <a class="is-flex" href="#解決">
-        <span class="has-mr-6">4</span>
-        <span>解決</span>
-        </a></li><li>
-        <a class="is-flex" href="#感想">
-        <span class="has-mr-6">5</span>
-        <span>感想</span>
+        <span>webpack dev server</span>
         </a></li></ul>
             </div>
         </div>
@@ -391,7 +362,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="JS - 計時器與happy path" height="28">
+                    <img src="/images/logo.png" alt="Hello Webpack! 開發模式" height="28">
                 
                 </a>
                 <p class="is-size-7">
