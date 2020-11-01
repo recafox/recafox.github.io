@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>FP - Pure functions, side effects - Rita Ho</title>
+
+
+    <meta name="description" content="紀錄一下上課時學習到的函式導向的一些基礎觀念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FP - Pure functions, side effects">
+<meta property="og:url" content="http://yoursite.com/2020/11/01/fp-pure-function-and-side-effect/index.html">
+<meta property="og:site_name" content="Rita Ho">
+<meta property="og:description" content="紀錄一下上課時學習到的函式導向的一些基礎觀念。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/2020-11-01-thumb.png">
+<meta property="article:published_time" content="2020-11-01T12:38:17.000Z">
+<meta property="article:modified_time" content="2020-11-01T12:44:32.876Z">
+<meta property="article:author" content="Rita Ho">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
+<meta property="article:tag" content="Functional programming">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-11-01-thumb.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="FP - Pure functions, side effects" height="28" style='max-height: 3rem'>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2020-11-01-thumb.png" alt="FP - Pure functions, side effects">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-11-01T12:38:17.000Z">2020-11-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分鐘 閱讀文 (大約 1201 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                FP - Pure functions, side effects
+            
+        </h1>
+        <div class="content">
+            <p>紀錄一下上課時學習到的函式導向的一些基礎觀念。</p>
+<a id="more"></a>
+
+<h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3><ol>
+<li><p>Avoid side effects 避免副作用</p>
+</li>
+<li><p>Avoid mutations 避免修改變數</p>
+</li>
+<li><p>avoid shared state 避免共享狀態</p>
+</li>
+<li><p>use pure function 使用純函式</p>
+</li>
+<li><p>use function composition 使用函式組合</p>
+</li>
+<li><p>use declarative code instead of imperative code 使用聲明式而不是命令式的編碼風格</p>
+</li>
+</ol>
+<p>JavaScript中可以使用不同的編碼風格, 函式導向只是其中一種。所以在寫code時不妨大膽一點, 不要局限自己在特定一種風格。</p>
+<h3 id="What-are-Pure-Functions-什麼是純函式？"><a href="#What-are-Pure-Functions-什麼是純函式？" class="headerlink" title="What are Pure Functions ?　什麼是純函式？"></a>What are Pure Functions ?　什麼是純函式？</h3><ol>
+<li>純函式只依賴它接收到的參數, 而不會依賴一個外部的變數</li>
+<li>純函式不會有副作用, 他不會去變更不屬於他作用域內的變數</li>
+<li>輸入與輸出之間的關係是一定的, 同樣的輸入必定產生同樣的輸出</li>
+</ol>
+<p>其他兩項都很好懂, 可是第二項提到的副作用是什麼意思?</p>
+<h3 id="What-are-Side-effects-什麼是副作用？"><a href="#What-are-Side-effects-什麼是副作用？" class="headerlink" title="What are Side effects ? 什麼是副作用？"></a>What are Side effects ? 什麼是副作用？</h3><p>side effect: 在函式外部可觀察到的改變, 這些改變難以追蹤, 難以重現，這會導致程式碼難以維護，也難以理解，有時甚至難以預料它的成果。遇到帶有side effect的函式,我們可能會需要四處追蹤一段函式中的所有變數來源，才能理解它的功能。</p>
+<ol>
+<li><p>變更一個全域的值(這個值可能是變數, 可能是某個物件內的屬性, 可能是資料結構)</p>
+</li>
+<li><p>變更一個參數的原始值</p>
+</li>
+<li><p>throw an exeption<br><a href="https://pjchender.blogspot.com/2017/12/js-error-handling.html">[JS] 談談 JavaScript 中的錯誤處理 Error Handling</a></p>
+</li>
+<li><p>印出東西(console.log)或是在畫面上顯示<br>這兩樣也被算是函式與外部互動, 因此是side effect</p>
+</li>
+<li><p>觸發外部程序</p>
+</li>
+<li><p>呼叫其他有副作用的函式</p>
+</li>
+</ol>
+<p>side effect是不可能被完全避免的, 甚至有時候我們就是需要side effect來達成目的。functional programming的目標並不是要我們完全掃除side effect, 而是要更好地控制他們。通常我們會將有side effect的函式聚集起來, 這樣一來其他的函式就更好做測試, 更好理解</p>
+<h3 id="如何避免副作用"><a href="#如何避免副作用" class="headerlink" title="如何避免副作用?"></a>如何避免副作用?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> increment = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	count ++;</span><br><span class="line">	<span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的範例中, 可以看到有一個變數<code>count</code>, 還有一個函式<code>increment</code>, 在<code>increment</code>中修改了<code>count</code>, 可是問題是, <code>count</code>是一個全域變數, 它有可能在任何地方被修改</p>
+<p>一個理想的函式應該是：知道輸入，就能獲得預期輸出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改寫之前</span></span><br><span class="line"><span class="keyword">let</span> increment = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	count ++;</span><br><span class="line">	<span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改寫之後</span></span><br><span class="line"><span class="keyword">let</span> increment = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在第二個函式中, 我們使用一個參數來代替原本使用的全域變數, 這個函式會處理這個參數, 他不會去觸碰任何不屬於它作用域內的東西, 這就是pure function</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> average = <span class="function"><span class="keyword">function</span> (<span class="params">scores</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> total;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; scores.length; i++) &#123;</span><br><span class="line">		total += scores[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> total / scores.length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">average([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>]);</span><br></pre></td></tr></table></figure>
+<p>這個取平均值的函式也不會變動到傳入的陣列, 而是返回一個新的值</p>
+<h3 id="一些反面例子"><a href="#一些反面例子" class="headerlink" title="一些反面例子"></a>一些反面例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentUser = <span class="number">0</span>,</span><br><span class="line">    users = [</span><br><span class="line">      &#123;<span class="attr">name</span>: <span class="string">"James"</span>, <span class="attr">score</span>: <span class="number">30</span>, <span class="attr">tries</span>: <span class="number">1</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">name</span>: <span class="string">"Mary"</span>, <span class="attr">score</span>: <span class="number">110</span>, <span class="attr">tries</span>: <span class="number">4</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">name</span>: <span class="string">"Henry"</span>, <span class="attr">score</span>: <span class="number">80</span>, <span class="attr">tries</span>: <span class="number">3</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// A. unpure: mutate property of a global variable</span></span><br><span class="line"><span class="keyword">var</span> updateScore = <span class="function"><span class="keyword">function</span>(<span class="params">amount</span>) </span>&#123;</span><br><span class="line">  users[currentUser].score += amount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B. unpure: mutate a global variable</span></span><br><span class="line"><span class="keyword">var</span> updateUser = <span class="function"><span class="keyword">function</span> (<span class="params">newUser</span>) </span>&#123;</span><br><span class="line">  currentUser = newUser;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A, B, C三個函式都不符合函式導向的概念, 為什麼?<br>A函式中使用了一個外部變數-users, 然後改變了這個users陣列中的值。他改變了一個不屬於自己作用域內的東西，因此是不純的。<br>B函式也改變了一個外部變數currentUser的值, 這個變數並不屬於他自己的作用域, 也因此這個函式也是不純的</p>
+<h3 id="改寫"><a href="#改寫" class="headerlink" title="改寫"></a>改寫</h3><p>要注意, 函式導向中的函式, 他們的行為都是非常單純的 - 接受資料, 回傳結果。一個函式只應該根據他收到的東西做動作！而不應該去觸碰任何不屬於他作用域內的東西。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// A. 不去改變原陣列users中的值, 而是使用一個函式寫出分數更新的邏輯, 然後回傳出去</span></span><br><span class="line"><span class="keyword">var</span> updateScore = <span class="function"><span class="keyword">function</span> (<span class="params">originalAmount, newAmount</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> originalAmount + newAmount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B. 不去改變外部currentUser的值, 而是寫一個函式找到新的user後回傳出去</span></span><br><span class="line"><span class="keyword">var</span> updateUser = <span class="function"><span class="keyword">function</span>(<span class="params">newUser</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> users[newUser];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">users[<span class="number">1</span>].score = updateScore(users[<span class="number">1</span>].score, <span class="number">10</span>);</span><br><span class="line">users[<span class="number">2</span>].tries = updateTries(users[<span class="number">2</span>].tries);</span><br><span class="line">currentUser = updateUser[users[<span class="number">1</span>]];</span><br></pre></td></tr></table></figure>
+
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><p><a href="https://www.udemy.com/share/101VoKAEEec1lWRn0D/">Functional Programming in JavaScript: A Practical Guide</a><br>這位講師解說的觀念都很清楚好懂, 也有很豐富的練習, 如果對函式導向有興趣不妨在特價時購買!</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Functional-programming/" rel="tag">Functional programming</a>, <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/10/25/git-reset/">
+                <span class="level-item">git reset</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Rita Ho">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Rita Ho
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        學習筆記
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>台北</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            45
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            30
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Concepts">
+        <span class="has-mr-6">1</span>
+        <span>Concepts</span>
+        </a></li><li>
+        <a class="is-flex" href="#What-are-Pure-Functions-什麼是純函式？">
+        <span class="has-mr-6">2</span>
+        <span>What are Pure Functions ?　什麼是純函式？</span>
+        </a></li><li>
+        <a class="is-flex" href="#What-are-Side-effects-什麼是副作用？">
+        <span class="has-mr-6">3</span>
+        <span>What are Side effects ? 什麼是副作用？</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何避免副作用">
+        <span class="has-mr-6">4</span>
+        <span>如何避免副作用?</span>
+        </a></li><li>
+        <a class="is-flex" href="#一些反面例子">
+        <span class="has-mr-6">5</span>
+        <span>一些反面例子</span>
+        </a></li><li>
+        <a class="is-flex" href="#改寫">
+        <span class="has-mr-6">6</span>
+        <span>改寫</span>
+        </a></li><li>
+        <a class="is-flex" href="#參考">
+        <span class="has-mr-6">7</span>
+        <span>參考</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="FP - Pure functions, side effects" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Rita Ho&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
