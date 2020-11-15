@@ -7,23 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Day 5 - 讀書筆記 - Rita Ho</title>
+<title>JS - 閉包 - Rita Ho</title>
 
 
-    <meta name="description" content="今天是讀書筆記。">
+    <meta name="description" content="閉包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day 5 - 讀書筆記">
-<meta property="og:url" content="http://yoursite.com/2020/05/23/daily-algo-5/index.html">
+<meta property="og:title" content="JS - 閉包">
+<meta property="og:url" content="http://yoursite.com/2020/11/15/closure/index.html">
 <meta property="og:site_name" content="Rita Ho">
-<meta property="og:description" content="今天是讀書筆記。">
+<meta property="og:description" content="閉包">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://yoursite.com/images/2020-05-23-thumb.png">
-<meta property="article:published_time" content="2020-05-23T06:44:17.000Z">
-<meta property="article:modified_time" content="2020-05-23T06:50:00.921Z">
+<meta property="og:image" content="http://yoursite.com/images/2020-11-15-thumb.png">
+<meta property="article:published_time" content="2020-11-15T14:37:48.000Z">
+<meta property="article:modified_time" content="2020-11-15T14:41:29.141Z">
 <meta property="article:author" content="Rita Ho">
-<meta property="article:tag" content="演算法">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="六角鼠年全馬挑戰賽">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/2020-05-23-thumb.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2020-11-15-thumb.png">
 
 
 
@@ -81,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Day 5 - 讀書筆記" height="28" style='max-height: 3rem'>
+                <img src="/images/logo.png" alt="JS - 閉包" height="28" style='max-height: 3rem'>
             
             </a>
         </div>
@@ -109,6 +110,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -127,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2020-05-23-thumb.png" alt="Day 5 - 讀書筆記">
+            <img class="thumbnail" src="/images/2020-11-15-thumb.png" alt="JS - 閉包">
         </span>
     </div>
     
@@ -135,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-23T06:44:17.000Z">2020-05-23</time>
+                <time class="level-item has-text-grey" datetime="2020-11-15T14:37:48.000Z">2020-11-15</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Daily-Algorithm/">Daily Algorithm</a>
+                <a class="has-link-grey -link" href="/categories/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/">六角鼠年全馬挑戰賽</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分鐘 閱讀文 (大約 1087 個字)
+                    3 分鐘 閱讀文 (大約 496 個字)
                 </span>
                 
                 
@@ -154,196 +159,33 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Day 5 - 讀書筆記
+                JS - 閉包
             
         </h1>
         <div class="content">
-            <p>今天是讀書筆記。</p>
+            <p>閉包</p>
 <a id="more"></a>
 
-<h3 id="資料結構"><a href="#資料結構" class="headerlink" title="資料結構"></a>資料結構</h3><p>當數據存在記憶體中，決定這些數據的順序和位置的，就是資料結構。</p>
-<p>以電話簿為例，若是完全不做分類，僅是簡單的將人名和電話為一組記在紙上，就會像這樣。</p>
-<table>
-<thead>
-<tr>
-<th align="left">人名</th>
-<th align="left">電話號碼</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">陳小美</td>
-<td align="left">0123456789</td>
-</tr>
-<tr>
-<td align="left">王小華</td>
-<td align="left">0123457788</td>
-</tr>
-<tr>
-<td align="left">陳皮皮</td>
-<td align="left">0987654123</td>
-</tr>
-<tr>
-<td align="left">林花花</td>
-<td align="left">0254216874</td>
-</tr>
-</tbody></table>
-<p>這些資料的排列並沒有特別的意義，只是按照先後順序一一加上而已。若是之後要新增，就直接加在下面。<br>這種方法雖然新增很簡單，但是當要查詢特定資料時就很困難了。若是電話簿中有一千筆資料，某一天突然想要找到特定某人的電話時，就要由上往下找，或是由下往上、或是隨機地靠運氣找，不管哪種方法，都很費時費力。</p>
-<p>或是我們改變資料排列的方式，改成以姓為分類來編排</p>
-<table>
-<thead>
-<tr>
-<th align="left">人名</th>
-<th align="left">電話號碼</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">陳小美</td>
-<td align="left">0123456789</td>
-</tr>
-<tr>
-<td align="left">陳皮皮</td>
-<td align="left">0987654123</td>
-</tr>
-<tr>
-<td align="left">陳胖胖</td>
-<td align="left">0612751453</td>
-</tr>
-<tr>
-<td align="left">王小華</td>
-<td align="left">0123457788</td>
-</tr>
-<tr>
-<td align="left">王大哥</td>
-<td align="left">0123457788</td>
-</tr>
-<tr>
-<td align="left">林花花</td>
-<td align="left">0254216874</td>
-</tr>
-</tbody></table>
-<p>這樣一來，某天我們若想在一千筆資料中，找到特定的人的電話號碼，只要根據他的姓氏來尋找，就能省下很多時間。</p>
-<p>將原始的資料按照特定的規則排列出先後順序，就是資料結構。</p>
-<h4 id="單向串列-Linked-list"><a href="#單向串列-Linked-list" class="headerlink" title="單向串列 (Linked list)"></a>單向串列 (Linked list)</h4><p>串列(link)指的是一串由節點(node)和指標(pointer)組成的資訊串鏈，節點就是一個一個單位數據，指標是一個具有指向性的標的，指向下一個節點。藉由節點和指標，將一筆一筆資料串接成一個單向的資料鏈，串鏈末尾的指標會指向null。</p>
-<table>
-<thead>
-<tr>
-<th align="left">節點</th>
-<th align="left">指標</th>
-<th align="left">節點</th>
-<th align="left">指標</th>
-<th align="left">節點</th>
-<th align="left">指標</th>
-<th align="left">節點</th>
-<th align="left">指標</th>
-<th align="left">節點</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">A</td>
-<td align="left">→</td>
-<td align="left">B</td>
-<td align="left">→</td>
-<td align="left">C</td>
-<td align="left">→</td>
-<td align="left">D</td>
-<td align="left">→</td>
-<td align="left">null</td>
-</tr>
-</tbody></table>
-<p>單向的串列中，若是要取用其中一筆資料，就必須從這一串資料鏈的起點開始，沿著指標一路尋找，直到找到為止，不能跳過。<br>在這種結構中，要新增或刪除資料的話，只要改變指標指向的對象就好，但是若要尋找特定資料卻很費時。</p>
-<p>另外，這只是最簡單的單向串列，其實還有雙向串列（節點有首尾兩個指標）、以及環狀串列（末尾的指標指向首位）等其他模式。</p>
-<h4 id="陣列-Array"><a href="#陣列-Array" class="headerlink" title="陣列 (Array)"></a>陣列 (Array)</h4><p>陣列的形式類似列表，也是將資料排成一列，但是與列表的指標不同，陣列會運用索引值來提取資料，索引，即為該筆資料在陣列中的位置。</p>
-<table>
-<thead>
-<tr>
-<th align="left">索引</th>
-<th align="left">0</th>
-<th align="left">1</th>
-<th align="left">2</th>
-<th align="left">3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">值</td>
-<td align="left">A</td>
-<td align="left">B</td>
-<td align="left">C</td>
-<td align="left">D</td>
-</tr>
-</tbody></table>
-<p>由於電腦編號會從0開始，因此第一位索引值為0。要提取資料時，我們會用這樣的表示法：array[0]，就能提出第一位的A。<br>陣列與列表方便的地方在於，我們要提取特定資料時，不用再從頭開始一個一個找，只要知道該資料在陣列中的位置，就能一步就提出來。<br>但是陣列也有缺點，當我們想要安插一筆資料在中間時，舉例來說，我想要在B和C中間增加一個「小王」，會需要經歷以下步驟</p>
-<ol>
-<li>先在陣列的末尾開闢新的位置</li>
+
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>js使用函式作用域, 函式內部的宣告的變數, 物件等等都只存在於該函式內</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcA</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">let</span> y = <span class="number">5</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">funcB</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">let</span> z = <span class="number">18</span>;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"func B"</span>, x + y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 執行</span></span><br><span class="line">	funcB();</span><br><span class="line">	<span class="comment">// 印出funcB內的變數</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"func A"</span>, z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcC</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"func C"</span>, x + y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funcA(); </span><br><span class="line"><span class="comment">// func B, 15</span></span><br><span class="line"><span class="comment">// z is not defined</span></span><br><span class="line"></span><br><span class="line">funcC(); <span class="comment">// x is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>函式內部的函式可以向外層作用域尋找(例:funcB可以找到外層funcA中的x和y), 然而這個行為是單向的, 外層並不能向內尋找(例:外層的funcA找不到內層funcB的z), 另外, 同層作用域底下的兩個函式, 他們作用域也是各不相干的(例:funcC無法找到funcA中的x和y)</p>
+<h3 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a>Closure</h3><h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><ol>
+<li>A closure is the local variables for a function - kept alive after the function has returned. (javascriptkit.com)</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th align="left">索引</th>
-<th align="left">0</th>
-<th align="left">1</th>
-<th align="left">2</th>
-<th align="left">3</th>
-<th align="left">4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">值</td>
-<td align="left">A</td>
-<td align="left">B</td>
-<td align="left">C</td>
-<td align="left">D</td>
-<td align="left">空位</td>
-</tr>
-</tbody></table>
+<p>閉包是一個函式內的一個區域變數 - 在該函示執行完/回傳之後, 仍然存活而沒有被釋放掉, 仍可以被使用</p>
 <ol start="2">
-<li>先把C和C以後的資料都往後移一位</li>
+<li>Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope. (Kyle Simpson)</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th align="left">索引</th>
-<th align="left">0</th>
-<th align="left">1</th>
-<th align="left">2</th>
-<th align="left">3</th>
-<th align="left">4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">值</td>
-<td align="left">A</td>
-<td align="left">B</td>
-<td align="left">空位</td>
-<td align="left">C</td>
-<td align="left">D</td>
-</tr>
-</tbody></table>
+<p>當一個函式可以記憶並且取用它原本的作用域內的東西(lexical scope, 語彙範疇, 在此先理解為函式的作用域), 即使這個函式是在它原先的作用域之外被執行</p>
 <ol start="3">
-<li>然後把小王給放進去</li>
+<li>A closure is a function having access to the parent scope, even after the parent function has closed. (W3C Schools)<br>若是一個函式能夠在它的父層作用域被釋放掉時, 仍能取用其父層作用域的東西時, 該函式就能被稱為一個閉包</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th align="left">索引</th>
-<th align="left">0</th>
-<th align="left">1</th>
-<th align="left">2</th>
-<th align="left">3</th>
-<th align="left">4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">值</td>
-<td align="left">A</td>
-<td align="left">B</td>
-<td align="left">小王</td>
-<td align="left">C</td>
-<td align="left">D</td>
-</tr>
-</tbody></table>
-<p>如果是串列的話，只要修改第一位和第二位節點的指標就好，但是使用陣列的話，就無法那麼簡單。</p>
-<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>串列與陣列雖然很像，但是優缺點卻相反，在選擇採用哪種方式之前，要先根據狀況來評估。</p>
-<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><p><a href="https://www.books.com.tw/products/0010771263">演算法圖鑑</a><br><a href="http://alrightchiu.github.io/SecondRound/linked-list-introjian-jie.html">Linked List</a></p>
+<p>總結: 若是一個函式在其原本的作用域之外被執行, 但仍能取用其原先作用域中的東西的話, 它就能被稱為是閉包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcA</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">let</span> y = <span class="number">5</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">funcB</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"func B"</span>, x + y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// callback</span></span><br><span class="line">	setTimeout(funcB, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funcA(); </span><br><span class="line"><span class="comment">// 一秒後... </span></span><br><span class="line"><span class="comment">// func B 15</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://www.youtube.com/watch?v=TznpOmv2BQM&feature=youtu.be">Demystifying JavaScript Closure</a></p>
 
         </div>
         
@@ -351,7 +193,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/%E5%85%AD%E8%A7%92%E9%BC%A0%E5%B9%B4%E5%85%A8%E9%A6%AC%E6%8C%91%E6%88%B0%E8%B3%BD/" rel="tag">六角鼠年全馬挑戰賽</a>
                 </div>
             </div>
         </div>
@@ -368,17 +210,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/31/linked-list/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">用JS實現單向串列</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/22/daily-algo-4/">
-                <span class="level-item">Day 4 - 出現最多的字母</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/11/08/fp-avoid-mutable-data/">
+                <span class="level-item">FP - Avoid Mutable Data</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -480,6 +315,34 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label" style='font-size:14px'>
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#作用域">
+        <span class="has-mr-6">1</span>
+        <span>作用域</span>
+        </a></li><li>
+        <a class="is-flex" href="#Closure">
+        <span class="has-mr-6">2</span>
+        <span>Closure</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定義">
+        <span class="has-mr-6">2.1</span>
+        <span>定義</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#reference">
+        <span class="has-mr-6">3</span>
+        <span>reference</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -498,7 +361,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Day 5 - 讀書筆記" height="28">
+                    <img src="/images/logo.png" alt="JS - 閉包" height="28">
                 
                 </a>
                 <p class="is-size-7">
